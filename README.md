@@ -1,2 +1,2 @@
 # html-css
- html e css do curso
+Esse é o html e css que foi usado para criação do site da albatroid
