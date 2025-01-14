@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amanhecendo com robótica</title>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body,
+        html {
+            height: 100%;
+            font-family: 'League Spartan', sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            flex: 1;
+            position: relative;
+            background-image: url('https://i.postimg.cc/76JNqS1f/Whats-App-Image-2024-12-11-at-10-01-38-PM.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        nav {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 40px;
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0);
+        }
+        
+        .logo img {
+            width: 80px;
+            height: auto;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+        }
+        
+        nav ul li {
+            font-size: 1.2rem;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul li img {
+            width: 17px;
+            height: 17px;
+            margin-right: 5px;
+        }
+        
+        nav ul li .icon-right {
+            width: 17px;
+            height: 17px;
+            margin-left: 3px;
+        }
+        
+        .menu-lateral-tres-barrinhas {
+            display: flex;
+            gap: 5px;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-left: auto;
+            margin-right: 15px;
+        }
+        
+        .menu-lateral-tres-barrinhas div {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+        }
+        
+        .titulo-container {
+            margin-top: auto;
+            margin-bottom: 150px;
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            margin-bottom: 280px;
+        }
+        
+        header h1 {
+            font-size: 3.7rem;
+            color: white;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0;
+        }
+        
+        .linha {
+            width: 350px;
+            height: 2.5px;
+            background-color: white;
+            display: inline-block;
+            position: relative;
+            top: -10px;
+        }
+        
+        .subtitulo {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.2rem;
+            color: white;
+            margin-top: 10px;
+        }
+        
+        footer {
+            background-color: #f1f1f1;
+            padding: 10px 0;
+            text-align: center;
+            color: #1f1e1e;
+        }
+        
+        footer a {
+            color: #0059ff;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://i.postimg.cc/rmyLbF5n/Boton-Albatroid-grafite-2-removebg-preview.png" alt="Logo Albatroid">
+            </div>
+            <ul>
+                <li><img src="https://i.postimg.cc/15swDsKC/image-1.png" alt="Ícone 1">
+                    <a href="comunidade/aba da comunidade.html">Comunidade</a><img class="icon-right" src="https://i.postimg.cc/xTXkQhxT/image-removebg-preview-3.png" alt="Ícone 1"></li>
+                <li><img src="https://i.postimg.cc/0NwbLBfK/image-removebg-preview-5.png" alt="Ícone 2">Nossos Trabalhos<img class="icon-right" src="https://i.postimg.cc/xTXkQhxT/image-removebg-preview-3.png" alt="Ícone 2"></li>
+                <li><img src="https://i.postimg.cc/mrssgp4H/image-2.png" alt="Ícone 3">Nosso Site<img class="icon-right" src="https://i.postimg.cc/xTXkQhxT/image-removebg-preview-3.png" alt="Ícone 3"></li>
+                <li><img src="https://i.postimg.cc/cHJYPmrp/image-4.png" alt="Ícone 4">Sobre a FIRST<img class="icon-right" src="https://i.postimg.cc/xTXkQhxT/image-removebg-preview-3.png" alt="Ícone 4"></li>
+                <li><img src="https://i.postimg.cc/VspMHX1h/image-5.png" alt="Ícone 5">Fale Conosco<img class="icon-right" src="https://i.postimg.cc/xTXkQhxT/image-removebg-preview-3.png" alt="Ícone 5"></li>
+                <li><img src="https://i.postimg.cc/D0jb6KxR/image.png" alt="Ícone 6">Temporadas<img class="icon-right" src="https://i.postimg.cc/xTXkQhxT/image-removebg-preview-3.png" alt="Ícone 6"></li>
+            </ul>
+            <div class="menu-lateral-tres-barrinhas">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+        <div class="overlay"></div>
+        <div class="titulo-container">
+            <h1>ALBATROID</h1>
+            <div class="linha"></div>
+            <div class="subtitulo">Lutando a cada amanhecer pelos nossos objetivos!</div>
+        </div>
+    </header>
+    <footer>
+        <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>
