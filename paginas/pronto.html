@@ -7,6 +7,7 @@
     <title>Amanhecendo com robótica</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Passion+One:wght@400;700;900&display=swap');
@@ -76,6 +77,7 @@
 
         nav ul li {
             font-size: 1.2rem;
+            font-family: "Montserrat", serif;
             color: white;
             display: flex;
             align-items: center;
@@ -87,16 +89,10 @@
             margin-right: 5px;
         }
 
-        nav ul li .icon-right {
-            width: 17px;
-            height: 17px;
-            margin-left: 3px;
-        }
-
         nav ul li a {
             text-decoration: none;
             color: rgb(255, 255, 255);
-            font-weight: 500;
+            font-weight: 300;
             transition: font-size 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
         }
 
@@ -220,12 +216,36 @@
                 <img src="https://i.postimg.cc/rmyLbF5n/Boton-Albatroid-grafite-2-removebg-preview.png" alt="Logo da Albatroid">
             </div>
             <ul id="menu-das-categorias">
-                <li><a class="direcionamento" href="aba da comunidade.html">Comunidade</a></li>
-                <li><a class="direcionamento" href="">Nossos Trabalhos</a></li>
-                <li><a class="direcionamento" href="">Nosso Site</a></li>
-                <li><a class="direcionamento" href="">Sobre a FIRST</a></li>
-                <li><a class="direcionamento" href="">Fale Conosco</a></li>
-                <li><a class="direcionamento" href="">Temporadas</a></li>
+                <li>
+                    <i class="fas fa-users"></i>
+                    <a class="direcionamento" href="aba da comunidade.html">Comunidade</a>
+                    <i class="fas fa-angle-down"></i>
+                </li>
+                <li>
+                    <i class="fas fa-briefcase"></i>
+                    <a class="direcionamento" href="">Nossos Trabalhos</a>
+                    <i class="fas fa-angle-down"></i>
+                </li>
+                <li>
+                    <i class="fas fa-globe"></i>
+                    <a class="direcionamento" href="">Nosso Site</a>
+                    <i class="fas fa-angle-down"></i>
+                </li>
+                <li>
+                    <i class="fas fa-info-circle"></i>
+                    <a class="direcionamento" href="">Sobre a FIRST</a>
+                    <i class="fas fa-angle-down"></i>
+                </li>
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <a class="direcionamento" href="">Fale Conosco</a>
+                    <i class="fas fa-angle-down"></i>
+                </li>
+                <li>
+                    <i class="fas fa-calendar-alt"></i>
+                    <a class="direcionamento" href="">Temporadas</a>
+                    <i class="fas fa-angle-down"></i>
+                </li>
             </ul>
             <div class="menu-lateral-tres-barrinhas">
                 <div></div>
