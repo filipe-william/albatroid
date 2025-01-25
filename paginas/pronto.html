@@ -169,10 +169,24 @@
             text-decoration: none;
             text-align: center;
             justify-content: center;
-            transition: font-size 0.1s ease, font-weight 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+            transform: translateX(-10px);
             transform: translateY(200%);
+            transition: font-size 0.1s ease, font-weight 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
         }
 
+        .botao-sobre-nos:hover {
+            background: linear-gradient(269deg,#ff9600,#0d00ff);
+            background-size: 120% 120%;
+            animation: gradient-animation 2s ease infinite;
+        }
+        @keyframes gradient-animation {
+        0% { background-position: 0% 50%;
+        }
+        50% { background-position: 100% 50%;
+        }
+        100% {background-position: 0% 50%;
+        }
+        }
 
         .botao-sobre-nos:hover {
             background-color: rgb(151, 150, 150);
@@ -195,6 +209,7 @@
         footer a:hover {
             text-decoration: underline;
         }
+        
     </style>
 </head>
 
@@ -220,7 +235,7 @@
         </nav>
         <div class="overlay"></div>
         <div class="titulo-container">
-            <h1>ALBATROID</h1>
+            <h1 class="albatroid">ALBATROID</h1>
             <div class="linha"></div>
             <div class="subtitulo">Lutando a cada amanhecer pelos nossos objetivos!</div>
             <a href="" class="botao-sobre-nos">Sobre nós</a>
@@ -230,5 +245,7 @@
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
     </footer>
 </body>
+<script>
 
+</script>
 </html>
