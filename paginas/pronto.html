@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amanhecendo com robótica</title>
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body,
         html {
             height: 100%;
@@ -20,7 +22,7 @@
             display: flex;
             flex-direction: column;
         }
-        
+
         header {
             flex: 1;
             position: relative;
@@ -32,7 +34,7 @@
             align-items: center;
             text-align: center;
         }
-        
+
         .overlay {
             position: absolute;
             top: 0;
@@ -42,23 +44,23 @@
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
-        
+
         nav {
             width: 100%;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             padding: 10px 40px;
             position: relative;
             z-index: 2;
             background: rgba(0, 0, 0, 0);
         }
-        
+
         .logo img {
             width: 80px;
             height: auto;
         }
-        
+
         nav ul {
             list-style: none;
             display: flex;
@@ -67,26 +69,26 @@
             align-items: center;
             flex-grow: 1;
         }
-        
+
         nav ul li {
             font-size: 1.2rem;
             color: white;
             display: flex;
             align-items: center;
         }
-        
+
         nav ul li img {
             width: 17px;
             height: 17px;
             margin-right: 5px;
         }
-        
+
         nav ul li .icon-right {
             width: 17px;
             height: 17px;
             margin-left: 3px;
         }
-        
+
         .menu-lateral-tres-barrinhas {
             display: flex;
             gap: 5px;
@@ -95,13 +97,13 @@
             margin-left: auto;
             margin-right: 15px;
         }
-        
+
         .menu-lateral-tres-barrinhas div {
             width: 30px;
             height: 3px;
             background-color: white;
         }
-        
+
         .titulo-container {
             margin-top: auto;
             margin-bottom: 150px;
@@ -110,7 +112,7 @@
             position: relative;
             margin-bottom: 280px;
         }
-        
+
         header h1 {
             font-size: 3.7rem;
             color: white;
@@ -118,7 +120,7 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             margin: 0;
         }
-        
+
         .linha {
             width: 350px;
             height: 2.5px;
@@ -127,26 +129,26 @@
             position: relative;
             top: -10px;
         }
-        
+
         .subtitulo {
             font-family: 'Open Sans', sans-serif;
             font-size: 1.2rem;
             color: white;
             margin-top: 10px;
         }
-        
+
         footer {
             background-color: #f1f1f1;
             padding: 10px 0;
             text-align: center;
             color: #1f1e1e;
         }
-        
+
         footer a {
             color: #0059ff;
             text-decoration: none;
         }
-        
+
         footer a:hover {
             text-decoration: underline;
         }
@@ -155,18 +157,17 @@
 
 <body>
     <header>
-        <nav>
+        <nav id="barra de navegação">
             <div class="logo">
-                <img src="https://i.postimg.cc/rmyLbF5n/Boton-Albatroid-grafite-2-removebg-preview.png" alt="Logo Albatroid">
+                <img src="https://i.postimg.cc/rmyLbF5n/Boton-Albatroid-grafite-2-removebg-preview.png" alt="Logo da Albatroid">
             </div>
-            <ul>
-                <li><img src="https://i.postimg.cc/15swDsKC/image-1.png" alt="Ícone 1">
-                    <a href="aba da comunidade.html">Comunidade</a><img class="icon-right" src="https://i.postimg.cc/xTXkQhxT/image-removebg-preview-3.png" alt="Ícone 1"></li>
-                <li><img src="https://i.postimg.cc/0NwbLBfK/image-removebg-preview-5.png" alt="Ícone 2">Nossos Trabalhos<img class="icon-right" src="https://i.postimg.cc/xTXkQhxT/image-removebg-preview-3.png" alt="Ícone 2"></li>
-                <li><img src="https://i.postimg.cc/mrssgp4H/image-2.png" alt="Ícone 3">Nosso Site<img class="icon-right" src="https://i.postimg.cc/xTXkQhxT/image-removebg-preview-3.png" alt="Ícone 3"></li>
-                <li><img src="https://i.postimg.cc/cHJYPmrp/image-4.png" alt="Ícone 4">Sobre a FIRST<img class="icon-right" src="https://i.postimg.cc/xTXkQhxT/image-removebg-preview-3.png" alt="Ícone 4"></li>
-                <li><img src="https://i.postimg.cc/VspMHX1h/image-5.png" alt="Ícone 5">Fale Conosco<img class="icon-right" src="https://i.postimg.cc/xTXkQhxT/image-removebg-preview-3.png" alt="Ícone 5"></li>
-                <li><img src="https://i.postimg.cc/D0jb6KxR/image.png" alt="Ícone 6">Temporadas<img class="icon-right" src="https://i.postimg.cc/xTXkQhxT/image-removebg-preview-3.png" alt="Ícone 6"></li>
+            <ul id="menu-das-categorias">
+                <li><a class="direcionamento" href="aba da comunidade.html">Comunidade</a></li>
+                <li><a class="direcionamento" href="">Nossos Trabalhos</a></li>
+                <li><a class="direcionamento" href="">Nosso Site</a></li>
+                <li><a class="direcionamento" href="">Sobre a FIRST</a></li>
+                <li><a class="direcionamento" href="">Fale Conosco</a></li>
+                <li><a class="direcionamento" href="">Temporadas</a></li>
             </ul>
             <div class="menu-lateral-tres-barrinhas">
                 <div></div>
