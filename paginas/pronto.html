@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Passion+One:wght@400;700;900&display=swap');
         * {
             margin: 0;
             padding: 0;
@@ -17,10 +18,12 @@
 
         body,
         html {
-            height: 100%;
-            font-family: 'League Spartan', sans-serif;
+            height: 100vh;
+            font-family: 'League Spartan', serif;
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center; 
         }
 
         header {
@@ -46,11 +49,11 @@
         }
 
         nav {
-            width: 100%;
+            width: 100vw;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            padding: 10px 40px;
+            justify-content: space-around;
+            padding: 10px 10px 10px 10px;
             position: relative;
             z-index: 2;
             background: rgba(0, 0, 0, 0);
@@ -89,6 +92,21 @@
             margin-left: 3px;
         }
 
+        nav ul li a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-weight: 500;
+            transition: font-size 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            font-size: 1.5rem;
+            color: rgb(255, 255, 255);
+            font-weight: bolder;
+            background-color: rgba(0, 0, 0, 0.066);
+            transform: translateX(2px);
+        }
+
         .menu-lateral-tres-barrinhas {
             display: flex;
             gap: 5px;
@@ -101,20 +119,18 @@
         .menu-lateral-tres-barrinhas div {
             width: 30px;
             height: 3px;
-            background-color: white;
+            background-color: rgb(255, 255, 255);
         }
 
         .titulo-container {
-            margin-top: auto;
-            margin-bottom: 150px;
             text-align: center;
             z-index: 2;
             position: relative;
-            margin-bottom: 280px;
+            transform: translatey(60%);
         }
 
         header h1 {
-            font-size: 3.7rem;
+            font-size: 10vh;
             color: white;
             z-index: 2;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -127,14 +143,33 @@
             background-color: white;
             display: inline-block;
             position: relative;
-            top: -10px;
+            top: -7px;
         }
 
         .subtitulo {
             font-family: 'Open Sans', sans-serif;
             font-size: 1.2rem;
+            font-weight: bolder;
             color: white;
             margin-top: 10px;
+        }
+
+        .botao-sobre-nos {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            background-color: #505050;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            text-align: center;
+            transition: font-size 0.3s ease, font-weight 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+        }
+
+
+        .botao-sobre-nos:hover {
+            background-color: rgb(151, 150, 150);
+            font-weight: bold;
         }
 
         footer {
@@ -180,6 +215,7 @@
             <h1>ALBATROID</h1>
             <div class="linha"></div>
             <div class="subtitulo">Lutando a cada amanhecer pelos nossos objetivos!</div>
+            <a href="" class="botao-sobre-nos">Sobre nós</a>
         </div>
     </header>
     <footer>
