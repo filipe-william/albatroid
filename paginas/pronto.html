@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Passion+One:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Passion+One:wght@400;700;900&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -157,19 +158,26 @@
         .botao-sobre-nos {
             display: inline-block;
             padding: 10px 20px;
+            height: auto;
+            width: auto;
             color: white;
+            font-family: "Montserrat", serif;
+            font-size: 1.2em;
             background-color: #505050;
             border: none;
-            border-radius: 10px;
+            border-radius: 30px;
             text-decoration: none;
             text-align: center;
-            transition: font-size 0.3s ease, font-weight 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+            justify-content: center;
+            transition: font-size 0.1s ease, font-weight 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+            transform: translateY(200%);
         }
 
 
         .botao-sobre-nos:hover {
             background-color: rgb(151, 150, 150);
             font-weight: bold;
+            width: auto;
         }
 
         footer {
