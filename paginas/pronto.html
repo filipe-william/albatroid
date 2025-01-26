@@ -73,6 +73,13 @@
             justify-content: center;
             align-items: center;
             flex-grow: 1;
+            opacity: 1; /* Opacidade padrão */
+            transition: opacity 0.3s ease; /* Transição suave para a opacidade */
+        }
+
+        nav ul.hide-menu {
+            opacity: 0; /* Torna invisível com transição */
+            pointer-events: none; /* Desativa interações quando invisível */
         }
 
         nav ul li {
@@ -104,7 +111,7 @@
             transform: translateX(2px);
         }
 
-        #customizado { /*aq são as setas e icones do sitezão lá*/
+        #customizado { 
             margin: 3px;
         }
 
@@ -145,12 +152,51 @@
             align-items: flex-end;
             margin-left: auto;
             margin-right: 15px;
+            cursor: pointer;
         }
 
         .menu-lateral-tres-barrinhas div {
             width: 30px;
             height: 3px;
             background-color: rgb(255, 255, 255);
+        }
+
+        .menu-lateral {
+            display: none; /* Escondido por padrão */
+            position: absolute;
+            top: 60px; /* Ajuste conforme necessário */
+            right: 0;
+            background-color: #333; /* Fundo cinza escuro */
+            padding: 20px;
+            border-radius: 5px;
+            z-index: 3;
+            width: 250px; /* Aumenta a largura do menu */
+            opacity: 0; /* Começa invisível para animação */
+            transition: opacity 0.3s ease, transform 0.3s ease; /* Animação para opacidade e transformação */
+            transform: translateY(-10px); /* Move um pouco para cima para a animação */
+        }
+
+        .menu-lateral.show {
+            display: block; /* Exibe o menu */
+            opacity: 1; /* Torna visível */
+            transform: translateY(0); /* Retorna à posição original */
+        }
+
+        .menu-lateral ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-lateral ul li {
+            color: white;
+            margin: 10px 0;
+            font-size: 1.2rem; /* Características dos itens do menu */
+            font-family: "Montserrat", serif; /* Características dos itens do menu */
+        }
+
+        .menu-lateral ul li i {
+            margin-right: 10px; /* Espaçamento entre o ícone e o texto */
+            color: white; /* Cor dos ícones */
         }
 
         .titulo-container {
@@ -209,13 +255,11 @@
             background-size: 120% 120%;
             animation: gradient-animation 2s ease infinite;
         }
+
         @keyframes gradient-animation {
-        0% { background-position: 0% 50%;
-        }
-        50% { background-position: 100% 50%;
-        }
-        100% {background-position: 0% 50%;
-        }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .botao-sobre-nos:hover {
@@ -239,7 +283,6 @@
         footer a:hover {
             text-decoration: underline;
         }
-        
     </style>
 </head>
 
@@ -261,15 +304,15 @@
                     <i id="customizado" id="seta_do_menu" class="fas fa-angle-down"></i>
                 </li>
                 <li>
-                    <img class="customizado" src=https://i.postimg.cc/mrssgp4H/image-2.png alt="globo"></img>
+                    <img class="customizado" src="https://i.postimg.cc/mrssgp4H/image-2.png" alt="globo">
                     <a class="direcionamento" href="">Nosso Site</a>
                 </li>
                 <li>
-                    <img class="customizado-2" src="../imagens/FIRSTicon_RGB_withTM.png" alt="logo da FIRST"></img>
+                    <img class="customizado-2" src="../imagens/FIRSTicon_RGB_withTM.png" alt="logo da FIRST">
                     <a class="direcionamento" href="">Sobre a FIRST</a>
                 </li>
                 <li>
-                    <img class="customizado-3" src="https://i.postimg.cc/X7mgfkm0/carta.png" alt="carta"></img>
+                    <img class="customizado-3" src="https://i.postimg.cc/X7mgfkm0/carta.png" alt="carta">
                     <a class="direcionamento" href="">Fale Conosco</a>
                 </li>
                 <li>
@@ -278,7 +321,7 @@
                     <i id="customizado" id="seta_do_menu" class="fas fa-angle-down"></i>
                 </li>
             </ul>
-            <div class="menu-lateral-tres-barrinhas">
+            <div class="menu-lateral-tres-barrinhas" id="menu-toggle">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -292,11 +335,37 @@
             <a href="" class="botao-sobre-nos">Sobre nós</a>
         </div>
     </header>
+    <div class="menu-lateral" id="menu-lateral">
+        <ul>
+            <li><i class="fas fa-users"></i> <a href="aba da comunidade.html">Comunidade</a></li>
+            <li><i class="fas fa-project-diagram"></i> <a href="">Projetos</a></li>
+            <li><i class="fas fa-globe"></i> <a href="">Nosso Site</a></li>
+            <li><i class="fas fa-info-circle"></i> <a href="">Sobre a FIRST</a></li>
+            <li><i class="fas fa-envelope"></i> <a href="">Fale Conosco</a></li>
+            <li><i class="fas fa-calendar-alt"></i> <a href="">Temporadas</a></li>
+        </ul>
+    </div>
+
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
     </footer>
 </body>
 <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuLateral = document.getElementById('menu-lateral');
+    const navMenu = document.getElementById('menu-das-categorias');
 
+    menuToggle.addEventListener('click', () => {
+        menuLateral.classList.toggle('show'); // Alterna a classe 'show'
+        navMenu.classList.toggle('hide-menu'); // Adiciona ou remove a classe para esconder o menu de navegação
+    });
+
+    // Fecha o menu ao clicar fora dele
+    document.addEventListener('click', (event) => {
+        if (!menuLateral.contains(event.target) && !menuToggle.contains(event.target)) {
+            menuLateral.classList.remove('show'); // Remove a classe 'show'
+            navMenu.classList.remove('hide-menu'); // Remove a classe para mostrar o menu de navegação
+        }
+    });
 </script>
 </html>
