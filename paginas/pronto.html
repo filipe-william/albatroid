@@ -62,8 +62,10 @@
         }
 
         .logo img {
-            width: 80px;
+            width: 75px;
             height: auto;
+            margin-left: 20px;
+            margin-top: 10px;
         }
 
         nav ul {
@@ -166,16 +168,16 @@
         .menu-lateral {
             display: none;
             position: absolute;
-            top: 60px;
+            top: 20px;
             right: 0;
             background-color: #333;
             padding: 20px;
-            border-radius: 5px;
+            margin: 10px;
+            border-radius: 15px;
             z-index: 3;
-            width: 250px;
+            width: 25vw;
             opacity: 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
-            transform: translateY(-10px);
         }
 
         .menu-lateral.mostrar {
@@ -318,6 +320,160 @@
         nav ul li:hover .submenu {
             display: block;
         }
+
+        #submenu-temporadas ul {
+            display: flex;
+            flex-direction: column; /* Alinha os itens verticalmente */
+            padding: 0;
+            margin: 0;
+            gap: 10px; /* Espaçamento entre os itens */
+        }
+
+        #submenu-temporadas ul li {
+            color: white;
+            padding: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: left; /* Alinha o texto à esquerda */
+            transition: background-color 0.3s ease;
+        }
+
+        /* Media Queries */
+
+        @media (max-width: 400px) { /* Celulares menores*/
+            header h1 {
+                font-size: 3vh;
+            }
+
+            .linha{
+                width: 120px;
+                height: 2.5px;
+            }
+
+            .subtitulo{
+                font-size: 2vh;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                display: none;
+            }
+
+            .logo{
+                width: 20px;
+                height: auto;
+            }
+
+            body{
+                background-color: rgb(238, 255, 0);
+            }
+
+            .menu-lateral {
+                width: 70vw;
+            }
+
+        }
+
+        @media (min-width: 401px) and (max-width: 575px) { /* Celulares maiores*/
+            header h1 {
+                font-size: 8vh;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                display: none;
+            }
+
+            body{
+                background-color: blue;
+            }
+
+            .menu-lateral {
+                width: 70vw;
+            }
+
+            .degrade-do-menu {
+                background: linear-gradient(125deg, #0500ff, #ffa000);
+                background-size: 120% 120%;
+                animation: gradient-animation 2s ease infinite;
+                }
+
+            @keyframes gradient-animation {
+                0% {
+                    background-position: 0% 12%;
+                }
+                50% {
+                    background-position: 25% 7%;
+                }
+                100% {
+                    background-position: 0% 12%;
+                }
+                }
+
+        }
+
+        @media (min-width: 576px) and (max-width: 997px) { /* Tablet */
+            header h1 {
+                font-size: 8vh;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                display: none;
+            }
+
+            body{
+                background-color: rgb(234, 0, 255);
+            }
+
+            .menu-lateral {
+                width: 70vw;
+            }
+
+            .menu-lateral {
+                display: none;
+                position: absolute;
+                top: 20px;
+                right: 0;
+                background-color: #333;
+                padding: 20px;
+                margin: 10px;
+                border-radius: 15px;
+                z-index: 3;
+                width: 85vw;
+                height: 70vh;
+                opacity: 0;
+                transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        }
+        
+        @media (min-width: 998px) and (max-width: 1055px) { /* notebook */
+            header h1 {
+                font-size: 9vh;
+            }
+
+            body{
+                background-color: red;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+        }
+
+        @media (min-width: 1056px) { /* computador */
+            header h1 {
+                font-size: 10vh;
+            }
+
+            nav ul {
+                gap: 25px;
+            }
+        }
     </style>
 </head>
 
@@ -325,7 +481,7 @@
     <header>
         <nav id="navegacao">
             <div class="logo">
-                <img src="https://i.postimg.cc/rmyLbF5n/Boton-Albatroid-grafite-2-removebg-preview.png" alt="Logo da Albatroid">
+                <img src="https://i.postimg.cc/44bRywLn/Whats-App-Image-2025-01-26-at-3-59-32-AM-removebg-preview.png" alt="Logo da Albatroid">
             </div>
             <ul id="menu-categorias">
                 <li>
@@ -375,9 +531,9 @@
                 </li>
             </ul>
             <div class="menu-tres-barrinhas" id="menu_toggle">
-                <div></div>
-                <div></div>
-                <div></div>
+                <div class="degrade-do-menu"></div>
+                <div class="degrade-do-menu"></div>
+                <div class="degrade-do-menu"></div>
             </div>
         </nav>
         <div class="sobreposicao"></div>
