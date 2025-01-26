@@ -40,7 +40,7 @@
             text-align: center;
         }
 
-        .overlay {
+        .sobreposicao {
             position: absolute;
             top: 0;
             left: 0;
@@ -55,7 +55,7 @@
             display: flex;
             align-items: center;
             justify-content: space-around;
-            padding: 10px 10px 10px 10px;
+            padding: 10px;
             position: relative;
             z-index: 2;
             background: rgba(0, 0, 0, 0);
@@ -73,13 +73,13 @@
             justify-content: center;
             align-items: center;
             flex-grow: 1;
-            opacity: 1; /* Opacidade padrão */
-            transition: opacity 0.3s ease; /* Transição suave para a opacidade */
+            opacity: 1;
+            transition: opacity 0.3s ease;
         }
 
-        nav ul.hide-menu {
-            opacity: 0; /* Torna invisível com transição */
-            pointer-events: none; /* Desativa interações quando invisível */
+        nav ul.menu-escondido {
+            opacity: 0;
+            pointer-events: none;
         }
 
         nav ul li {
@@ -88,7 +88,7 @@
             color: white;
             display: flex;
             align-items: center;
-            position: relative; /* Para posicionar o submenu */
+            position: relative;
         }
 
         nav ul li img {
@@ -98,41 +98,41 @@
         }
 
         nav ul li p {
-            text-decoration: none; /* Remove o sublinhado */
-            color: rgb(255, 255, 255); /* Cor do texto */
-            font-weight: 300; /* Peso da fonte */
-            cursor: pointer; /* Muda o cursor para indicar interatividade */
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-weight: 300;
+            cursor: pointer;
             transition: font-size 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
         }
 
         nav ul li p:hover {
-            font-size: 1.5rem; /* Aumenta o tamanho ao passar o mouse */
-            color: rgb(255, 255, 255); /* Cor ao passar o mouse */
-            font-weight: bolder; /* Peso da fonte ao passar o mouse */
-            background-color: rgba(0, 0, 0, 0.066); /* Fundo ao passar o mouse */
-            transform: translateX(2px); /* Move um pouco para a direita ao passar o mouse */
+            font-size: 1.5rem;
+            color: rgb(255, 255, 255);
+            font-weight: bolder;
+            background-color: rgba(0, 0, 0, 0.066);
+            transform: translateX(2px);
         }
 
         #customizado { 
             margin: 3px;
         }
 
-        .customizado{ 
+        .customizado { 
             height: 21px;
             width: auto;
         }
 
-        .customizado-2{
+        .customizado-2 {
             width: 30px;
             height: 18px;
         }
 
-        .customizado-3{
+        .customizado-3 {
             width: 30px;
             height: 30px;
         }
 
-        .customizado-4{
+        .customizado-4 {
             width: 25px;
             height: 25px;
         }
@@ -147,7 +147,7 @@
             transform: translateY(10%);
         }
 
-        .menu-lateral-tres-barrinhas {
+        .menu-tres-barrinhas {
             display: flex;
             gap: 5px;
             flex-direction: column;
@@ -157,31 +157,31 @@
             cursor: pointer;
         }
 
-        .menu-lateral-tres-barrinhas div {
+        .menu-tres-barrinhas div {
             width: 30px;
             height: 3px;
             background-color: rgb(255, 255, 255);
         }
 
         .menu-lateral {
-            display: none; /* Escondido por padrão */
+            display: none;
             position: absolute;
-            top: 60px; /* Ajuste conforme necessário */
+            top: 60px;
             right: 0;
-            background-color: #333; /* Fundo cinza escuro */
+            background-color: #333;
             padding: 20px;
             border-radius: 5px;
             z-index: 3;
-            width: 250px; /* Aumenta a largura do menu */
-            opacity: 0; /* Começa invisível para animação */
-            transition: opacity 0.3s ease, transform 0.3s ease; /* Animação para opacidade e transformação */
-            transform: translateY(-10px); /* Move um pouco para cima para a animação */
+            width: 250px;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(-10px);
         }
 
-        .menu-lateral.show {
-            display: block; /* Exibe o menu */
-            opacity: 1; /* Torna visível */
-            transform: translateY(0); /* Retorna à posição original */
+        .menu-lateral.mostrar {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .menu-lateral ul {
@@ -192,16 +192,16 @@
         .menu-lateral ul li {
             color: white;
             margin: 10px 0;
-            font-size: 1.2rem; /* Características dos itens do menu */
-            font-family: "Montserrat", serif; /* Características dos itens do menu */
+            font-size: 1.2rem;
+            font-family: "Montserrat", serif;
         }
 
         .menu-lateral ul li i {
-            margin-right: 10px; /* Espaçamento entre o ícone e o texto */
-            color: white; /* Cor dos ícones */
+            margin-right: 10px;
+            color: white;
         }
 
-        .titulo-container {
+        .container-titulo {
             text-align: center;
             z-index: 2;
             position: relative;
@@ -286,23 +286,22 @@
             text-decoration: underline;
         }
 
-        /* Estilos para os submenus */
         .submenu {
-            display: none; /* Escondido por padrão */
+            display: none;
             position: absolute;
-            background-color: #444; /* Fundo cinza escuro para o submenu */
+            background-color: #444;
             padding: 10px;
             border-radius: 5px;
             z-index: 4;
-            top: 100%; /* Posiciona abaixo do item principal */
-            left: 0; /* Alinha à esquerda do item principal */
-            transition: opacity 0.3s ease; /* Transição suave para a opacidade */
-            opacity: 0; /* Começa invisível */
+            top: 100%;
+            left: 0;
+            transition: opacity 0.3s ease;
+            opacity: 0;
         }
 
-        .submenu.show {
-            display: block; /* Exibe o submenu */
-            opacity: 1; /* Torna visível */
+        .submenu.mostrar {
+            display: block;
+            opacity: 1;
         }
 
         .submenu ul {
@@ -317,22 +316,22 @@
         }
 
         nav ul li:hover .submenu {
-            display: block; /* Exibe o submenu ao passar o mouse */
+            display: block;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <nav id="barra de navegação">
+        <nav id="navegacao">
             <div class="logo">
                 <img src="https://i.postimg.cc/rmyLbF5n/Boton-Albatroid-grafite-2-removebg-preview.png" alt="Logo da Albatroid">
             </div>
-            <ul id="menu-das-categorias">
+            <ul id="menu-categorias">
                 <li>
                     <i id="customizado" class="fas fa-users"></i>
                     <p class="direcionamento">Comunidade</p>
-                    <i id="customizado" id="seta_do_menu" class="fas fa-angle-down"></i>
+                    <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
                     <div class="submenu" id="submenu-comunidade">
                         <ul>
                             <li><p>Grupo A</p></li>
@@ -343,7 +342,7 @@
                 <li>
                     <i id="customizado" class="fas fa-heart"></i>
                     <p class="direcionamento">Projetos</p>
-                    <i id="customizado" id="seta_do_menu" class="fas fa-angle-down"></i>
+                    <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
                     <div class="submenu" id="submenu-projetos">
                         <ul>
                             <li><p>Projeto 1</p></li>
@@ -366,7 +365,7 @@
                 <li>
                     <img class="customizado-4" src="https://i.postimg.cc/Hxrx9XFf/image-6.png" alt="globo terrestre">
                     <p class="direcionamento">Temporadas</p>
-                    <i id="customizado" id="seta_do_menu" class="fas fa-angle-down"></i>
+                    <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
                     <div class="submenu" id="submenu-temporadas">
                         <ul>
                             <li><p>Temporada 1</p></li>
@@ -375,21 +374,21 @@
                     </div>
                 </li>
             </ul>
-            <div class="menu-lateral-tres-barrinhas" id="menu-toggle">
+            <div class="menu-tres-barrinhas" id="menu_toggle">
                 <div></div>
                 <div></div>
                 <div></div>
             </div>
         </nav>
-        <div class="overlay"></div>
-        <div class="titulo-container">
+        <div class="sobreposicao"></div>
+        <div class="container-titulo">
             <h1 class="albatroid">ALBATROID</h1>
             <div class="linha"></div>
             <div class="subtitulo">Lutando a cada amanhecer pelos nossos objetivos!</div>
             <a href="" class="botao-sobre-nos">Sobre nós</a>
         </div>
     </header>
-    <div class="menu-lateral" id="menu-lateral">
+    <div class="menu-lateral" id="menu_lateral">
         <ul>
             <li><i class="fas fa-users"></i> <p>Comunidade</p></li>
             <li><i class="fas fa-project-diagram"></i> <p>Projetos</p></li>
@@ -405,51 +404,43 @@
     </footer>
 </body>
 <script>
-    const menuToggle = document.getElementById('menu-toggle');
-    const menuLateral = document.getElementById('menu-lateral');
-    const navMenu = document.getElementById('menu-das-categorias');
+    const menuToggle = document.getElementById('menu_toggle');
+    const menuLateral = document.getElementById('menu_lateral');
+    const navMenu = document.getElementById('menu-categorias');
 
     menuToggle.addEventListener('click', () => {
-        menuLateral.classList.toggle('show'); // Alterna a classe 'show'
-        navMenu.classList.toggle('hide-menu'); // Adiciona ou remove a classe para esconder o menu de navegação
+        menuLateral.classList.toggle('mostrar');
+        navMenu.classList.toggle('menu-escondido');
     });
 
-    // Fecha o menu ao clicar fora dele
     document.addEventListener('click', (event) => {
         if (!menuLateral.contains(event.target) && !menuToggle.contains(event.target)) {
-            menuLateral.classList.remove('show'); // Remove a classe 'show'
-            navMenu.classList.remove('hide-menu'); // Remove a classe para mostrar o menu de navegação
+            menuLateral.classList.remove('mostrar');
+            navMenu.classList.remove('menu-escondido');
         }
     });
 
-    // Lógica para os submenus
     const submenus = document.querySelectorAll('.submenu');
 
-    document.querySelectorAll('#menu-das-categorias > li').forEach(item => {
+    document.querySelectorAll('#menu-categorias > li').forEach(item => {
         item.addEventListener('click', function(event) {
-            // Impede o fechamento do menu lateral
             event.stopPropagation();
-
-            // Fecha todos os submenus
             submenus.forEach(submenu => {
                 if (submenu !== this.querySelector('.submenu')) {
-                    submenu.classList.remove('show');
+                    submenu.classList.remove('mostrar');
                 }
             });
-
-            // Alterna o submenu do item clicado
             const submenu = item.querySelector('.submenu');
             if (submenu) {
-                submenu.classList.toggle('show');
+                submenu.classList.toggle('mostrar');
             }
         });
     });
 
-    // Fecha os submenus ao clicar fora deles
     document.addEventListener('click', (event) => {
-        if (!event.target.closest('#menu-das-categorias')) {
+        if (!event.target.closest('#menu-categorias')) {
             submenus.forEach(submenu => {
-                submenu.classList.remove('show'); // Fecha todos os submenus
+                submenu.classList.remove('mostrar');
             });
         }
     });
