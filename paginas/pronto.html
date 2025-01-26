@@ -88,6 +88,7 @@
             color: white;
             display: flex;
             align-items: center;
+            position: relative; /* Para posicionar o submenu */
         }
 
         nav ul li img {
@@ -96,19 +97,20 @@
             margin-right: 5px;
         }
 
-        nav ul li a {
-            text-decoration: none;
-            color: rgb(255, 255, 255);
-            font-weight: 300;
+        nav ul li p {
+            text-decoration: none; /* Remove o sublinhado */
+            color: rgb(255, 255, 255); /* Cor do texto */
+            font-weight: 300; /* Peso da fonte */
+            cursor: pointer; /* Muda o cursor para indicar interatividade */
             transition: font-size 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
         }
 
-        nav ul li a:hover {
-            font-size: 1.5rem;
-            color: rgb(255, 255, 255);
-            font-weight: bolder;
-            background-color: rgba(0, 0, 0, 0.066);
-            transform: translateX(2px);
+        nav ul li p:hover {
+            font-size: 1.5rem; /* Aumenta o tamanho ao passar o mouse */
+            color: rgb(255, 255, 255); /* Cor ao passar o mouse */
+            font-weight: bolder; /* Peso da fonte ao passar o mouse */
+            background-color: rgba(0, 0, 0, 0.066); /* Fundo ao passar o mouse */
+            transform: translateX(2px); /* Move um pouco para a direita ao passar o mouse */
         }
 
         #customizado { 
@@ -283,6 +285,40 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* Estilos para os submenus */
+        .submenu {
+            display: none; /* Escondido por padrão */
+            position: absolute;
+            background-color: #444; /* Fundo cinza escuro para o submenu */
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 4;
+            top: 100%; /* Posiciona abaixo do item principal */
+            left: 0; /* Alinha à esquerda do item principal */
+            transition: opacity 0.3s ease; /* Transição suave para a opacidade */
+            opacity: 0; /* Começa invisível */
+        }
+
+        .submenu.show {
+            display: block; /* Exibe o submenu */
+            opacity: 1; /* Torna visível */
+        }
+
+        .submenu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .submenu ul li {
+            color: white;
+            padding: 5px 0;
+            font-size: 1rem;
+        }
+
+        nav ul li:hover .submenu {
+            display: block; /* Exibe o submenu ao passar o mouse */
+        }
     </style>
 </head>
 
@@ -295,30 +331,48 @@
             <ul id="menu-das-categorias">
                 <li>
                     <i id="customizado" class="fas fa-users"></i>
-                    <a class="direcionamento" href="aba da comunidade.html">Comunidade</a>
+                    <p class="direcionamento">Comunidade</p>
                     <i id="customizado" id="seta_do_menu" class="fas fa-angle-down"></i>
+                    <div class="submenu" id="submenu-comunidade">
+                        <ul>
+                            <li><p>Grupo A</p></li>
+                            <li><p>Grupo B</p></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
                     <i id="customizado" class="fas fa-heart"></i>
-                    <a class="direcionamento" href="">Projetos</a>
+                    <p class="direcionamento">Projetos</p>
                     <i id="customizado" id="seta_do_menu" class="fas fa-angle-down"></i>
+                    <div class="submenu" id="submenu-projetos">
+                        <ul>
+                            <li><p>Projeto 1</p></li>
+                            <li><p>Projeto 2</p></li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
                     <img class="customizado" src="https://i.postimg.cc/mrssgp4H/image-2.png" alt="globo">
-                    <a class="direcionamento" href="">Nosso Site</a>
+                    <p class="direcionamento">Nosso Site</p>
                 </li>
                 <li>
                     <img class="customizado-2" src="../imagens/FIRSTicon_RGB_withTM.png" alt="logo da FIRST">
-                    <a class="direcionamento" href="">Sobre a FIRST</a>
+                    <p class="direcionamento">Sobre a FIRST</p>
                 </li>
                 <li>
                     <img class="customizado-3" src="https://i.postimg.cc/X7mgfkm0/carta.png" alt="carta">
-                    <a class="direcionamento" href="">Fale Conosco</a>
+                    <p class="direcionamento">Fale Conosco</p>
                 </li>
                 <li>
                     <img class="customizado-4" src="https://i.postimg.cc/Hxrx9XFf/image-6.png" alt="globo terrestre">
-                    <a class="direcionamento" href="">Temporadas</a>
+                    <p class="direcionamento">Temporadas</p>
                     <i id="customizado" id="seta_do_menu" class="fas fa-angle-down"></i>
+                    <div class="submenu" id="submenu-temporadas">
+                        <ul>
+                            <li><p>Temporada 1</p></li>
+                            <li><p>Temporada 2</p></li>
+                        </ul>
+                    </div>
                 </li>
             </ul>
             <div class="menu-lateral-tres-barrinhas" id="menu-toggle">
@@ -337,12 +391,12 @@
     </header>
     <div class="menu-lateral" id="menu-lateral">
         <ul>
-            <li><i class="fas fa-users"></i> <a href="aba da comunidade.html">Comunidade</a></li>
-            <li><i class="fas fa-project-diagram"></i> <a href="">Projetos</a></li>
-            <li><i class="fas fa-globe"></i> <a href="">Nosso Site</a></li>
-            <li><i class="fas fa-info-circle"></i> <a href="">Sobre a FIRST</a></li>
-            <li><i class="fas fa-envelope"></i> <a href="">Fale Conosco</a></li>
-            <li><i class="fas fa-calendar-alt"></i> <a href="">Temporadas</a></li>
+            <li><i class="fas fa-users"></i> <p>Comunidade</p></li>
+            <li><i class="fas fa-project-diagram"></i> <p>Projetos</p></li>
+            <li><i class="fas fa-globe"></i> <p>Nosso Site</p></li>
+            <li><i class="fas fa-info-circle"></i> <p>Sobre a FIRST</p></li>
+            <li><i class="fas fa-envelope"></i> <p>Fale Conosco</p></li>
+            <li><i class="fas fa-calendar-alt"></i> <p>Temporadas</p></li>
         </ul>
     </div>
 
@@ -365,6 +419,38 @@
         if (!menuLateral.contains(event.target) && !menuToggle.contains(event.target)) {
             menuLateral.classList.remove('show'); // Remove a classe 'show'
             navMenu.classList.remove('hide-menu'); // Remove a classe para mostrar o menu de navegação
+        }
+    });
+
+    // Lógica para os submenus
+    const submenus = document.querySelectorAll('.submenu');
+
+    document.querySelectorAll('#menu-das-categorias > li').forEach(item => {
+        item.addEventListener('click', function(event) {
+            // Impede o fechamento do menu lateral
+            event.stopPropagation();
+
+            // Fecha todos os submenus
+            submenus.forEach(submenu => {
+                if (submenu !== this.querySelector('.submenu')) {
+                    submenu.classList.remove('show');
+                }
+            });
+
+            // Alterna o submenu do item clicado
+            const submenu = item.querySelector('.submenu');
+            if (submenu) {
+                submenu.classList.toggle('show');
+            }
+        });
+    });
+
+    // Fecha os submenus ao clicar fora deles
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('#menu-das-categorias')) {
+            submenus.forEach(submenu => {
+                submenu.classList.remove('show'); // Fecha todos os submenus
+            });
         }
     });
 </script>
