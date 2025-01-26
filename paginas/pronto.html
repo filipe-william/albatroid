@@ -26,11 +26,12 @@
             flex-direction: column;
             justify-content: center;
             align-items: center; 
+            scroll-behavior: smooth;
         }
 
         header {
-            flex: 1;
-            position: relative;
+            height: 100vh; /* Mantém o header ocupando a tela inteira */
+            position: absolute;
             background-image: url('https://i.postimg.cc/76JNqS1f/Whats-App-Image-2024-12-11-at-10-01-38-PM.jpg');
             background-size: cover;
             background-position: center;
@@ -338,6 +339,30 @@
             transition: background-color 0.3s ease;
         }
 
+        section#sobre-nos {
+            background-color: #f2f2f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        section#temporadas {
+            background-color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        section#nossos-projetos {
+            background-color: #a9a9a9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
         /* Media Queries */
 
         @media (max-width: 400px) { /* Celulares menores*/
@@ -546,14 +571,18 @@
     </header>
     <div class="menu-lateral" id="menu_lateral">
         <ul>
-            <li><i class="fas fa-users"></i> <p>Comunidade</p></li>
-            <li><i class="fas fa-project-diagram"></i> <p>Projetos</p></li>
-            <li><i class="fas fa-globe"></i> <p>Nosso Site</p></li>
-            <li><i class="fas fa-info-circle"></i> <p>Sobre a FIRST</p></li>
-            <li><i class="fas fa-envelope"></i> <p>Fale Conosco</p></li>
-            <li><i class="fas fa-calendar-alt"></i> <p>Temporadas</p></li>
+            <li><i class="fas fa-users"></i> <a href="">Comunidade</a></li>
+            <li><i class="fas fa-project-diagram"></i> <a href="">Projetos</a></li>
+            <li><i class="fas fa-globe"></i> <a href="">Nosso Site</a></li>
+            <li><i class="fas fa-info-circle"></i> <a href="">Sobre a FIRST</a></li>
+            <li><i class="fas fa-envelope"></i> <a href="">Fale Conosco</a></li>
+            <li><i class="fas fa-calendar-alt"></i> <a>Temporadas</a></li>
         </ul>
     </div>
+
+    <section id="sobre-nos">sobre nós</section>
+    <section id="temporadas">temporadas</section>
+    <section id="nossos-projetos">nossos projetos</section>
 
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
