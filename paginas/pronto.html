@@ -22,14 +22,19 @@
         html {
             height: auto;
             font-family: 'League Spartan', serif;
-            overflow-y: auto; /* Adicionei para evitar overflow */
+            overflow-y: auto;
+            overflow-x: hidden;
         }
 
         body {
             width: auto;
+        }
+
+        .fundo {
             background-image: url('https://i.postimg.cc/76JNqS1f/Whats-App-Image-2024-12-11-at-10-01-38-PM.jpg');
-            background-size: contain;
+            background-size: cover; 
             background-position: center;
+            min-height: 100vh;
         }
 
         header {
@@ -38,17 +43,17 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            width: 100%; /* Adicionei para garantir que o header não ultrapasse a tela */
+            width: 100%;
         }
 
         .sobreposicao {
-            position: fixed; /* Alterado para fixed */
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1;
+            z-index: 2;
         }
 
         nav {
@@ -57,9 +62,14 @@
             align-items: center;
             justify-content: space-around;
             padding: 10px;
-            position: relative;
-            z-index: 2;
+            position: fixed;
+            z-index: 10;
             background: rgba(0, 0, 0, 0);
+            transition: top 0.3s, background 0.3s; /* Transição tem que arrumar pq nn tá reconhecendo */
+        }
+
+        nav.nav-scroll {
+            background: #060466;
         }
 
         .logo img {
@@ -217,7 +227,7 @@
         }
 
         section {
-            min-height: 100vh; /* Adicionado para garantir altura mínima */
+            min-height: 100vh;
         }
 
         section h1 {
@@ -290,8 +300,23 @@
             width: auto;
         }
 
+        .seta-rolagem {
+            display: block; /* Para centralizar */
+            margin: 100px auto 0; /* Espaço acima e centralização */
+            cursor: pointer;
+            font-size: 2rem; /* Tamanho do ícone */
+            color: gray; /* Cor do ícone */
+            transition: color 0.3s ease, font-size 0.3s ease;
+        }
+
+        .seta-rolagem:hover {
+            font-size: 2.5rem;
+            color: white;
+        }
+
         footer {
             background-color: #f1f1f1;
+            width: 100vw;
             padding: 10px 0;
             text-align: center;
             color: #1f1e1e;
@@ -319,6 +344,10 @@
             opacity: 0;
         }
 
+        .submenu ul li a{
+            text-decoration: none;
+        }
+
         .submenu.mostrar {
             display: block;
             opacity: 1;
@@ -327,6 +356,22 @@
         .submenu ul {
             list-style: none;
             padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-weight: 300;
+            cursor: pointer;
+            transition: font-size 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            font-size: 1.5rem;
+            color: rgb(255, 255, 255);
+            font-weight: bolder;
+            background-color: rgba(0, 0, 0, 0.066);
+            transform: translateX(2px);
         }
 
         .submenu ul li {
@@ -341,10 +386,10 @@
 
         #submenu-temporadas ul {
             display: flex;
-            flex-direction: column; /* Alinha os itens verticalmente */
+            flex-direction: column;
             padding: 0;
             margin: 0;
-            gap: 10px; /* Espaçamento entre os itens */
+            gap: 10px;
         }
 
         #submenu-temporadas ul li {
@@ -352,32 +397,105 @@
             padding: 5px;
             font-size: 1rem;
             cursor: pointer;
-            text-align: left; /* Alinha o texto à esquerda */
+            text-align: left;
             transition: background-color 0.3s ease;
         }
 
+        .linha-separacao {
+            width: 100%;
+            height: 2px; 
+            background-color: black; 
+        }
+
+        .linha-separacao-das-sections {
+            width: 1px;
+            height: 100vh;
+            background-color: black;
+        }
+
+        .container-secoes {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
         section {
-            min-height: 100vh; /* Mantido para garantir altura mínima */
-            overflow: hidden; /* Adicionei para evitar overflow */
+            height: 100vh;
+            width: 33vw;
+            overflow: hidden;
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            color: whitesmoke;
+            display: block;
+            z-index: 3;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+        }
+
+        section p{
+            transform: translateY(1150%);
+            font-weight: bolder;
+        }
+
+        section img{
+            width: 30px;
+            height: auto;
+        }
+
+        section#nossos-projetos a{
+            transform: translateY(600%);
+        }
+
+        section a{
+            text-decoration: none;
+            color: white;
+            display: inline-block;
+            padding: 10px 20px;
+            height: 60px;
+            width: 200px;
+            font-family: "Montserrat", serif;
+            font-size: 0.5em;
+            background-color: #505050;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            text-align: center;
+            justify-content: center;
+            justify-items: center;
+            transform: translateY(600%);
+            transition: font-size 0.1s ease, font-weight 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
         }
 
         section#sobre-nos {
             background-color: #f2f2f2;
+            background-image: url(../imagens/albatoid\ junta.jpeg);
+            background-position: center;
+            background-size: cover;
             font-size: 2rem;
         }
 
         section#temporadas {
             background-color: #ccc;
+            background-image: url(../imagens/robozão.jpeg);
+            background-position:center;
+            background-size: cover;
             display: block;
             font-size: 2rem;
         }
 
         section#nossos-projetos {
             background-color: #a9a9a9;
+            background-image: url(../imagens/moes.jpeg);
+            background-position: center;
+            background-size: cover;
             font-size: 2rem;
         }
 
-        /* Media Queries */
+
+
+        /* Media Queries (arrumar celulares menores e maiores) */
 
         @media (max-width: 400px) { /* Celulares menores*/
             header h1 {
@@ -520,8 +638,9 @@
 
 <body>
     <div class="sobreposicao"></div>
-    <header>
-        <nav id="navegacao">
+    <div class="fundo">
+        <header>
+         <nav id="navegacao">
             <div class="logo">
                 <img src="https://i.postimg.cc/44bRywLn/Whats-App-Image-2025-01-26-at-3-59-32-AM-removebg-preview.png" alt="Logo da Albatroid">
             </div>
@@ -532,33 +651,26 @@
                     <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
                     <div class="submenu" id="submenu-comunidade">
                         <ul>
-                            <li><p>Grupo A</p></li>
-                            <li><p>Grupo B</p></li>
+                            <li><a href="aba da comunidade.html">Interação</a></li>
+                            <li><a href="">Documentos</a></li>
                         </ul>
                     </div>
                 </li>
                 <li>
                     <i id="customizado" class="fas fa-heart"></i>
-                    <p class="direcionamento">Projetos</p>
-                    <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
-                    <div class="submenu" id="submenu-projetos">
-                        <ul>
-                            <li><p>Projeto 1</p></li>
-                            <li><p>Projeto 2</p></li>
-                        </ul>
-                    </div>
+                    <a href="" class="direcionamento">Projetos</a>
                 </li>
                 <li>
                     <img class="customizado" src="https://i.postimg.cc/mrssgp4H/image-2.png" alt="globo">
-                    <p class="direcionamento">Nosso Site</p>
+                    <a href="" class="direcionamento">Nosso Site</a>
                 </li>
                 <li>
                     <img class="customizado-2" src="../imagens/FIRSTicon_RGB_withTM.png" alt="logo da FIRST">
-                    <p class="direcionamento">Sobre a FIRST</p>
+                    <a href="" class="direcionamento">Sobre a FIRST</a>
                 </li>
                 <li>
                     <img class="customizado-3" src="https://i.postimg.cc/X7mgfkm0/carta.png" alt="carta">
-                    <p class="direcionamento">Fale Conosco</p>
+                    <a href="" class="direcionamento">Fale Conosco</a>
                 </li>
                 <li>
                     <img class="customizado-4" src="https://i.postimg.cc/Hxrx9XFf/image-6.png" alt="globo terrestre">
@@ -566,8 +678,9 @@
                     <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
                     <div class="submenu" id="submenu-temporadas">
                         <ul>
-                            <li><p>Temporada 1</p></li>
-                            <li><p>Temporada 2</p></li>
+                            <li><p>Em breve...</p></li>
+                            <li><a>Masterpiece</a></li>
+                            <li><a>Submerged</a></li>
                         </ul>
                     </div>
                 </li>
@@ -577,7 +690,7 @@
                 <div class="degrade-do-menu"></div>
                 <div class="degrade-do-menu"></div>
             </div>
-        </nav>
+         </nav>
         <div class="menu-lateral" id="menu_lateral">
             <ul>
                 <li><i class="fas fa-users"></i> <a href="">Comunidade</a></li>
@@ -594,15 +707,95 @@
                 <div class="linha"></div>
                 <div class="subtitulo">Lutando a cada amanhecer pelos nossos objetivos!</div>
                 <a href="" class="botao-sobre-nos">Sobre nós</a>
+                <i class="fas fa-chevron-down seta-rolagem" id="seta-rolagem"></i>
             </div>
         </section>
     </header>
-    <section id="sobre-nos">sobre nós</section>
-    <section id="temporadas">temporadas</section>
-    <section id="nossos-projetos">nossos projetos</section>
+</div>
+    <div class="linha-separacao"></div>
+    <div class="container-secoes">
+        <div class="sobreposicao-imagem"></div>
+        <section id="sobre-nos">
+            <p>Sobre nós</p>
+            <a href="" class="botao-venha-conhecer">venha conhecer</a>
+        </section>
+        <div class="linha-separacao-das-sections"></div>
+        <div class="sobreposicao-imagem"></div>
+        <section id="temporadas">
+            <p>Temporadas</p>
+            <a href="" class="botao-venha-conhecer">venha conhecer</a>
+        </section>
+        <div class="linha-separacao-das-sections"></div>
+        <div class="sobreposicao-imagem"></div>
+        <section id="nossos-projetos">
+            <p>Nossos Projetos</p>
+            <a href="" class="botao-venha-conhecer">venha conhecer</a>
+        </section>
+    </div>
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
     </footer>
 </body>
 <script>
-   
+       const menuToggle = document.getElementById('menu_toggle');
+    const menuLateral = document.getElementById('menu_lateral');
+    const navMenu = document.getElementById('menu-categorias');
+    menuToggle.addEventListener('click', () => {
+        menuLateral.classList.toggle('mostrar');
+        navMenu.classList.toggle('menu-escondido');
+    });
+    document.addEventListener('click', (event) => {
+        if (!menuLateral.contains(event.target) && !menuToggle.contains(event.target)) {
+            menuLateral.classList.remove('mostrar');
+            navMenu.classList.remove('menu-escondido');
+        }
+    });
+    const submenus = document.querySelectorAll('.submenu');
+    document.querySelectorAll('#menu-categorias > li').forEach(item => {
+        item.addEventListener('click', function(event) {
+            event.stopPropagation();
+            submenus.forEach(submenu => {
+                if (submenu !== this.querySelector('.submenu')) {
+                    submenu.classList.remove('mostrar');
+                }
+            });
+            const submenu = item.querySelector('.submenu');
+            if (submenu) {
+                submenu.classList.toggle('mostrar');
+            }
+        });
+    });
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('#menu-categorias')) {
+            submenus.forEach(submenu => {
+                submenu.classList.remove('mostrar');
+            });
+        }
+    });
+
+    let lastScrollTop = 0;
+const nav = document.getElementById('navegacao');
+
+window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+        nav.style.top = "-100px";
+        nav.classList.remove('nav-scroll');
+    } else {
+        nav.style.top = "0";
+        nav.classList.add('nav-scroll');
+    }
+    if (scrollTop === 0) {
+        nav.classList.remove('nav-scroll');
+    }
+
+    lastScrollTop = scrollTop;
+});
+
+document.getElementById('seta-rolagem').addEventListener('click', function() {
+        const targetSection = document.querySelector('.container-secoes');
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
+</html>
