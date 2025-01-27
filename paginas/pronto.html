@@ -20,21 +20,27 @@
 
         body,
         html {
-            height: 100vh;
+            height: auto;
             font-family: 'League Spartan', serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center; 
-            scroll-behavior: smooth;
+        }
+
+        body{
+            width: 100vw;
+            background-image: url('https://i.postimg.cc/76JNqS1f/Whats-App-Image-2024-12-11-at-10-01-38-PM.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        html{
+            height: auto;
         }
 
         header {
-            height: 100vh; /* Mantém o header ocupando a tela inteira */
-            position: absolute;
-            background-image: url('https://i.postimg.cc/76JNqS1f/Whats-App-Image-2024-12-11-at-10-01-38-PM.jpg');
-            background-size: cover;
-            background-position: center;
+            height: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -503,6 +509,7 @@
 </head>
 
 <body>
+    <div class="sobreposicao"></div>
     <header>
         <nav id="navegacao">
             <div class="logo">
@@ -561,7 +568,6 @@
                 <div class="degrade-do-menu"></div>
             </div>
         </nav>
-        <div class="sobreposicao"></div>
     </header>
     <section id="titulos">
         <div class="container-titulo">
@@ -579,7 +585,7 @@
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
     </footer>
-    
+
     <div class="menu-lateral" id="menu_lateral">
         <ul>
             <li><i class="fas fa-users"></i> <a href="">Comunidade</a></li>
