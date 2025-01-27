@@ -22,33 +22,27 @@
         html {
             height: auto;
             font-family: 'League Spartan', serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
+            overflow-y: auto; /* Adicionei para evitar overflow */
         }
 
-        body{
-            width: 100vw;
+        body {
+            width: auto;
             background-image: url('https://i.postimg.cc/76JNqS1f/Whats-App-Image-2024-12-11-at-10-01-38-PM.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
+            background-size: contain;
             background-position: center;
         }
 
-        html{
-            height: auto;
-        }
-
         header {
-            height: auto;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            width: 100%; /* Adicionei para garantir que o header não ultrapasse a tela */
         }
 
         .sobreposicao {
-            position: absolute;
+            position: fixed; /* Alterado para fixed */
             top: 0;
             left: 0;
             right: 0;
@@ -122,11 +116,11 @@
             transform: translateX(2px);
         }
 
-        #customizado { 
+        #customizado {
             margin: 3px;
         }
 
-        .customizado { 
+        .customizado {
             height: 21px;
             width: auto;
         }
@@ -146,7 +140,12 @@
             height: 25px;
         }
 
-        .fa, .fab, .fad, .fal, .far, .fas {
+        .fa,
+        .fab,
+        .fad,
+        .fal,
+        .far,
+        .fas {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             display: inline-block;
@@ -217,6 +216,10 @@
             transform: translatey(60%);
         }
 
+        section {
+            min-height: 100vh; /* Adicionado para garantir altura mínima */
+        }
+
         section h1 {
             font-size: 10vh;
             color: white;
@@ -262,15 +265,23 @@
         }
 
         .botao-sobre-nos:hover {
-            background: linear-gradient(269deg,#ff9600,#0d00ff);
+            background: linear-gradient(269deg, #ff9600, #0d00ff);
             background-size: 120% 120%;
             animation: gradient-animation 2s ease infinite;
         }
 
         @keyframes gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .botao-sobre-nos:hover {
@@ -345,27 +356,24 @@
             transition: background-color 0.3s ease;
         }
 
+        section {
+            min-height: 100vh; /* Mantido para garantir altura mínima */
+            overflow: hidden; /* Adicionei para evitar overflow */
+        }
+
         section#sobre-nos {
             background-color: #f2f2f2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 2rem;
         }
 
         section#temporadas {
             background-color: #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
             font-size: 2rem;
         }
 
         section#nossos-projetos {
             background-color: #a9a9a9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 2rem;
         }
 
@@ -376,12 +384,12 @@
                 font-size: 3vh;
             }
 
-            .linha{
+            .linha {
                 width: 120px;
                 height: 2.5px;
             }
 
-            .subtitulo{
+            .subtitulo {
                 font-size: 2vh;
             }
 
@@ -391,12 +399,12 @@
                 display: none;
             }
 
-            .logo{
+            .logo {
                 width: 20px;
                 height: auto;
             }
 
-            body{
+            body {
                 background-color: rgb(238, 255, 0);
             }
 
@@ -417,7 +425,7 @@
                 display: none;
             }
 
-            body{
+            body {
                 background-color: blue;
             }
 
@@ -429,19 +437,21 @@
                 background: linear-gradient(125deg, #0500ff, #ffa000);
                 background-size: 120% 120%;
                 animation: gradient-animation 2s ease infinite;
-                }
+            }
 
             @keyframes gradient-animation {
                 0% {
                     background-position: 0% 12%;
                 }
+
                 50% {
                     background-position: 25% 7%;
                 }
+
                 100% {
                     background-position: 0% 12%;
                 }
-                }
+            }
 
         }
 
@@ -456,7 +466,7 @@
                 display: none;
             }
 
-            body{
+            body {
                 background-color: rgb(234, 0, 255);
             }
 
@@ -478,16 +488,16 @@
                 height: 70vh;
                 opacity: 0;
                 transition: opacity 0.3s ease, transform 0.3s ease;
-        }
+            }
 
         }
-        
+
         @media (min-width: 998px) and (max-width: 1055px) { /* notebook */
             header h1 {
                 font-size: 9vh;
             }
 
-            body{
+            body {
                 background-color: red;
             }
 
@@ -568,76 +578,31 @@
                 <div class="degrade-do-menu"></div>
             </div>
         </nav>
-    </header>
-    <section id="titulos">
-        <div class="container-titulo">
-            <h1 class="albatroid">ALBATROID</h1>
-            <div class="linha"></div>
-            <div class="subtitulo">Lutando a cada amanhecer pelos nossos objetivos!</div>
-            <a href="" class="botao-sobre-nos">Sobre nós</a>
+        <div class="menu-lateral" id="menu_lateral">
+            <ul>
+                <li><i class="fas fa-users"></i> <a href="">Comunidade</a></li>
+                <li><i class="fas fa-project-diagram"></i> <a href="">Projetos</a></li>
+                <li><i class="fas fa-globe"></i> <a href="">Nosso Site</a></li>
+                <li><i class="fas fa-info-circle"></i> <a href="">Sobre a FIRST</a></li>
+                <li><i class="fas fa-envelope"></i> <a href="">Fale Conosco</a></li>
+                <li><i class="fas fa-calendar-alt"></i> <a href="">Temporadas</a></li>
+            </ul>
         </div>
-    </section>
-
+        <section id="titulos">
+            <div class="container-titulo">
+                <h1 class="albatroid">ALBATROID</h1>
+                <div class="linha"></div>
+                <div class="subtitulo">Lutando a cada amanhecer pelos nossos objetivos!</div>
+                <a href="" class="botao-sobre-nos">Sobre nós</a>
+            </div>
+        </section>
+    </header>
     <section id="sobre-nos">sobre nós</section>
     <section id="temporadas">temporadas</section>
     <section id="nossos-projetos">nossos projetos</section>
-
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
     </footer>
-
-    <div class="menu-lateral" id="menu_lateral">
-        <ul>
-            <li><i class="fas fa-users"></i> <a href="">Comunidade</a></li>
-            <li><i class="fas fa-project-diagram"></i> <a href="">Projetos</a></li>
-            <li><i class="fas fa-globe"></i> <a href="">Nosso Site</a></li>
-            <li><i class="fas fa-info-circle"></i> <a href="">Sobre a FIRST</a></li>
-            <li><i class="fas fa-envelope"></i> <a href="">Fale Conosco</a></li>
-            <li><i class="fas fa-calendar-alt"></i> <a href="">Temporadas</a></li>
-        </ul>
-    </div>
-
 </body>
 <script>
-    const menuToggle = document.getElementById('menu_toggle');
-    const menuLateral = document.getElementById('menu_lateral');
-    const navMenu = document.getElementById('menu-categorias');
-
-    menuToggle.addEventListener('click', () => {
-        menuLateral.classList.toggle('mostrar');
-        navMenu.classList.toggle('menu-escondido');
-    });
-
-    document.addEventListener('click', (event) => {
-        if (!menuLateral.contains(event.target) && !menuToggle.contains(event.target)) {
-            menuLateral.classList.remove('mostrar');
-            navMenu.classList.remove('menu-escondido');
-        }
-    });
-
-    const submenus = document.querySelectorAll('.submenu');
-
-    document.querySelectorAll('#menu-categorias > li').forEach(item => {
-        item.addEventListener('click', function(event) {
-            event.stopPropagation();
-            submenus.forEach(submenu => {
-                if (submenu !== this.querySelector('.submenu')) {
-                    submenu.classList.remove('mostrar');
-                }
-            });
-            const submenu = item.querySelector('.submenu');
-            if (submenu) {
-                submenu.classList.toggle('mostrar');
-            }
-        });
-    });
-
-    document.addEventListener('click', (event) => {
-        if (!event.target.closest('#menu-categorias')) {
-            submenus.forEach(submenu => {
-                submenu.classList.remove('mostrar');
-            });
-        }
-    });
-</script>
-</html>
+   
