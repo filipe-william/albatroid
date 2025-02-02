@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
-            background-color: #fff; /* Fundo branco */
-            color: #000; /* Letras pretas */
-            transition: background-color 0.3s, color 0.3s; /* Transição suave */
+            background-color: #fff;
+            color: #000;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .darkmode {
-            background-color: #fff; /* Fundo branco no modo escuro */
-            color: #000; /* Letras pretas no modo escuro */
+            background-color: #fff;
+            color: #000;
         }
 
         .darkmode header {
@@ -88,7 +88,7 @@
             text-align: center;
             justify-content: center;
             position: relative;
-            overflow: hidden; /* Para que as bolhas não saiam do botão */
+            overflow: hidden;
             transition: font-size 0.2s ease, font-weight 0.2s ease, color 0.2s ease, background-color 0.2s ease, background-image 0.2s ease; 
         }
 
@@ -104,7 +104,7 @@
             border-radius: 50%;
             opacity: 0.7;
             animation: rise 5s infinite;
-            z-index: 1; /* Para ficar atrás do texto do botão */
+            z-index: 1;
         }
 
         @keyframes rise {
@@ -124,16 +124,12 @@
             height: 2.66em;
             border-radius: 10em;
             padding: 0 0.5em;
-
             box-shadow: inset 0 8px 60px rgba(0, 0, 0, .1),
                 inset 0 8px 8px rgba(0, 0, 0, .1),
                 inset 0 -4px 4px rgba(0, 0, 0, .1);
-
             position: relative;
-
             display: flex;
             align-items: center;
-
             cursor: pointer;
         }
 
@@ -142,25 +138,21 @@
             width: 2em;
             height: 2em;
             border-radius: 50%;
-
             position: absolute;
-
             box-shadow: 0 8px 40px rgba(0, 0, 0, .2);
-
             transition: transform .3s ease;
         }
 
         .btn__icon-container {
             width: 100%;
             height: 100%;
-
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .btn__icon {
-            color: #FFDE59; /* Cor do ícone claro */
+            color: #FFDE59;
             font-size: 1.5em;
         }
 
@@ -182,32 +174,29 @@
 
         .darkmode .btn__indicator {
             transform: translateX(2em);
-            background-color: #2b2b2b; /* Cor escura */
+            background-color: #2b2b2b;
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
         }
 
         .darkmode .btn__icon {
-            color: #fff; /* Cor do ícone escuro */
+            color: #fff;
         }
-
-        /* Estilo da linha em formato de onda */
 
         .wave {
             width: 100%;
-            height: 60px; /* Altura da onda ajustada */
+            height: 60px;
             position: relative;
-            overflow: visible; /* Garante que a onda seja visível */
-            transform: rotate(180deg); /* Inverte a onda */
-            fill: #bdbd04; /* Cor da onda */
+            overflow: visible;
+            transform: rotate(180deg);
+            fill: #bdbd04;
         }
 
         .wave svg {
             position: absolute;
-            bottom: 0; /* Mantém a onda na parte inferior */
+            bottom: 0;
             width: 100%;
             height: 100%;
         }
-
     </style>
 </head>
 
@@ -287,7 +276,6 @@
         </div>
     </header>
 
-    <!-- Linha horizontal em formato de onda -->
     <div class="wave">
         <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
             <path d="M0,20 C480,100 960,0 1440,20 L1440,100 L0,100 Z" />
@@ -309,7 +297,7 @@
         const menuToggle = document.getElementById('menu_toggle');
         const menuLateral = document.getElementById('menu_lateral');
         const navMenu = document.getElementById('menu-categorias');
-        let bubbleInterval; // Variável para armazenar o intervalo
+        let bubbleInterval;
 
         menuToggle.addEventListener('click', () => {
             menuLateral.classList.toggle('mostrar');
@@ -369,31 +357,30 @@
 
         const createBubble = () => {
             const bubble = document.createElement('div');
-            const size = Math.random() * 50 + 20; // Tamanho aleatório entre 20px e 70px
+            const size = Math.random() * 50 + 20;
             bubble.style.width = `${size}px`;
             bubble.style.height = `${size}px`;
             bubble.className = 'bubble';
-            bubble.style.left = `${Math.random() * 100}%`; // Posição horizontal aleatória
+            bubble.style.left = `${Math.random() * 100}%`;
             document.getElementById('mergulhe').appendChild(bubble);
 
-            // Remove a bolha após a animação
             bubble.addEventListener('animationend', () => {
                 bubble.remove();
             });
         };
 
         const startBubbles = () => {
-            bubbleInterval = setInterval(createBubble, 450); // Cria uma bolha a cada 300ms
+            bubbleInterval = setInterval(createBubble, 450);
         };
 
         document.getElementById('mergulhe').addEventListener('mouseenter', () => {
-            startBubbles(); // Inicia a criação de bolhas
+            startBubbles();
         });
 
         document.getElementById('mergulhe').addEventListener('mouseleave', () => {
-            clearInterval(bubbleInterval); // Para de criar bolhas
+            clearInterval(bubbleInterval);
             const bubbles = document.querySelectorAll('.bubble');
-            bubbles.forEach(bubble => bubble.remove()); // Remove todas as bolhas ao sair
+            bubbles.forEach(bubble => bubble.remove());
         });
 
         const body = document.querySelector('body');
@@ -422,44 +409,41 @@
 
         load();
 
-function updateWaveColor() {
-    const wavePath = document.querySelector('.wave path');
-    if (body.classList.contains('darkmode')) {
-        wavePath.setAttribute('fill', '#010C1E'); // Cor da onda no modo escuro
-    } else {
-        wavePath.setAttribute('fill', '#bdbd04'); // Cor da onda no modo claro
-    }
-}
+        function updateWaveColor() {
+            const wavePath = document.querySelector('.wave path');
+            if (body.classList.contains('darkmode')) {
+                wavePath.setAttribute('fill', '#010C1E');
+            } else {
+                wavePath.setAttribute('fill', '#bdbd04');
+            }
+        }
 
-// Chame a função ao carregar a página
-load();
-updateWaveColor(); // Atualiza a cor da onda ao carregar a página
+        load();
+        updateWaveColor();
 
-btn.addEventListener('click', () => {
-    body.classList.toggle('darkmode');
-    icon.classList.add('animated');
+        btn.addEventListener('click', () => {
+            body.classList.toggle('darkmode');
+            icon.classList.add('animated');
 
-    if (body.classList.contains('darkmode')) {
-        header.style.backgroundImage = 'url(../imagens/agua\ viva\ pequena\ \(1\).jpg)';
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-    } else {
-        header.style.backgroundImage = 'url(../imagens/corais_243413140.jpg)';
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-    }
+            if (body.classList.contains('darkmode')) {
+                header.style.backgroundImage = 'url(../imagens/agua\ viva\ pequena\ \(1\).jpg)';
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                header.style.backgroundImage = 'url(../imagens/corais_243413140.jpg)';
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
 
-    store(body.classList.contains('darkmode'));
-    updateWaveColor(); // Atualiza a cor da onda ao alternar o modo
+            store(body.classList.contains('darkmode'));
+            updateWaveColor();
 
-    setTimeout(() => {
-        icon.classList.remove('animated');
-    }, 500);
-});
+            setTimeout(() => {
+                icon.classList.remove('animated');
+            }, 500);
+        });
 
-// Chame a função para garantir que a cor da onda esteja correta no carregamento
-updateWaveColor();
-
+        updateWaveColor();
 
         document.getElementById('mergulhe').addEventListener('click', function() {
             const targetSection = document.querySelector('#explicação_submerged');
