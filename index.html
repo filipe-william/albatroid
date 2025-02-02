@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amanhecendo com robótica</title>
     <link rel="shortcut icon" href="../imagens/logo da alba.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style_do_index_animação.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <style>
@@ -226,6 +226,15 @@
             color: white;
         }
 
+        .menu-lateral a{
+            text-decoration: none;
+            color: white;
+        }
+
+        .menu-lateral a:hover{
+            color: red;
+        }
+
         .container-titulo {
             text-align: center;
             z-index: 2;
@@ -243,6 +252,36 @@
             z-index: 2;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             margin: 0;
+        }
+
+        .amanhecer {
+            display: inline;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: bolder;
+            margin-top: 10px;
+            text-transform: uppercase;
+            background: whitesmoke;
+            background-size: 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: animate-gradient 10.5s linear infinite;
+        }
+
+        p.amanhecer:hover {
+            background: linear-gradient(to right, rgb(130, 76, 0),orange,rgb(255, 196, 0),rgb(0, 119, 255),  blue, rgb(103, 1, 158));
+            background-size: 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: default;
+        }
+
+        @keyframes animate-gradient {
+            to {
+            background-position: 200%;
+            }
         }
 
         .linha {
@@ -703,25 +742,25 @@
                     <div class="submenu" id="submenu-comunidade">
                         <ul>
                             <li><a href="aba da comunidade.html">Interação</a></li>
-                            <li><a href="">Documentos</a></li>
+                            <li><a href="aba da comunidade documentos.html">Documentos</a></li>
                         </ul>
                     </div>
                 </li>
                 <li>
                     <i id="customizado" class="fas fa-heart"></i>
-                    <a href="" class="direcionamento">Projetos</a>
+                    <a href="projetos.html" class="direcionamento">Projetos</a>
                 </li>
                 <li>
                     <img class="customizado" src="https://i.postimg.cc/mrssgp4H/image-2.png" alt="globo">
-                    <a href="" class="direcionamento">Nosso Site</a>
+                    <a href="nosso site.html" class="direcionamento">Nosso Site</a>
                 </li>
                 <li>
                     <img class="customizado-2" src="../imagens/FIRSTicon_RGB_withTM.png" alt="logo da FIRST">
-                    <a href="" class="direcionamento">Sobre a FIRST</a>
+                    <a href="sobre a FIRST.html" class="direcionamento">Sobre a FIRST</a>
                 </li>
                 <li>
                     <img class="customizado-3" src="https://i.postimg.cc/X7mgfkm0/carta.png" alt="carta">
-                    <a href="" class="direcionamento">Fale Conosco</a>
+                    <a href="contato.html" class="direcionamento">Fale Conosco</a>
                 </li>
                 <li>
                     <img class="customizado-4" src="https://i.postimg.cc/Hxrx9XFf/image-6.png" alt="globo terrestre">
@@ -729,9 +768,9 @@
                     <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
                     <div class="submenu" id="submenu-temporadas">
                         <ul>
-                            <li><p>Em breve...</p></li>
-                            <li><a>Masterpiece</a></li>
-                            <li><a>Submerged</a></li>
+                            <li><a href="em breve.html">Em breve...</a></li>
+                            <li><a href="masterpiece.html">Masterpiece</a></li>
+                            <li><a href="submerged.html">Submerged</a></li>
                         </ul>
                     </div>
                 </li>
@@ -745,39 +784,39 @@
         <div class="menu-lateral" id="menu_lateral">
             <ul>
                 <li><i class="fas fa-users"></i> <a href="aba da comunidade.html">Comunidade</a></li>
-                <li><i class="fas fa-project-diagram"></i> <a href="">Projetos</a></li>
-                <li><i class="fas fa-globe"></i> <a href="">Nosso Site</a></li>
-                <li><i class="fas fa-info-circle"></i> <a href="">Sobre a FIRST</a></li>
-                <li><i class="fas fa-envelope"></i> <a href="">Fale Conosco</a></li>
-                <li><i class="fas fa-calendar-alt"></i> <a href="">Temporadas</a></li>
+                <li><i class="fas fa-project-diagram"></i> <a href="projetos.html">Projetos</a></li>
+                <li><i class="fas fa-globe"></i> <a href="nosso site.html">Nosso Site</a></li>
+                <li><i class="fas fa-info-circle"></i> <a href="sobre a FIRST.html">Sobre a FIRST</a></li>
+                <li><i class="fas fa-envelope"></i> <a href="contato.html">Fale Conosco</a></li>
+                <li><i class="fas fa-calendar-alt"></i> <a href="submerged.html">Temporadas</a></li>  <!--fazer um js pra colocar a temporada atual automaticamente como redirecionamento-->
             </ul>
         </div>
         <section id="titulos">
             <div class="container-titulo">
                 <h1 class="albatroid">ALBATROID</h1>
                 <div class="linha"></div>
-                <div class="subtitulo">Lutando a cada amanhecer pelos nossos objetivos!</div>
-                <a href="" class="botao-sobre-nos">Sobre nós</a>
+                <div class="subtitulo">Lutando a cada <p class="amanhecer">amanhecer<p> pelos nossos objetivos!</div>
+                <a href="sobre_nos.html" class="botao-sobre-nos">Sobre nós</a>
                 <i class="fas fa-chevron-down seta-rolagem" id="seta-rolagem"></i>
             </div>
         </section>
-    </header>
+        </header>
 </div>
     <div class="linha-separacao"></div>
     <div class="container-secoes">
         <section class="section_tripla" id="sobre-nos">
             <p>Sobre nós</p>
-            <a href="" class="botao-venha-conhecer">venha conhecer</a>
+            <a href="sobre_nos.html" class="botao-venha-conhecer">venha conhecer</a>
         </section>
         <div class="linha-separacao-das-sections"></div>
         <section class="section_tripla" id="temporadas">
             <p>Temporadas</p>
-            <a href="" class="botao-venha-conhecer">venha conhecer</a>
+            <a href="submerged.html" class="botao-venha-conhecer">venha conhecer</a> <!--igual a do menu, fzr uma automação de redirecionamento aq-->
         </section>
         <div class="linha-separacao-das-sections"></div>
         <section class="section_tripla" id="nossos-projetos">
             <p>Nossos Projetos</p>
-            <a href="" class="botao-venha-conhecer">venha conhecer</a>
+            <a href="projetos.html" class="botao-venha-conhecer">venha conhecer</a>
         </section>
     </div>
     <footer>

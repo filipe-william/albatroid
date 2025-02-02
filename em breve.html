@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
+<!-- fazer uma pagina com alguma coisa interativa pra coisas que ainda estamos fznd -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amanhecendo com robótica</title>
     <link rel="shortcut icon" href="../imagens/logo da alba.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style_do_nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        nav{
-            background: #0c7888;
-        }
-    </style>
 </head>
+
 <body>
     <header>
         <nav id="navegacao">
@@ -69,7 +67,7 @@
         </nav>
        <div class="menu-lateral" id="menu_lateral">
            <ul>
-               <li><i class="fas fa-users"></i> <a href="">Comunidade</a></li>
+               <li><i class="fas fa-users"></i> <a href="aba da comunidade.html">Comunidade</a></li>
                <li><i class="fas fa-project-diagram"></i> <a href="">Projetos</a></li>
                <li><i class="fas fa-globe"></i> <a href="">Nosso Site</a></li>
                <li><i class="fas fa-info-circle"></i> <a href="">Sobre a FIRST</a></li>
@@ -77,6 +75,70 @@
                <li><i class="fas fa-calendar-alt"></i> <a href="">Temporadas</a></li>
            </ul>
        </div>
+       </header>
+    </div>
+    <footer>
+        <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
+    </footer>
 
+    <script>
+        const menuToggle = document.getElementById('menu_toggle');
+        const menuLateral = document.getElementById('menu_lateral');
+        const navMenu = document.getElementById('menu-categorias');
+        menuToggle.addEventListener('click', () => {
+            menuLateral.classList.toggle('mostrar');
+            navMenu.classList.toggle('menu-escondido');
+        });
+        document.addEventListener('click', (event) => {
+            if (!menuLateral.contains(event.target) && !menuToggle.contains(event.target)) {
+                menuLateral.classList.remove('mostrar');
+                navMenu.classList.remove('menu-escondido');
+            }
+        });
+        const submenus = document.querySelectorAll('.submenu');
+        document.querySelectorAll('#menu-categorias > li').forEach(item => {
+            item.addEventListener('click', function(event) {
+                event.stopPropagation();
+                submenus.forEach(submenu => {
+                    if (submenu !== this.querySelector('.submenu')) {
+                        submenu.classList.remove('mostrar');
+                    }
+                });
+                const submenu = item.querySelector('.submenu');
+                if (submenu) {
+                    submenu.classList.toggle('mostrar');
+                }
+            });
+        });
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('#menu-categorias')) {
+                submenus.forEach(submenu => {
+                    submenu.classList.remove('mostrar');
+                });
+            }
+        });
+    
+        let lastScrollTop = 0;
+    const nav = document.getElementById('navegacao');
+    
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+        if (scrollTop > lastScrollTop) {
+            nav.style.top = "-100px";
+            nav.classList.remove('nav-scroll');
+        } else {
+            nav.style.top = "0";
+            nav.classList.add('nav-scroll');
+        }
+        if (scrollTop === 0) {
+            nav.classList.remove('nav-scroll');
+        }
+    
+        lastScrollTop = scrollTop;
+    });
+    
+    </script>
 </body>
+
 </html>
