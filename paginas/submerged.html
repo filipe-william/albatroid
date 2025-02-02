@@ -190,6 +190,24 @@
             color: #fff; /* Cor do ícone escuro */
         }
 
+        /* Estilo da linha em formato de onda */
+
+        .wave {
+            width: 100%;
+            height: 60px; /* Altura da onda ajustada */
+            position: relative;
+            overflow: visible; /* Garante que a onda seja visível */
+            transform: rotate(180deg); /* Inverte a onda */
+            fill: #bdbd04; /* Cor da onda */
+        }
+
+        .wave svg {
+            position: absolute;
+            bottom: 0; /* Mantém a onda na parte inferior */
+            width: 100%;
+            height: 100%;
+        }
+
     </style>
 </head>
 
@@ -268,6 +286,14 @@
             <p id="mergulhe">mergulhe nessa jornada!!!</p>
         </div>
     </header>
+
+    <!-- Linha horizontal em formato de onda -->
+    <div class="wave">
+        <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+            <path d="M0,20 C480,100 960,0 1440,20 L1440,100 L0,100 Z" />
+        </svg>
+    </div>
+
     <section id="explicação_submerged">
         <div id="fundo_com_linha_de_mar">
             <h1>2024/2025 Submerged</h1>
@@ -396,25 +422,48 @@
 
         load();
 
-        btn.addEventListener('click', () => {
-            body.classList.toggle('darkmode');
-            icon.classList.add('animated');
+function updateWaveColor() {
+    const wavePath = document.querySelector('.wave path');
+    if (body.classList.contains('darkmode')) {
+        wavePath.setAttribute('fill', '#010C1E'); // Cor da onda no modo escuro
+    } else {
+        wavePath.setAttribute('fill', '#bdbd04'); // Cor da onda no modo claro
+    }
+}
 
-            if (body.classList.contains('darkmode')) {
-                header.style.backgroundImage = 'url(../imagens/agua\ viva\ pequena\ \(1\).jpg)';
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            } else {
-                header.style.backgroundImage = 'url(../imagens/corais_243413140.jpg)';
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
+// Chame a função ao carregar a página
+load();
+updateWaveColor(); // Atualiza a cor da onda ao carregar a página
 
-            store(body.classList.contains('darkmode'));
+btn.addEventListener('click', () => {
+    body.classList.toggle('darkmode');
+    icon.classList.add('animated');
 
-            setTimeout(() => {
-                icon.classList.remove('animated');
-            }, 500);
+    if (body.classList.contains('darkmode')) {
+        header.style.backgroundImage = 'url(../imagens/agua\ viva\ pequena\ \(1\).jpg)';
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    } else {
+        header.style.backgroundImage = 'url(../imagens/corais_243413140.jpg)';
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    }
+
+    store(body.classList.contains('darkmode'));
+    updateWaveColor(); // Atualiza a cor da onda ao alternar o modo
+
+    setTimeout(() => {
+        icon.classList.remove('animated');
+    }, 500);
+});
+
+// Chame a função para garantir que a cor da onda esteja correta no carregamento
+updateWaveColor();
+
+
+        document.getElementById('mergulhe').addEventListener('click', function() {
+            const targetSection = document.querySelector('#explicação_submerged');
+            targetSection.scrollIntoView({ behavior: 'smooth' });
         });
 
     </script>
