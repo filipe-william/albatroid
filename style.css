@@ -11,8 +11,15 @@ body,
 html {
     height: auto;
     font-family: 'League Spartan', serif;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
 
 body {
@@ -172,21 +179,21 @@ nav ul li p:hover {
 
 .menu-lateral {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 0;
     background-color: #333;
     padding: 20px;
     margin: 10px;
     border-radius: 15px;
-    z-index: 3;
+    z-index: 100;
     width: 25vw;
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .menu-lateral.mostrar {
-    display: block;
+    display: block; /* Isso deve ser mantido para mostrar o menu */
     opacity: 1;
     transform: translateY(0);
 }
@@ -408,52 +415,44 @@ nav ul li:hover .submenu {
     width: 100%;
 }
 
-section {
+.section_tripla {
     height: 100vh;
-    width: 33vw;
     overflow: hidden;
     flex: 1;
     padding: 20px;
     text-align: center;
     color: whitesmoke;
-    display: block;
+    display: flex; /* Usando flexbox */
+    flex-direction: column; /* Mantém a direção em coluna */
+    justify-content: flex-end; 
     z-index: 3;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
 }
 
-section p{
-    transform: translateY(1150%);
-    font-weight: bolder;
-}
-
-section img{
+.section_tripla img{
     width: 30px;
     height: auto;
 }
 
-section#nossos-projetos a{
-    transform: translateY(600%);
+.section_tripla p{
+    text-shadow: rgba(0, 0, 0, 0.402) 2px 2px 2px;
 }
 
-section a{
+.section_tripla a{
     text-decoration: none;
+    margin-bottom: 100px;
     color: white;
     display: inline-block;
     padding: 10px 20px;
     height: 60px;
-    width: 200px;
+    width: auto;
     font-family: "Montserrat", serif;
     font-size: 0.5em;
     background-color: #505050;
     border: none;
-    border-radius: 30px;
     text-decoration: none;
     text-align: center;
     justify-content: center;
     justify-items: center;
-    transform: translateY(600%);
     transition: font-size 0.1s ease, font-weight 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -470,7 +469,6 @@ section#temporadas {
     background-image: url(../imagens/robozão.jpeg);
     background-position:center;
     background-size: cover;
-    display: block;
     font-size: 2rem;
 }
 
@@ -482,13 +480,67 @@ section#nossos-projetos {
     font-size: 2rem;
 }
 
+.botao-venha-conhecer{
+    margin: 0 auto;
+    padding: 2em;
+    width: 300px;
+    background: #1c1f2b;
+    text-align: center;
+    border-radius: 30px;
+    position: relative;
+}
 
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.botao-venha-conhecer::after, .botao-venha-conhecer::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle),orange, blue);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 1.5px;
+    border-radius: 30px;
+    animation: 3s spin linear infinite;
+}
+
+.botao-venha-conhecer::before{
+    filter: blur(3rem);
+    opacity: 0.5;
+}
+
+@keyframes spin{
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
+}
 
 /* Media Queries (arrumar celulares menores e maiores) */
 
 @media (max-width: 400px) { /* Celulares menores*/
     header h1 {
-        font-size: 3vh;
+        font-size: 3vw;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        display: none;
+    }
+
+    nav.nav-scroll {
+        background: #ff84003d;
+        border-radius: 20px;
     }
 
     .linha {
@@ -498,12 +550,6 @@ section#nossos-projetos {
 
     .subtitulo {
         font-size: 2vh;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-        display: none;
     }
 
     .logo {
@@ -523,13 +569,18 @@ section#nossos-projetos {
 
 @media (min-width: 401px) and (max-width: 575px) { /* Celulares maiores*/
     header h1 {
-        font-size: 8vh;
+        font-size: 8vw;
     }
 
     nav ul {
         flex-direction: column;
         gap: 10px;
         display: none;
+    }
+
+    nav.nav-scroll {
+        background: #ff84003d;
+        border-radius: 20px;
     }
 
     body {
@@ -564,13 +615,18 @@ section#nossos-projetos {
 
 @media (min-width: 576px) and (max-width: 997px) { /* Tablet */
     header h1 {
-        font-size: 8vh;
+        font-size: 8vw;
     }
 
     nav ul {
         flex-direction: column;
         gap: 10px;
         display: none;
+    }
+
+    nav.nav-scroll {
+        background: #ff84003d;
+        border-radius: 20px;
     }
 
     body {
