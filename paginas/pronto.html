@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amanhecendo com robótica</title>
     <link rel="shortcut icon" href="../imagens/logo da alba.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="#">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <style>
@@ -183,21 +183,21 @@
 
         .menu-lateral {
             display: none;
-            position: absolute;
+            position: fixed;
             top: 20px;
             right: 0;
             background-color: #333;
             padding: 20px;
             margin: 10px;
             border-radius: 15px;
-            z-index: 3;
+            z-index: 100;
             width: 25vw;
             opacity: 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .menu-lateral.mostrar {
-            display: block;
+            display: block; /* Isso deve ser mantido para mostrar o menu */
             opacity: 1;
             transform: translateY(0);
         }
@@ -224,6 +224,10 @@
             z-index: 2;
             position: relative;
             transform: translatey(60%);
+        }
+
+        .albatroid {
+            
         }
 
         section {
@@ -421,7 +425,6 @@
 
         section {
             height: 100vh;
-            width: 33vw;
             overflow: hidden;
             flex: 1;
             padding: 20px;
@@ -499,7 +502,18 @@
 
         @media (max-width: 400px) { /* Celulares menores*/
             header h1 {
-                font-size: 3vh;
+                font-size: 3vw;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                display: none;
+            }
+
+            nav.nav-scroll {
+                background: #ff84003d;
+                border-radius: 20px;
             }
 
             .linha {
@@ -509,12 +523,6 @@
 
             .subtitulo {
                 font-size: 2vh;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
-                display: none;
             }
 
             .logo {
@@ -534,13 +542,18 @@
 
         @media (min-width: 401px) and (max-width: 575px) { /* Celulares maiores*/
             header h1 {
-                font-size: 8vh;
+                font-size: 8vw;
             }
 
             nav ul {
                 flex-direction: column;
                 gap: 10px;
                 display: none;
+            }
+
+            nav.nav-scroll {
+                background: #ff84003d;
+                border-radius: 20px;
             }
 
             body {
@@ -575,13 +588,18 @@
 
         @media (min-width: 576px) and (max-width: 997px) { /* Tablet */
             header h1 {
-                font-size: 8vh;
+                font-size: 8vw;
             }
 
             nav ul {
                 flex-direction: column;
                 gap: 10px;
                 display: none;
+            }
+
+            nav.nav-scroll {
+                background: #ff84003d;
+                border-radius: 20px;
             }
 
             body {
@@ -693,7 +711,7 @@
          </nav>
         <div class="menu-lateral" id="menu_lateral">
             <ul>
-                <li><i class="fas fa-users"></i> <a href="">Comunidade</a></li>
+                <li><i class="fas fa-users"></i> <a href="aba da comunidade.html">Comunidade</a></li>
                 <li><i class="fas fa-project-diagram"></i> <a href="">Projetos</a></li>
                 <li><i class="fas fa-globe"></i> <a href="">Nosso Site</a></li>
                 <li><i class="fas fa-info-circle"></i> <a href="">Sobre a FIRST</a></li>
