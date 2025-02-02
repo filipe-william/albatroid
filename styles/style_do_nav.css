@@ -304,10 +304,6 @@ nav ul li:hover .submenu {
         height: auto;
     }
 
-    body {
-        background-color: rgb(238, 255, 0);
-    }
-
     .menu-lateral {
         width: 70vw;
     }
@@ -325,10 +321,6 @@ nav ul li:hover .submenu {
     nav.nav-scroll {
         background: #ff84003d;
         border-radius: 20px;
-    }
-
-    body {
-        background-color: blue;
     }
 
     .menu-lateral {
@@ -370,10 +362,6 @@ nav ul li:hover .submenu {
         border-radius: 20px;
     }
 
-    body {
-        background-color: rgb(234, 0, 255);
-    }
-
     .menu-lateral {
         width: 70vw;
     }
@@ -397,10 +385,6 @@ nav ul li:hover .submenu {
 }
 
 @media (min-width: 998px) and (max-width: 1055px) { /* notebook */
-
-    body {
-        background-color: red;
-    }
 
     nav ul {
         gap: 15px;

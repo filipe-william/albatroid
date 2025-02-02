@@ -8,13 +8,75 @@
     <link rel="shortcut icon" href="../imagens/logo da alba.png" type="image/x-icon">
     <link rel="stylesheet" href="../styles/style_do_nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+
+        body.dark-mode {
+            background-color: #1c1c1c;
+            color: #f0f0f0;
+        }
+
+        .dark-mode header {
+            background-image: url(../imagens/agua\ viva\ pequena\ \(1\).jpg) !important;
+        }
+
+        header{
+            color: rgb(0, 0, 142);
+            background-image: url(../imagens/corais_243413140.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .sobreposicao {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        nav {
+            background: #0c778800;
+        }
+
+        nav.nav-scroll {
+            background: #0c778800;
+        }
+
+        #selecionado{
+            text-decoration: underline;
+            text-decoration-color: aquamarine;
+        }
+
+        #gif{
+            width: 200px;
+            height: 200px;
+        }
+
+        .gif-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px);
+            position: relative;
+            z-index: 3; 
+        }
+    </style>
 </head>
 
 <body>
     <header>
+        <div class="sobreposicao"></div>
         <nav id="navegacao">
            <div class="logo">
                <a href="../index.html"><img src="https://i.postimg.cc/44bRywLn/Whats-App-Image-2025-01-26-at-3-59-32-AM-removebg-preview.png" alt="Logo da Albatroid"></a>
+           </div>
+           <div class="mode-toggle">
+            <button id="mode-btn">
+                <i class="fas fa-moon"></i>
+            </button>
            </div>
            <ul id="menu-categorias">
                <li>
@@ -46,7 +108,7 @@
                </li>
                <li>
                    <img class="customizado-4" src="https://i.postimg.cc/Hxrx9XFf/image-6.png" alt="globo terrestre">
-                   <p class="direcionamento">Temporadas</p>
+                   <p class="direcionamento" id="selecionado">Temporadas</p>
                    <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
                    <div class="submenu" id="submenu-temporadas">
                        <ul>
@@ -73,8 +135,18 @@
                <li><i class="fas fa-calendar-alt"></i> <a href="submerged.html">Temporadas</a></li>  <!--fazer um js pra colocar a temporada atual automaticamente como redirecionamento-->
            </ul>
        </div>
-       </header>
-    </div>
+       <div class="gif-container">
+        <img id="gif" src="https://static.wixstatic.com/media/3a1650_a7d1c334024840d8b642e62d02ebdaaf~mv2.gif" alt="submario da submerged">
+       </div>
+    </header>
+    <section id="explicação_submerged">
+        <div id="fundo_com_linha_de_mar">
+            <h1>2024/2025 Submerged</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque omnis, impedit, rem reiciendis non iusto est quae excepturi aliquam cumque quaerat deleniti a enim natus eum doloremque id esse nisi?<p>
+        </div>
+    </section>
+
+
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
     </footer>
@@ -135,7 +207,32 @@
     
         lastScrollTop = scrollTop;
     });
-    
+
+    const modeBtn = document.getElementById('mode-btn');
+    const modeIcon = modeBtn.querySelector('i');
+    const header = document.querySelector('header');
+
+    // Função para alternar o modo
+    function toggleMode() {
+        document.body.classList.toggle('dark-mode');
+        header.style.backgroundImage = document.body.classList.contains('dark-mode')
+            ? 'url(../imagens/agua\ viva\ pequena\ \(1\).jpg)'
+            : 'url(../imagens/corais_243413140.jpg)';
+        modeIcon.classList.toggle('fa-moon');
+        modeIcon.classList.toggle('fa-sun');
+    }
+
+    // Detectar o modo do dispositivo
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark-mode');
+        header.style.backgroundImage = 'url(../imagens/agua\ viva\ pequena\ \(1\).jpg)';
+        modeIcon.classList.remove('fa-moon');
+        modeIcon.classList.add('fa-sun');
+    }
+
+    // Adicionar evento de clique ao botão
+    modeBtn.addEventListener('click', toggleMode);
+
     </script>
 </body>
 
