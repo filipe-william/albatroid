@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        @font-face {
+            font-family: 'aquatico';
+            src: url(../fontes/Aquatico-Regular.otf) format('opentype');
+            font-weight: normal;
+        }
         body {
             background-color: #fff;
             color: #000;
@@ -203,7 +208,7 @@
             height: 60px;
             position: relative;
             overflow: visible;
-            fill: #0016a4;
+            fill: #0135e2;
         }
 
         .wave_2 svg {
@@ -232,8 +237,16 @@
             margin-bottom: 15px;
         }
 
+        #trajetoria{
+            justify-items: center;
+            background-color: #0135e2;
+            background-image: linear-gradient(#0135e2,#0429a4, #11018f, black);
+            padding-top: 20px;
+        }
+
         #fotos_e_videos{
             justify-items: center;
+            padding-top: 20px;
         }
 
         #fotos_e_videos img{
@@ -244,10 +257,251 @@
             margin-left: 35px;
         }
 
-        #fotos_e_videos h2{
+        #trajetoria h2{
             margin-bottom: 25px;
-            margin-top: -20px;
+            font-family: 'aquatico', serif;
+            font-size: 3em;
         }
+
+        #trajetoria p{
+            justify-items: center;
+            font-family: "Roboto", serif;
+            width: 90vw;
+            font-size: 1.2em;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        h3{
+            font-size: 1.9em;
+            padding-bottom: 10px;
+        }
+
+        #trabalhos h2{
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        #container_das_section{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .section_dupla {
+            height: 80vh;
+            width: 50vw;
+            overflow: hidden;
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            color: whitesmoke;
+            display: flex; /* Usando flexbox */
+            flex-direction: column; /* Mantém a direção em coluna */
+            justify-content: flex-end; 
+            z-index: 3;
+        }
+
+        #projeto img{
+
+        }
+
+        #robo img{
+            border-radius: 20px;
+            width: 289px;
+            height: 300px;
+            align-self: center;
+        }
+
+        #trabalhos a{
+            font-family: 'Montserrat', serif;
+            font-size: 2.5em;
+            margin-bottom: 45px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        #trabalhos a:hover{
+            font-size: 2.6em;
+            text-decoration: underline;
+            color: rgb(0, 234, 255);
+        }
+
+        #nacional{
+            font-family: 'Montserrat', serif;
+            font-size: 3em;
+            color: whitesmoke;
+            padding-top: 75px;
+            padding-bottom: 90px;
+        }
+
+        @media (max-width: 400px) { /* Celulares menores*/
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                display: none;
+            }
+
+            nav.nav-scroll {
+                background: #ff840056;
+                border-radius: 20px;
+            }
+
+            .logo {
+                width: 20px;
+                height: auto;
+            }
+
+            .menu-lateral {
+                width: 70vw;
+            }
+
+            #projeto img{
+                width: 45vw;
+                height: auto;
+                padding-bottom: 30px;
+            }
+
+            #robo img{
+                width: 45vw;
+                height: auto;
+                align-self: center;
+                padding-bottom: 30px;
+            }
+
+        }
+
+        @media (min-width: 401px) and (max-width: 575px) { /* Celulares maiores*/
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                display: none;
+            }
+
+            nav.nav-scroll {
+                background: #ff840056;
+                border-radius: 20px;
+            }
+
+            .menu-lateral {
+                width: 70vw;
+            }
+
+            .degrade-do-menu {
+                background: linear-gradient(125deg, #0500ff, #ffa000);
+                background-size: 120% 120%;
+                animation: gradient-animation 2s ease infinite;
+            }
+
+            @keyframes gradient-animation {
+                0% {
+                    background-position: 0% 12%;
+                }
+
+                50% {
+                    background-position: 25% 7%;
+                }
+
+                100% {
+                    background-position: 0% 12%;
+                }
+            }
+
+            #projeto img{
+                padding-bottom: 80px;
+            }
+
+            #robo img{
+                width: 200px;
+                height: auto;
+                align-self: center;
+                padding-bottom: 80px;
+            }
+
+        }
+
+        @media (min-width: 576px) and (max-width: 997px) { /* Tablet */
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                display: none;
+            }
+
+            nav.nav-scroll {
+                background: #ff840056;
+                border-radius: 20px;
+            }
+
+            .menu-lateral {
+                width: 70vw;
+            }
+
+            .menu-lateral {
+                display: none;
+                position: absolute;
+                top: 20px;
+                right: 0;
+                background-color: #333;
+                padding: 20px;
+                margin: 10px;
+                border-radius: 15px;
+                z-index: 100;
+                width: 85vw;
+                height: 70vh;
+                opacity: 0;
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            #projeto img{
+
+            }
+
+            #robo img{
+                width: 230px;
+                height: auto;
+                align-self: center;
+            }
+
+        }
+
+        @media (min-width: 998px) and (max-width: 1055px) { /* notebook */
+
+            #projeto img{
+
+            }
+
+            #robo img{
+                width: 350px;
+                height: auto;
+                align-self: center;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+        }
+
+        @media (min-width: 1056px) { /* computador */
+
+            #projeto img{
+
+            }
+
+            #robo img{
+                width: 350px;
+                height: auto;
+                align-self: center;
+            }
+
+            nav ul {
+                gap: 25px;
+            }
+        }
+
     </style>
 </head>
 
@@ -340,21 +594,34 @@
             <p>Já na parte do robô, assim como nas outras temporadas, recebemos um tapete completamente tematico da temporada, que essa temporada foi sobre os mares e oceanos, e temos que completar as missões de acordo com a estrategia da equipe em 2 minutos e meio.</p>
             <p>Ao longo dessa temporada, foi preciso pesquisar sobre o oceano, rios e lagos, entendendo como a tecnologia pode contribuir com os profissionais marinhos e preservação dos ambientes maritimos. Como em toda temporada da FLL, os valores fundamentais, como trabalho em equipe, inclusão e inovação, estiveram presentes em cada etapa do desafio.</p>
         </div>
-        <div id="fotos_e_videos">
-            <img src="../imagens/3-equipes.jpeg" alt="albatroid, aion-x e atomics juntas">
-            <h2>regional</h2>
-            <p>Aliais, esse foi um dos regionais mais importantes pra historia da nossa equipe, porque nós tivemos as 3 equipes do sesi taguatinga mais unidas do que nunca, e é quase impossivel descrever todo o processo que a gente passou até chegar no regional, foi algo incrivel e muito especial para nós.</p>
+        <div class="wave_2">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path d="M0,20 C480,180 960,-50 1440,20 L1440,100 L0,100 Z" />
+            </svg>
         </div>
     </section>
-    <div class="wave_2">
-        <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-            <path d="M0,20 C480,180 960,-50 1440,20 L1440,100 L0,100 Z" />
-        </svg>
-    </div>
-    <section id="trabalhos_da_submerged">
-
+    <section id="trajetoria">
+        <div id="fotos_e_videos">
+            <h2>nossa trajetoria</h2>
+            <img src="../imagens/3-equipes.jpeg" alt="albatroid, aion-x e atomics juntas">
+            <h3>regional</h3>
+            <p>Aliais, esse foi um dos regionais mais importantes pra historia da nossa equipe, porque nós tivemos as 3 equipes do sesi taguatinga mais unidas do que nunca, e é quase impossivel descrever todo o processo que a gente passou até chegar no regional, foi algo incrivel e muito especial para nós.</p>
+        </div>
+        <div id="trabalhos">
+            <h2>projetos</h2>
+            <div id="container_das_section">
+            <section class="section_dupla" id="projeto">
+                <img src="" alt="SARdinho, projeto da equipe albatroid">
+                <a href="projetos.html">SARdinho</a>
+            </section>
+            <section class="section_dupla" id="robo">
+                <img src="../imagens/kisamao.jpeg" alt="kisame, robô da equipe albatroid">
+                <a href="projetos.html">Kisame</a>
+            </section>
+            </div>
+        </div>
+        <h4 id="nacional">Rumo nacional!!</h4>
     </section>
-
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
     </footer>
