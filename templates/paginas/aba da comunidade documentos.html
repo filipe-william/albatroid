@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amanhecendo com robótica</title>
+    <link rel="shortcut icon" href="../imagens/logo da alba.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../styles/style_do_nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @charset "UTF-8";
+
+        @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Passion+One:wght@400;700;900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: auto;
+            font-family: 'League Spartan', serif;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+
+        body {
+            width: auto;
+        }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        nav {
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 10px;
+            position: fixed;
+            z-index: 10;
+            background: #0c4a88;
+            transition: top 0.3s, background 0.3s;
+        }
+
+        nav.nav-scroll {
+            background: #0c4a88;
+        }
+
+        .logo img {
+            width: 75px;
+            height: auto;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        nav ul.menu-escondido {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        nav ul li {
+            font-size: 1.2rem;
+            font-family: "Montserrat", serif;
+            color: white;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        nav ul li img {
+            width: 17px;
+            height: 17px;
+            margin-right: 5px;
+        }
+
+        nav ul li p {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-weight: 300;
+            cursor: pointer;
+            transition: font-size 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li p:hover {
+            font-size: 1.5rem;
+            color: rgb(255, 255, 255);
+            font-weight: bolder;
+            background-color: rgba(0, 0, 0, 0.066);
+            transform: translateX(2px);
+        }
+
+        #customizado {
+            margin: 3px;
+        }
+
+        .customizado {
+            height: 21px;
+            width: auto;
+        }
+
+        .customizado-2 {
+            width: 30px;
+            height: 18px;
+        }
+
+        .customizado-3 {
+            width: 30px;
+            height: 30px;
+        }
+
+        .customizado-4 {
+            width: 25px;
+            height: 25px;
+        }
+
+        .fa,
+        .fab,
+        .fad,
+        .fal,
+        .far,
+        .fas {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: inline-block;
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            transform: translateY(10%);
+        }
+
+        .menu-tres-barrinhas {
+            display: flex;
+            gap: 5px;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-left: auto;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .menu-tres-barrinhas div {
+            width: 30px;
+            height: 3px;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .menu-lateral {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 0;
+            background-color: #333;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 15px;
+            z-index: 100;
+            width: 25vw;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu-lateral.mostrar {
+            display: block; /* Isso deve ser mantido para mostrar o menu */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .menu-lateral ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-lateral ul li {
+            color: white;
+            margin: 10px 0;
+            font-size: 1.2rem;
+            font-family: "Montserrat", serif;
+        }
+
+        .menu-lateral ul li i {
+            margin-right: 10px;
+            color: white;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            width: 100vw;
+            padding: 10px 0;
+            text-align: center;
+            color: #1f1e1e;
+        }
+
+        footer a {
+            color: #0059ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 4;
+            top: 100%;
+            left: 0;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .submenu ul li a{
+            text-decoration: none;
+        }
+
+        .submenu.mostrar {
+            display: block;
+            opacity: 1;
+        }
+
+        .submenu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-weight: 300;
+            cursor: pointer;
+            transition: font-size 0.3s ease, color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            font-size: 1.5rem;
+            color: rgb(255, 255, 255);
+            font-weight: bolder;
+            background-color: rgba(0, 0, 0, 0.066);
+            transform: translateX(2px);
+        }
+
+        .submenu ul li {
+            color: white;
+            padding: 5px 0;
+            font-size: 1rem;
+        }
+
+        nav ul li:hover .submenu {
+            display: block;
+        }
+
+        #submenu-temporadas ul {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+            gap: 10px;
+        }
+
+        #submenu-temporadas ul li {
+            color: white;
+            padding: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: left;
+            transition: background-color 0.3s ease;
+        }
+
+        @media (max-width: 400px) { /* Celulares menores*/
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                display: none;
+            }
+
+            nav.nav-scroll {
+                background: #ff84003d;
+                border-radius: 20px;
+            }
+
+            .logo {
+                width: 20px;
+                height: auto;
+            }
+
+            .menu-lateral {
+                width: 70vw;
+            }
+
+        }
+
+        @media (min-width: 401px) and (max-width: 575px) { /* Celulares maiores*/
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                display: none;
+            }
+
+            nav.nav-scroll {
+                background: #ff84003d;
+                border-radius: 20px;
+            }
+
+            .menu-lateral {
+                width: 70vw;
+            }
+
+
+        }
+
+        @media (min-width: 576px) and (max-width: 997px) { /* Tablet */
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                display: none;
+            }
+
+            nav.nav-scroll {
+                background: #ff84003d;
+                border-radius: 20px;
+            }
+
+            .menu-lateral {
+                width: 70vw;
+            }
+
+            .menu-lateral {
+                display: none;
+                position: absolute;
+                top: 20px;
+                right: 0;
+                background-color: #333;
+                padding: 20px;
+                margin: 10px;
+                border-radius: 15px;
+                z-index: 3;
+                width: 85vw;
+                height: 70vh;
+                opacity: 0;
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+        }
+
+        @media (min-width: 998px) and (max-width: 1055px) { /* notebook */
+
+            nav ul {
+                gap: 15px;
+            }
+        }
+
+        @media (min-width: 1056px) { /* computador */
+
+            nav ul {
+                gap: 25px;
+            }
+        }
+
+        .documentos {
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .documento {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .documento img {
+            width: 50px; /* Ajuste o tamanho conforme necessário */
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .documento a {
+            text-decoration: none;
+            color: #0c4a88;
+        }
+
+        .documento a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav id="navegacao">
+           <div class="logo">
+               <a href="../index.html"><img src="https://i.postimg.cc/44bRywLn/Whats-App-Image-2025-01-26-at-3-59-32-AM-removebg-preview.png" alt="Logo da Albatroid"></a>
+           </div>
+           <ul id="menu-categorias">
+               <li>
+                   <i id="customizado" class="fas fa-users"></i>
+                   <p class="direcionamento">Comunidade</p>
+                   <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
+                   <div class="submenu" id="submenu-comunidade">
+                       <ul>
+                           <li><a href="aba da comunidade.html">Interação</a></li>
+                           <li><a href="aba da comunidade documentos.html">Documentos</a></li>
+                       </ul>
+                   </div>
+               </li>
+               <li>
+                   <i id="customizado" class="fas fa-heart"></i>
+                   <a href="projetos.html" class="direcionamento">Projetos</a>
+               </li>
+               <li>
+                   <img class="customizado" src="https://i.postimg.cc/mrssgp4H/image-2.png" alt="globo">
+                   <a href="nosso site.html" class="direcionamento">Nosso Site</a>
+               </li>
+               <li>
+                   <img class="customizado-2" src="../../imagens/FIRSTicon_RGB_withTM.png" alt="logo da FIRST">
+                   <a href="sobre a FIRST.html" class="direcionamento">Sobre a FIRST</a>
+               </li>
+               <li>
+                   <img class="customizado-3" src="https://i.postimg.cc/X7mgfkm0/carta.png" alt="carta">
+                   <a href="contato.html" class="direcionamento">Fale Conosco</a>
+               </li>
+               <li>
+                   <img class="customizado-4" src="https://i.postimg.cc/Hxrx9XFf/image-6.png" alt="globo terrestre">
+                   <p class="direcionamento">Temporadas</p>
+                   <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
+                   <div class="submenu" id="submenu-temporadas">
+                       <ul>
+                           <li><a href="em breve.html">Em breve...</a></li>
+                           <li><a href="masterpiece.html">Masterpiece</a></li>
+                           <li><a href="submerged.html">Submerged</a></li>
+                       </ul>
+                   </div>
+               </li>
+           </ul>
+           <div class="menu-tres-barrinhas" id="menu_toggle">
+               <div class="degrade-do-menu"></div>
+               <div class="degrade-do-menu"></div>
+               <div class="degrade-do-menu"></div>
+           </div>
+        </nav>
+       <div class="menu-lateral" id="menu_lateral">
+           <ul>
+               <li><i class="fas fa-users"></i> <a href="aba da comunidade.html">Comunidade</a></li>
+               <li><i class="fas fa-project-diagram"></i> <a href="projetos.html">Projetos</a></li>
+               <li><i class="fas fa-globe"></i> <a href="nosso site.html">Nosso Site</a></li>
+               <li><i class="fas fa-info-circle"></i> <a href="sobre a FIRST.html">Sobre a FIRST</a></li>
+               <li><i class="fas fa-envelope"></i> <a href="contato.html">Fale Conosco</a></li>
+               <li><i class="fas fa-calendar-alt"></i> <a href="submerged.html">Temporadas</a></li>  <!--fazer um js pra colocar a temporada atual automaticamente como redirecionamento-->
+           </ul>
+       </div>
+    </header>
+    <div class="estilos_das_paginas">
+        <h1>Aba da Comunidade</h1>
+        <ul>
+            {% for noticia in noticias %}
+                <li><a href="{{ url_for('noticia', filename=noticia) }}">Ver Notícia</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <footer>
+        <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu_toggle');
+        const menuLateral = document.getElementById('menu_lateral');
+        const navMenu = document.getElementById('menu-categorias');
+        menuToggle.addEventListener('click', () => {
+            menuLateral.classList.toggle('mostrar');
+            navMenu.classList.toggle('menu-escondido');
+        });
+        document.addEventListener('click', (event) => {
+            if (!menuLateral.contains(event.target) && !menuToggle.contains(event.target)) {
+                menuLateral.classList.remove('mostrar');
+                navMenu.classList.remove('menu-escondido');
+            }
+        });
+        const submenus = document.querySelectorAll('.submenu');
+        document.querySelectorAll('#menu-categorias > li').forEach(item => {
+            item.addEventListener('click', function(event) {
+                event.stopPropagation();
+                submenus.forEach(submenu => {
+                    if (submenu !== this.querySelector('.submenu')) {
+                        submenu.classList.remove('mostrar');
+                    }
+                });
+                const submenu = item.querySelector('.submenu');
+                if (submenu) {
+                    submenu.classList.toggle('mostrar');
+                }
+            });
+        });
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('#menu-categorias')) {
+                submenus.forEach(submenu => {
+                    submenu.classList.remove('mostrar');
+                });
+            }
+        });
+    
+        let lastScrollTop = 0;
+    const nav = document.getElementById('navegacao');
+    
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+        if (scrollTop > lastScrollTop) {
+            nav.style.top = "-100px";
+            nav.classList.remove('nav-scroll');
+        } else {
+            nav.style.top = "0";
+            nav.classList.add('nav-scroll');
+        }
+        if (scrollTop === 0) {
+            nav.classList.remove('nav-scroll');
+        }
+    
+        lastScrollTop = scrollTop;
+    });
+    
+
+    async function carregarDocumentos() {
+            try {
+                const response = await fetch('/api/documentos');
+                const documentos = await response.json();
+
+                const listaDocumentos = document.getElementById('lista-documentos');
+                listaDocumentos.innerHTML = ''; // Limpa a lista antes de adicionar novos itens
+
+                documentos.forEach(doc => {
+                    const div = document.createElement('div');
+                    div.classList.add('documento');
+                    div.innerHTML = `
+                        <img src="${doc.imagem}" alt="${doc.titulo}" class="imagem-noticia">
+                        <a href="${doc.link}" target="_blank">${doc.titulo}</a> - ${doc.data}
+                    `;
+                    listaDocumentos.appendChild(div);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar documentos:', error);
+            }
+        }
+
+        // Carregar documentos ao iniciar
+        window.onload = carregarDocumentos;
+    </script>
+</body>
+
+</html>
