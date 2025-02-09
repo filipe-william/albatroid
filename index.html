@@ -825,6 +825,7 @@
             <a href="paginas/projetos.html" class="botao-venha-conhecer">venha conhecer</a>
         </section>
     </div>
+    <p>Número de visitantes: <span id="visitor-count">0</span></p>
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
     </footer>
@@ -892,5 +893,49 @@ document.getElementById('seta-rolagem').addEventListener('click', function() {
         const targetSection = document.querySelector('.container-secoes');
         targetSection.scrollIntoView({ behavior: 'smooth' });
     });
+
+        import { initializeApp } from "firebase/app";
+        import { getAnalytics } from "firebase/analytics";
+         // Configuração do Firebase
+         const firebaseConfig = {
+            apiKey: "AIzaSyBp8ukxR_xXN4pv92ApFHt2AnnpGViVHgc",
+            authDomain: "albatroid-4bd13.firebaseapp.com",
+            projectId: "albatroid-4bd13",
+            storageBucket: "albatroid-4bd13.firebasestorage.app",
+            messagingSenderId: "968204633416",
+            appId: "1:968204633416:web:35dcf7a3b4e8919f069f7d",
+            measurementId: "G-T28TJ5J4BV"
+        };
+
+        // Inicializa o Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const analytics = getAnalytics(app);
+
+        // Função para registrar um visitante
+        function registerVisitor() {
+            db.collection("visitantes").add({
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(() => {
+                console.log("Visitante registrado!");
+                updateVisitorCount();
+            })
+            .catch((error) => {
+                console.error("Erro ao registrar visitante: ", error);
+            });
+        }
+
+        // Função para atualizar a contagem de visitantes
+        function updateVisitorCount() {
+            db.collection("visitantes").get().then((querySnapshot) => {
+                document.getElementById('visitor-count').innerText = querySnapshot.size;
+            });
+        }
+
+        // Registra o visitante e atualiza a contagem ao carregar a página
+        window.onload = () => {
+            registerVisitor();
+        };
 </script>
 </html>
