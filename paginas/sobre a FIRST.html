@@ -8,6 +8,203 @@
     <link rel="shortcut icon" href="../imagens/logo da alba.png" type="image/x-icon">
     <link rel="stylesheet" href="../styles/style_do_nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+    <style>
+        /* Header and Nav Styling */
+        header {
+            height: auto; /* Remove extra height */
+            padding: 0; /* Remove padding */
+        }
+
+        nav {
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 10px;
+            position: fixed;
+            z-index: 10;
+            background: #0c4a88;
+            transition: top 0.3s, background 0.3s;
+        }
+
+        nav.nav-scroll {
+            background: #0c4a88;
+        }
+
+        .first-section {
+            margin: 120px auto;
+            padding: 40px 20px;
+            max-width: 1200px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .first-section h1 {
+            font-size: 2.8rem;
+            color: #0c4a88;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .first-section h2 {
+            font-size: 2rem;
+            color: #0c4a88;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-bottom: 2px solid #0c4a88;
+            padding-bottom: 10px;
+        }
+
+        .first-section p {
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .first-section ul {
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+
+        .first-section ul li {
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .first-section ul li strong {
+            color: #0c4a88;
+            font-weight: 600;
+        }
+
+        .first-section em {
+            font-style: italic;
+            color: #0c4a88;
+        }
+
+        .first-section strong {
+            color: #0c4a88;
+            font-weight: 600;
+        }
+
+        .first-section a {
+            color: #0c4a88;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .first-section a:hover {
+            color: #ff6f61;
+        }
+
+        @media (max-width: 768px) {
+            .first-section {
+                margin: 120px 20px;
+                padding: 30px 15px;
+            }
+
+            .first-section h1 {
+                font-size: 2.2rem;
+            }
+
+            .first-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .first-section p {
+                font-size: 1rem;
+            }
+
+            .first-section ul li {
+                font-size: 1rem;
+            }
+        }
+
+/* Timeline Styling */
+        .timeline-container {
+            max-width: 1000px; /* Increased width for better spacing */
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* Align items to the top */
+            position: relative;
+            gap: 20px; /* Added gap between items */
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #0c4a88;
+            z-index: 1;
+        }
+
+        .timeline-item {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 150px; /* Fixed width for better alignment */
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.2rem;
+            color: #0c4a88;
+            margin-bottom: 10px;
+            position: relative;
+            top: -20px; /* Move the year above the line */
+        }
+
+        .timeline-item .circle {
+            width: 20px;
+            height: 20px;
+            background: #0c4a88;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-item p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.4;
+            position: relative;
+            top: 20px; /* Move the description below the line */
+        }
+
+        /* Scroll Animation */
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+    </style>
 </head>
 
 <body>
@@ -70,11 +267,120 @@
                <li><i class="fas fa-globe"></i> <a href="nosso site.html">Nosso Site</a></li>
                <li><i class="fas fa-info-circle"></i> <a href="sobre a FIRST.html">Sobre a FIRST</a></li>
                <li><i class="fas fa-envelope"></i> <a href="contato.html">Fale Conosco</a></li>
-               <li><i class="fas fa-calendar-alt"></i> <a href="submerged.html">Temporadas</a></li>  <!--fazer um js pra colocar a temporada atual automaticamente como redirecionamento-->
-           </ul>
-       </div>
-       </header>
+               <li><i class="fas fa-calendar-alt"></i> <a href="submerged.html">Temporadas</a></li>
+            </ul>
+        </div>
+    </header>
+    <section class="first-section">
+        <h1>O que é a <spam>FIRST</spam>?</h1>
+        <p>
+            A FIRST (<em>For Inspiration and Recognition of Science and Technology</em>) é uma organização global sem fins lucrativos fundada em 1989 pelo inventor Dean Kamen. Seu principal objetivo é inspirar jovens a se tornarem líderes e inovadores nas áreas de ciência, tecnologia, engenharia e matemática (STEM) por meio de competições de robótica e programas educacionais. A FIRST acredita que, ao envolver os jovens em desafios práticos e colaborativos, é possível despertar o interesse por carreiras científicas e tecnológicas, além de desenvolver habilidades essenciais como trabalho em equipe, pensamento crítico e resolução de problemas.
+        </p>
+        <p>
+            A FIRST é reconhecida mundialmente por suas competições emocionantes, que reúnem estudantes de diversos países em um ambiente de cooperação e competição saudável. Esses eventos não apenas testam as habilidades técnicas dos participantes, mas também promovem valores como <strong>Gracious Professionalism</strong> (Profissionalismo Gracioso) e <strong>Coopertition</strong> (Cooperação + Competição), que incentivam o respeito, a ética e o espírito de equipe.
+        </p>
+    
+        <h2>O Impacto da FIRST na Vida dos Jovens</h2>
+        <p>
+            Participar de um programa da FIRST vai muito além de construir robôs ou competir. Os jovens envolvidos nessas atividades aprendem a trabalhar em equipe, a comunicar ideias de forma clara e a lidar com desafios complexos. Muitos participantes relatam que a experiência os ajudou a descobrir suas paixões e a ganhar confiança para seguir carreiras em STEM.
+        </p>
+        <p>
+            Além disso, a FIRST abre portas para oportunidades acadêmicas e profissionais. Universidades e empresas de renome valorizam a participação em programas da FIRST, oferecendo bolsas de estudo, estágios e até empregos para os participantes. Para muitos jovens, a FIRST é o primeiro passo em direção a um futuro promissor em áreas como engenharia, programação, medicina e muitas outras.
+        </p>
+    
+        <h2>As Categorias da FIRST</h2>
+        <p>
+            A FIRST oferece quatro programas principais, cada um adaptado para diferentes faixas etárias e níveis de experiência:
+        </p>
+        <ul>
+            <li>
+                <strong>FIRST LEGO League Discover (FLL Discover)</strong>: Voltado para crianças de 4 a 6 anos, introduz conceitos básicos de STEM por meio de atividades lúdicas com peças de LEGO.
+            </li>
+            <li>
+                <strong>FIRST LEGO League Explore (FLL Explore)</strong>: Projetado para crianças de 6 a 10 anos, onde os participantes constroem modelos de LEGO e começam a explorar conceitos de robótica.
+            </li>
+            <li>
+                <strong>FIRST LEGO League Challenge (FLL Challenge)</strong>: Destinado a jovens de 9 a 16 anos, combina robótica com pesquisa científica, desafiando os participantes a resolver problemas do mundo real.
+            </li>
+            <li>
+                <strong>FIRST Tech Challenge (FTC)</strong>: Para estudantes do ensino médio, com foco na construção e programação de robôs mais complexos.
+            </li>
+            <li>
+                <strong>FIRST Robotics Competition (FRC)</strong>: O programa mais avançado, voltado para estudantes de 14 a 18 anos, onde equipes constroem robôs de grande porte para competir em desafios emocionantes.
+            </li>
+        </ul>
+    
+        <h2>A FIRST no Brasil</h2>
+        <p>
+            No Brasil, a FIRST começou a ganhar destaque na década de 2010, com a participação de equipes brasileiras em competições internacionais. Desde então, o movimento tem crescido rapidamente, com escolas, universidades e organizações não governamentais adotando os programas da FIRST para incentivar o interesse pela robótica e pela tecnologia entre os jovens.
+        </p>
+        <p>
+            Um dos marcos importantes da FIRST no Brasil foi a criação de torneios regionais, como o <strong>Festival SESI de Robótica</strong>, que reúne equipes de todo o país para competir em categorias como FLL e FTC. Esses eventos não apenas promovem a robótica, mas também ajudam a divulgar a importância da educação STEM para o desenvolvimento do país.
+        </p>
+        <p>
+            A FIRST no Brasil também tem sido um agente de transformação social, levando oportunidades para comunidades carentes e incentivando a participação de meninas e minorias em áreas tradicionalmente dominadas por homens. Muitas equipes brasileiras já se destacaram em competições internacionais, mostrando que o Brasil tem um enorme potencial na área de tecnologia e inovação.
+        </p>
+    
+        <h2>E no final...</h2>
+        <p>
+            E no fim, a FIRST é muito mais do que uma competição de robótica. É um movimento global que está transformando a vida de milhões de jovens ao redor do mundo, incluindo no Brasil. Ao unir tecnologia, educação e valores como cooperação e profissionalismo, a FIRST está preparando a próxima geração de líderes e inovadores para enfrentar os desafios do futuro.
+        </p>
+    </section>
+<!-- Timeline Section -->
+<!-- Timeline Section -->
+<section class="timeline-container">
+    <div class="timeline">
+        <!-- Founding of FIRST -->
+        <div class="timeline-item">
+            <h3>1989</h3>
+            <div class="circle"></div>
+            <p>Fundação da FIRST por Dean Kamen</p>
+        </div>
+        <!-- Founding of FLL -->
+        <div class="timeline-item">
+            <h3>1998</h3>
+            <div class="circle"></div>
+            <p>Lançamento da FIRST LEGO League (FLL)</p>
+        </div>
+        <!-- FLL Seasons -->
+        <div class="timeline-item">
+            <h3>2019</h3>
+            <div class="circle"></div>
+            <p>Temporada: INTO ORBIT (Em Órbita)</p>
+        </div>
+        <div class="timeline-item">
+            <h3>2020</h3>
+            <div class="circle"></div>
+            <p>Temporada: CITY SHAPER (Construindo Cidades Inteligentes)</p>
+        </div>
+        <div class="timeline-item">
+            <h3>2021</h3>
+            <div class="circle"></div>
+            <p>Temporada: RECYCLE RUSH (RePLAY)</p>
+        </div>
+        <div class="timeline-item">
+            <h3>2022</h3>
+            <div class="circle"></div>
+            <p>Temporada: CARGO CONNECT (Conectando Cargas)</p>
+        </div>
+        <div class="timeline-item">
+            <h3>2023</h3>
+            <div class="circle"></div>
+            <p>Temporada: SUPER POWERED (Super Energizados)</p>
+        </div>
+        <div class="timeline-item">
+            <h3>2024</h3>
+            <div class="circle"></div>
+            <p>Temporada: MASTERPIECE (Obra-Prima)</p>
+        </div>
+        <div class="timeline-item">
+            <h3>2025</h3>
+            <div class="circle"></div>
+            <p>Temporada: SUBMERGED (Submerso)</p>
+        </div>
     </div>
+</section>
+
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
     </footer>
@@ -117,26 +423,46 @@
         });
     
         let lastScrollTop = 0;
-    const nav = document.getElementById('navegacao');
+        const nav = document.getElementById('navegacao');
     
-    window.addEventListener('scroll', function() {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-        if (scrollTop > lastScrollTop) {
-            nav.style.top = "-100px";
-            nav.classList.remove('nav-scroll');
-        } else {
-            nav.style.top = "0";
-            nav.classList.add('nav-scroll');
-        }
-        if (scrollTop === 0) {
-            nav.classList.remove('nav-scroll');
-        }
+            if (scrollTop > lastScrollTop) {
+                nav.style.top = "-100px";
+                nav.classList.remove('nav-scroll');
+            } else {
+                nav.style.top = "0";
+                nav.classList.add('nav-scroll');
+            }
+            if (scrollTop === 0) {
+                nav.classList.remove('nav-scroll');
+            }
     
-        lastScrollTop = scrollTop;
-    });
-    
+            lastScrollTop = scrollTop;
+        });
+
+        // Scroll Animation for Timeline
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const timelineContainer = document.querySelector('.timeline-container');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    timelineItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('visible');
+                        }, index * 200); // Delay each item's animation
+                    });
+                } else {
+                    timelineItems.forEach((item) => {
+                        item.classList.remove('visible'); // Hide items when not in view
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(timelineContainer);
     </script>
 </body>
-
 </html>
