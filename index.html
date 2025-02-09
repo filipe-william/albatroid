@@ -9,6 +9,51 @@
     <link rel="stylesheet" href="styles/style_do_index_animação.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
+    
+        const firebaseConfig = {
+            apiKey: "AIzaSyBp8ukxR_xXN4pv92ApFHt2AnnpGViVHgc",
+            authDomain: "albatroid-4bd13.firebaseapp.com",
+            projectId: "albatroid-4bd13",
+            storageBucket: "albatroid-4bd13.firebasestorage.app",
+            messagingSenderId: "968204633416",
+            appId: "1:968204633416:web:35dcf7a3b4e8919f069f7d",
+            measurementId: "G-T28TJ5J4BV"
+        };
+    
+        // Inicializa o Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        console.log("Firebase inicializado com sucesso");
+    
+        // Função para registrar um visitante
+        async function registerVisitor() {
+            try {
+                await addDoc(collection(db, "visitantes"), {
+                    timestamp: serverTimestamp()
+                });
+                console.log("Visitante registrado!");
+                updateVisitorCount();
+            } catch (error) {
+                console.error("Erro ao registrar visitante: ", error);
+            }
+        }
+    
+        // Função para atualizar a contagem de visitantes
+        async function updateVisitorCount() {
+            const querySnapshot = await getDocs(collection(db, "visitantes"));
+            document.getElementById('visitor-count').innerText = querySnapshot.size;
+        }
+    
+        // Registra o visitante ao carregar a página
+        window.onload = () => {
+            registerVisitor();
+        };
+    </script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Passion+One:wght@400;700;900&display=swap');
 
@@ -831,111 +876,67 @@
     </footer>
 </body>
 <script>
-    window.alert('o site pode não estar funcionando corretamente em dispotivos menores, caso encontre algum erro durante sua visita, ficaremos muito gratos em receber seu feedback e qual foi o problema que você enfrentou!! Desde já, agradecemos sua visita')
+window.alert('o site pode não estar funcionando corretamente em dispotivos menores, caso encontre algum erro durante sua visita, ficaremos muito gratos em receber seu feedback e qual foi o problema que você enfrentou!! Desde já, agradecemos sua visita')
 
-    const menuToggle = document.getElementById('menu_toggle');
-    const menuLateral = document.getElementById('menu_lateral');
-    const navMenu = document.getElementById('menu-categorias');
-    menuToggle.addEventListener('click', () => {
-        menuLateral.classList.toggle('mostrar');
-        navMenu.classList.toggle('menu-escondido');
-    });
-    document.addEventListener('click', (event) => {
-        if (!menuLateral.contains(event.target) && !menuToggle.contains(event.target)) {
-            menuLateral.classList.remove('mostrar');
-            navMenu.classList.remove('menu-escondido');
-        }
-    });
-    const submenus = document.querySelectorAll('.submenu');
-    document.querySelectorAll('#menu-categorias > li').forEach(item => {
-        item.addEventListener('click', function(event) {
-            event.stopPropagation();
-            submenus.forEach(submenu => {
-                if (submenu !== this.querySelector('.submenu')) {
-                    submenu.classList.remove('mostrar');
-                }
-            });
-            const submenu = item.querySelector('.submenu');
-            if (submenu) {
-                submenu.classList.toggle('mostrar');
+const menuToggle = document.getElementById('menu_toggle');
+const menuLateral = document.getElementById('menu_lateral');
+const navMenu = document.getElementById('menu-categorias');
+menuToggle.addEventListener('click', () => {
+    menuLateral.classList.toggle('mostrar');
+    navMenu.classList.toggle('menu-escondido');
+});
+document.addEventListener('click', (event) => {
+    if (!menuLateral.contains(event.target) && !menuToggle.contains(event.target)) {
+        menuLateral.classList.remove('mostrar');
+        navMenu.classList.remove('menu-escondido');
+    }
+});
+const submenus = document.querySelectorAll('.submenu');
+document.querySelectorAll('#menu-categorias > li').forEach(item => {
+    item.addEventListener('click', function(event) {
+        event.stopPropagation();
+        submenus.forEach(submenu => {
+            if (submenu !== this.querySelector('.submenu')) {
+                submenu.classList.remove('mostrar');
             }
         });
-    });
-    document.addEventListener('click', (event) => {
-        if (!event.target.closest('#menu-categorias')) {
-            submenus.forEach(submenu => {
-                submenu.classList.remove('mostrar');
-            });
+        const submenu = item.querySelector('.submenu');
+        if (submenu) {
+            submenu.classList.toggle('mostrar');
         }
     });
+});
+document.addEventListener('click', (event) => {
+    if (!event.target.closest('#menu-categorias')) {
+        submenus.forEach(submenu => {
+            submenu.classList.remove('mostrar');
+        });
+    }
+});
 
-    let lastScrollTop = 0;
-    const nav = document.getElementById('navegacao');
+let lastScrollTop = 0;
+const nav = document.getElementById('navegacao');
 
 window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (scrollTop > lastScrollTop) {
-        nav.style.top = "-100px";
-        nav.classList.remove('nav-scroll');
-    } else {
-        nav.style.top = "0";
-        nav.classList.add('nav-scroll');
-    }
-    if (scrollTop === 0) {
-        nav.classList.remove('nav-scroll');
-    }
+if (scrollTop > lastScrollTop) {
+    nav.style.top = "-100px";
+    nav.classList.remove('nav-scroll');
+} else {
+    nav.style.top = "0";
+    nav.classList.add('nav-scroll');
+}
+if (scrollTop === 0) {
+    nav.classList.remove('nav-scroll');
+}
 
-    lastScrollTop = scrollTop;
+lastScrollTop = scrollTop;
 });
 
 document.getElementById('seta-rolagem').addEventListener('click', function() {
-        const targetSection = document.querySelector('.container-secoes');
-        targetSection.scrollIntoView({ behavior: 'smooth' });
-    });
-
-        import { initializeApp } from "firebase/app";
-        import { getAnalytics } from "firebase/analytics";
-         // Configuração do Firebase
-         const firebaseConfig = {
-            apiKey: "AIzaSyBp8ukxR_xXN4pv92ApFHt2AnnpGViVHgc",
-            authDomain: "albatroid-4bd13.firebaseapp.com",
-            projectId: "albatroid-4bd13",
-            storageBucket: "albatroid-4bd13.firebasestorage.app",
-            messagingSenderId: "968204633416",
-            appId: "1:968204633416:web:35dcf7a3b4e8919f069f7d",
-            measurementId: "G-T28TJ5J4BV"
-        };
-
-        // Inicializa o Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        const analytics = getAnalytics(app);
-
-        // Função para registrar um visitante
-        function registerVisitor() {
-            db.collection("visitantes").add({
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            })
-            .then(() => {
-                console.log("Visitante registrado!");
-                updateVisitorCount();
-            })
-            .catch((error) => {
-                console.error("Erro ao registrar visitante: ", error);
-            });
-        }
-
-        // Função para atualizar a contagem de visitantes
-        function updateVisitorCount() {
-            db.collection("visitantes").get().then((querySnapshot) => {
-                document.getElementById('visitor-count').innerText = querySnapshot.size;
-            });
-        }
-
-        // Registra o visitante e atualiza a contagem ao carregar a página
-        window.onload = () => {
-            registerVisitor();
-        };
+    const targetSection = document.querySelector('.container-secoes');
+    targetSection.scrollIntoView({ behavior: 'smooth' });
+});
 </script>
 </html>
