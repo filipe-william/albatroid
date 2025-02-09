@@ -12,7 +12,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
-    
+
         const firebaseConfig = {
             apiKey: "AIzaSyBp8ukxR_xXN4pv92ApFHt2AnnpGViVHgc",
             authDomain: "albatroid-4bd13.firebaseapp.com",
@@ -22,17 +22,16 @@
             appId: "1:968204633416:web:35dcf7a3b4e8919f069f7d",
             measurementId: "G-T28TJ5J4BV"
         };
-    
+
         // Inicializa o Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        console.log("Firebase inicializado com sucesso");
-    
         // Função para registrar um visitante
-        async function registerVisitor() {
+        async function registerVisitor(username) {
             try {
                 await addDoc(collection(db, "visitantes"), {
+                    username: username,
                     timestamp: serverTimestamp()
                 });
                 console.log("Visitante registrado!");
@@ -41,18 +40,33 @@
                 console.error("Erro ao registrar visitante: ", error);
             }
         }
-    
+
         // Função para atualizar a contagem de visitantes
         async function updateVisitorCount() {
             const querySnapshot = await getDocs(collection(db, "visitantes"));
             document.getElementById('visitor-count').innerText = querySnapshot.size;
         }
-    
-        // Registra o visitante ao carregar a página
+
+        // Função chamada ao enviar o formulário
+        function handleSubmit(event) {
+            event.preventDefault(); // Impede o envio do formulário
+            const usernameInput = document.getElementById('username-input');
+            const username = usernameInput.value.trim();
+            if (username) {
+                registerVisitor(username);
+                usernameInput.value = ''; // Limpa o campo após o registro
+                document.getElementById('visitor-message').style.display = 'none'; // Oculta a mensagem após login
+            } else {
+                alert("Por favor, insira um nome.");
+            }
+        }
+
+        // Registra o evento de envio do formulário
         window.onload = () => {
-            registerVisitor();
+            document.getElementById('login-form').addEventListener('submit', handleSubmit);
+            document.getElementById('visitor-message').style.display = 'flex'; // Exibe a mensagem ao carregar
         };
-    </script>
+  </script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Passion+One:wght@400;700;900&display=swap');
@@ -410,6 +424,92 @@
             padding: 10px 0;
             text-align: center;
             color: #1f1e1e;
+            z-index: 3;
+        }
+
+                /* Estilos para a mensagem de registro */
+        #visitor-message {
+            display: none; /* Inicialmente oculto */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: transparent;
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            width: 29vw; /* Largura da mensagem */
+            height: 65vh;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            display: flex; /* Para exibir como flex */
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .login-container {
+            background-color: transparent;
+            padding: 40px;
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff9600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #0079c5;
+        }
+
+        .login-container .remember-me {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .login-container .remember-me label {
+            display: flex;
+            align-items: center;
+        }
+
+        .login-container .remember-me input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .login-container h2{
+            color: rgb(255, 255, 255) ;
+            font-size: 2em;
         }
 
         footer a {
@@ -620,6 +720,10 @@
             }
         }
 
+        .hidden {
+            display: none;
+        }
+
         /* Media Queries (arrumar celulares menores e maiores) */
 
         @media (max-width: 400px) { /* Celulares menores*/
@@ -778,8 +882,8 @@
 </head>
 
 <body>
-    <div class="sobreposicao"></div>
     <div class="fundo">
+    <div class="sobreposicao"></div>
         <header>
          <nav id="navegacao">
             <div class="logo">
@@ -852,6 +956,17 @@
             </div>
         </section>
         </header>
+        <div id="visitor-message">
+            <div class="login-container">
+                <form id="login-form">
+                <h2>Registro de entrada</h2>
+                <input id="username-input" placeholder="nome" type="text" required />
+                <button type="submit">Entrar</button>
+                </form>
+            </div>
+        </div>
+        
+    </div>
 </div>
     <div class="linha-separacao"></div>
     <div class="container-secoes">
@@ -870,7 +985,6 @@
             <a href="paginas/projetos.html" class="botao-venha-conhecer">venha conhecer</a>
         </section>
     </div>
-    <p>Número de visitantes: <span id="visitor-count">0</span></p>
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
     </footer>
