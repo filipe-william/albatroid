@@ -7,7 +7,6 @@
     <title>Amanhecendo com robótica</title>
     <link rel="shortcut icon" href="../imagens/logo da alba.png" type="image/x-icon">
     <link rel="stylesheet" href="../styles/style_do_nav.css">
-    <link rel="stylesheet" href="../styles/style_do_em_breve.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&family=Nunito:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
@@ -124,12 +123,56 @@
             color: #ff6f61;
         }
 
+        #texto_sobre_a_equipe{
+            margin-bottom: 150px;
+        }
+
         .imagens_dos_membros{
-            width: 45px;
-            height: 45px;
-            border: 2px solid #000000;
+            width: 150px;
+            height: 150px;
+            border: 2px solid #00000057;
             border-radius: 50%;
             margin-bottom: 35px;
+            margin-left: 20px;
+            margin-right: 20px;
+            display: inline-block;
+        }
+
+        .membros_container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centraliza os membros */
+            margin: 20px 0; /* Espaçamento acima e abaixo do container */
+        }
+
+        .membro {
+            display: flex; /* Usar flexbox para alinhar imagem e nome */
+            flex-direction: column; /* Colocar imagem em cima do nome */
+            align-items: center; /* Centraliza os itens */
+            margin: 10px; /* Espaçamento entre os membros */
+            opacity: 0; /* Começa invisível */
+            transform: translateY(20px); /* Move um pouco para baixo */
+            transition: opacity 1s ease, transform 0.8s ease; /* Transição suave */
+        }
+
+        .membro.visible {
+            opacity: 1; /* Torna visível */
+            transform: translateY(0); /* Retorna à posição original */
+        }
+
+        .nomes {
+            color: #0c4a88;
+            word-wrap: break-word; /* Quebra o texto se exceder a largura */
+            max-width: 150px; /* Limita a largura do texto ao tamanho da imagem */
+            text-align: center; /* Centraliza o texto */
+        }
+
+        #luta{
+            color: blue;
+        }
+
+        #amanhecer{
+            color: orange;
         }
 
         @media (max-width: 768px) {
@@ -221,48 +264,60 @@
            </ul>
        </div>
        </header>
-       <!--<section id="sobre_a_equipe">
-            <div id="texto_sobre_a_equipe">
-                <h1>Sobre a equipe</h1>
-                <p> nome da nossa equipe é “ALBATROID” pois “Alba” em Albanês significa “<span>luta</span>” e “troid” em Islandês significa “<span id="amanhecer">amanhecer</span>”, o que nos motiva a cada dia lutar pelos nossos objetivos!</p>
-                <p>Nós estamos no SESI-Taguatinga desde 2016 trabalhando durante todos esses anos com muita paixão pelo que fazemos. Nos esforçamos para trazer mais pessoas para robótica e fazer parte dessa comunidade tão linda que transforma vidas.</p>
-                <p>Participamos de um torneio chamado First Lego League, um torneio sem fins lucrativos visando encontrar jovens para aprender e melhorar suas habilidades STEAM para fazer nosso mundo, um lugar melhor.</p>
-                <p>!</p>
-            </div>
-            <div id="nossos_membros">
-                <h1>Nossos membros</h1>
-                <img class="imagens_dos_membros" src="" alt="fotos dos membros">
-                <img class="imagens_dos_membros" src="" alt="fotos dos membros">
-                <img class="imagens_dos_membros" src="" alt="fotos dos membros">
-                <img class="imagens_dos_membros" src="" alt="fotos dos membros">
-                <img class="imagens_dos_membros" src="" alt="fotos dos membros">
-                <h1 id="h1_especial">comissão técnica</h1>
-                <img class="imagens_dos_membros" src="" alt="fotos dos membros">
-                <img class="imagens_dos_membros" src="" alt="fotos dos membros">
-                <img class="imagens_dos_membros" src="" alt="fotos dos membros">
-                <img class="imagens_dos_membros" src="" alt="fotos dos membros">
-                <p>!</p>
-            </div>
-       </section>-->
-       <section class="main-section">
-        <div class="container">
-          <div class="content">
-            <h1>EM <br>CONSTRUÇÃO</h1>
-            <p>O SITE ESTÁ QUASE PRONTO</p>
-            <div class="progress-bar">
-              <div class="progress"></div>
-              <span class="progress-text">96%</span>
-            </div>
-            <a href="/" class="voltar">Voltar!</a>
-          </div>
-          <div class="footer">
-            <a href="https://www.youtube.com/@Albatroid_Oficial"><i class="fab fa-youtube"></i></a> 
-            <a href=""><i class="fab fa-tiktok"></i></a> 
-            <a href="https://www.instagram.com/albatroidoficial/"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.twitch.tv/albatroidoficial"><i class="fab fa-twitch"></i></a> 
+       <section id="sobre_a_equipe">
+        <div id="texto_sobre_a_equipe">
+            <h1>Sobre a equipe</h1>
+            <p>O nome da nossa equipe é “ALBATROID” pois “Alba” em Albanês significa “<span id="luta">luta</span>” e “troid” em Islandês significa “<span id="amanhecer">amanhecer</span>”, o que nos motiva a cada dia lutar pelos nossos objetivos!</p>
+            <p>Nós estamos no SESI-Taguatinga desde 2016 trabalhando durante todos esses anos com muita paixão pelo que fazemos. Nos esforçamos para trazer mais pessoas para robótica e fazer parte dessa comunidade tão linda que transforma vidas.</p>
+            <p>Participamos de um torneio chamado First Lego League, um torneio sem fins lucrativos visando encontrar jovens para aprender e melhorar suas habilidades STEAM para fazer nosso mundo, um lugar melhor.</p>
         </div>
+        <div id="nossos_membros">
+            <h1>Nossos membros</h1>
+            <div class="membros_container">
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/WpXRqnVy/felps.jpg" alt="fotos dos membros">
+                    <p class="nomes">Filipe William</p>
+                </div>
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/zfKZLYDw/isa.jpg" alt="fotos dos membros">
+                    <p class="nomes">Isa Dora</p>
+                </div>
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/cC1V5KRT/julia.jpg" alt="fotos dos membros">
+                    <p class="nomes">Julia Maria</p>
+                </div>
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/xCQrMpqw/fleury.jpg" alt="fotos dos membros">
+                    <p class="nomes">Clara Fleury</p>
+                </div>
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/Gh2WFyhm/cleto.jpg" alt="fotos dos membros">
+                    <p class="nomes">Ana clara</p>
+                </div>
+            </div>
+            <h1 id="h1_especial">Comissão Técnica</h1>
+            <div class="membros_container">
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/wMWSK6Fz/andre.jpg" alt="fotos dos membros">
+                    <p class="nomes">André Mota</p>
+                </div>
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/XJkR8KCp/joma.jpg" alt="fotos dos membros">
+                    <p class="nomes">João Mateus</p>
+                </div>
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/qM59jvzX/pedro.jpg" alt="fotos dos membros">
+                    <p class="nomes">Andrei Andrade</p>
+                </div>
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/qM59jvzX/pedro.jpg" alt="fotos dos membros">
+                    <p class="nomes">Pedro Paulo</p>
+                </div>
+            </div>
         </div>
-      </section>
+    </section>
+    
+    
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
     </footer>
@@ -322,6 +377,25 @@
         }
     
         lastScrollTop = scrollTop;
+    });
+
+    const membros = document.querySelectorAll('.membro');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible'); // Adiciona classe para animação de entrada
+            } else {
+                entry.target.classList.remove('visible'); // Remove classe para animação de saída
+            }
+        });
+    }, {
+        threshold: 0.1 // Quando 10% do membro estiver visível
+    });
+
+    // Observa cada membro
+    membros.forEach(membro => {
+        observer.observe(membro);
     });
     
     </script>
