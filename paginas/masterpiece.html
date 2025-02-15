@@ -8,13 +8,34 @@
     <link rel="shortcut icon" href="../imagens/logo da alba.png" type="image/x-icon">
     <link rel="stylesheet" href="../styles/style_do_nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&family=Nunito:wght@300&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        @font-face {
+            font-family: 'aquatico';
+            src: url(../fontes/Aquatico-Regular.otf) format('opentype');
+            font-weight: normal;
+        }
+        body {
+            background-color: #fff;
+            color: #000;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-        body{
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.postimg.cc/htYzKDv3/image.png') no-repeat center center fixed;
+        .darkmode {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .darkmode header {
+            background-image: url(../imagens/agua\ viva\ pequena\ \(1\).jpg) !important;
+        }
+
+        header {
+            color: rgb(0, 0, 142);
+            background-image: url(../imagens/corais_243413140.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         nav {
@@ -25,7 +46,7 @@
             padding: 10px;
             position: fixed;
             z-index: 10;
-            background: #0c4a88;
+            background: #0c4a8800;;
             transition: top 0.3s, background 0.3s;
         }
 
@@ -33,126 +54,452 @@
             background: #0c4a88;;
         }
 
-        html, section.main-section {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Arial', sans-serif;
-        height: 100%;
-        width: 100vw;
+        #selecionado {
+            text-decoration: underline;
+            text-decoration-color: aquamarine;
         }
 
-        section.main-section {
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.postimg.cc/htYzKDv3/image.png') no-repeat center center fixed;
-        background-size: cover;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        margin-top: 70px;
-        }
-
-        .container {
-        max-width: 600px;
-        width: 100%;
-        padding: 20px;
-        }
-
-        .content h1 .line-break {
-            display: block; /* Força quebra de linha */
-        }
-
-        .content h1 {
-            font-size: 5em;
-            font-family: 'Open Sans Condensed', sans-serif; /* Fonte para o título */
-            font-weight: bold;
-            margin: 20px 0;
-            line-height: 1.2; /* Espaçamento entre linhas */
-            letter-spacing: 3px; /* Espaçamento entre letras */
-        }
-
-        .content p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            font-family: 'Nunito', sans-serif; /* Fonte estilo Avenir Light */
-            letter-spacing: 3px; /* Espaçamento entre letras */
-        }
-
-        .progress-bar {
-        position: relative;
-        width: 100%;
-        height: 10px;
-        background: #d3d3d3;
-        border-radius: 5px;
-        margin: 20px 0;
-        }
-
-        .progress {
-        width: 97%; 
-        height: 100%;
-        background: #87CEEB;
-        border-radius: 5px;
-        transition: width 0.3s;
-        }
-
-        .progress-text {
-        position: absolute;
-        top: -25px;
-        right: 0;
-        color: #d3d3d3;
-        font-size: 12px;
-        }
-
-        .voltar {
-        background: #87CEEB;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background 0.3s;
-        }
-
-        .voltar:hover {
-        background: #4682B4;
-        }
-
-        .footer {
-            margin-top: 30px;
+        .gif-container {
             display: flex;
-            justify-content: center; /* Centraliza horizontalmente */
-            align-items: center; /* Centraliza verticalmente */
-            gap: 20px; /* Espaço entre os ícones */
-        }
-
-        .footer a {
-            text-decoration: none;
-            color: white;
-            font-size: 32px; /* Tamanho ajustado dos ícones */
-            width: 50px;
-            height: 50px;
-            display: inline-flex;
             justify-content: center;
             align-items: center;
-            border: 2px solid white;
+            height: calc(100vh - 80px);
+            position: relative;
+            flex-direction: column;
+            z-index: 3;
+            padding-top: 40px;
+        }
+
+        #gif {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 50px;
+        }
+
+        #mergulhe {
+            display: inline-block;
+            padding: 20px 24px;
+            margin-bottom: -120px;
+            height: auto;
+            width: auto;
+            color: white;
+            font-weight: bolder;
+            font-family: "Montserrat", serif;
+            font-size: 1.5em;
+            background-color: #ff0000;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            text-align: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: font-size 0.2s ease, font-weight 0.2s ease, color 0.2s ease, background-color 0.2s ease, background-image 0.2s ease; 
+        }
+
+        #mergulhe:hover {
+            background-image: linear-gradient(90deg, #7FE5F7, #0088A6, rgb(54, 54, 54));
+            cursor: pointer;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: rgba(255, 255, 255, 0.7);
             border-radius: 50%;
+            opacity: 0.7;
+            animation: rise 5s infinite;
+            z-index: 1;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-600px);
+                opacity: 0;
+            }
+        }
+
+        .btn {
+            background-color: #fff;
+            width: 5em;
+            height: 2.66em;
+            border-radius: 10em;
+            padding: 0 0.5em;
+            box-shadow: inset 0 8px 60px rgba(0, 0, 0, .1),
+                inset 0 8px 8px rgba(0, 0, 0, .1),
+                inset 0 -4px 4px rgba(0, 0, 0, .1);
+            position: relative;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .btn__indicator {
+            background-color: #fff;
+            width: 2em;
+            height: 2em;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, .2);
+            transition: transform .3s ease;
+        }
+
+        .btn__icon-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn__icon {
+            color: #FFDE59;
+            font-size: 1.5em;
+        }
+
+        .btn__icon.animated {
+            animation: spin 0.5s;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .darkmode .btn {
+            box-shadow: inset 0 8px 60px rgba(0, 0, 0, .3),
+                inset 8px 0 8px rgba(0, 0, 0, .3),
+                inset 0 -4px 4px rgba(0, 0, 0, .3);
+        }
+
+        .darkmode .btn__indicator {
+            transform: translateX(2em);
+            background-color: #2b2b2b;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .darkmode .btn__icon {
+            color: #fff;
+        }
+
+        .wave {
+            width: 100%;
+            height: 60px;
+            position: relative;
+            overflow: visible;
+            transform: rotate(180deg);
+            fill: #bdbd04;
+        }
+
+        .wave svg {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .wave_2 {
+            width: 100%;
+            height: 60px;
+            position: relative;
+            overflow: visible;
+            fill: #0135e2;
+        }
+
+        .wave_2 svg {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #explicação_submerged{
+            justify-items: center;
+        }
+
+        #explicação_submerged h1{
+            font-family: 'Montserrat', serif;
+            font-size: 2.5em;
+            margin-bottom: 45px;
+        }
+
+        #explicação_submerged p{
+            justify-items: center;
+            font-family: "Roboto", serif;
+            width: 90vw;
+            font-size: 1.1em;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        #trajetoria{
+            justify-items: center;
+            background-color: #0135e2;
+            background-image: linear-gradient(#0135e2,#0429a4, #11018f, black);
+            padding-top: 20px;
+        }
+
+        #fotos_e_videos{
+            justify-items: center;
+            padding-top: 20px;
+        }
+
+        #fotos_e_videos img{
+            width: 500px;
+            height: auto;
+            border-radius: 25px;
+            margin: 20px;
+            margin-left: 35px;
+        }
+
+        #trajetoria h2{
+            margin-bottom: 25px;
+            font-family: 'aquatico', serif;
+            font-size: 3em;
+        }
+
+        #trajetoria p{
+            justify-items: center;
+            font-family: "Roboto", serif;
+            width: 90vw;
+            font-size: 1.2em;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        h3{
+            font-size: 1.9em;
+            padding-bottom: 10px;
+        }
+
+        #trabalhos h2{
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        #container_das_section{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .section_dupla {
+            height: 80vh;
+            width: 50vw;
+            overflow: hidden;
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            color: whitesmoke;
+            display: flex; /* Usando flexbox */
+            flex-direction: column; /* Mantém a direção em coluna */
+            justify-content: flex-end; 
+            z-index: 3;
+        }
+
+        #projeto img{
+
+        }
+
+        #robo img{
+            border-radius: 20px;
+            width: 289px;
+            height: 300px;
+            align-self: center;
+        }
+
+        #trabalhos a{
+            font-family: 'Montserrat', serif;
+            font-size: 2.5em;
+            margin-bottom: 45px;
+            text-decoration: none;
+            color: white;
             transition: all 0.3s;
         }
 
-        .footer a:hover {
-            background: #87CEEB;
-            border-color: #87CEEB;
+        #trabalhos a:hover{
+            font-size: 2.6em;
+            text-decoration: underline;
+            color: rgb(0, 234, 255);
         }
 
-        .footer i {
-            font-size: 24px; /* Ajustei o tamanho do ícone dentro do círculo */
+        #nacional{
+            font-family: 'Montserrat', serif;
+            font-size: 3em;
+            color: whitesmoke;
+            padding-top: 75px;
+            padding-bottom: 90px;
         }
 
-        footer{
-            background-color: gray;
-            color: black;
+        @media (max-width: 400px) { /* Celulares menores*/
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                display: none;
+            }
+
+            nav.nav-scroll {
+                background: #ff840056;
+                border-radius: 20px;
+            }
+
+            .logo {
+                width: 20px;
+                height: auto;
+            }
+
+            .menu-lateral {
+                width: 70vw;
+            }
+
+            #projeto img{
+                width: 45vw;
+                height: auto;
+                padding-bottom: 30px;
+            }
+
+            #robo img{
+                width: 45vw;
+                height: auto;
+                align-self: center;
+                padding-bottom: 30px;
+            }
+
+        }
+
+        @media (min-width: 401px) and (max-width: 575px) { /* Celulares maiores*/
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                display: none;
+            }
+
+            nav.nav-scroll {
+                background: #ff840056;
+                border-radius: 20px;
+            }
+
+            .menu-lateral {
+                width: 70vw;
+            }
+
+            .degrade-do-menu {
+                background: linear-gradient(125deg, #0500ff, #ffa000);
+                background-size: 120% 120%;
+                animation: gradient-animation 2s ease infinite;
+            }
+
+            @keyframes gradient-animation {
+                0% {
+                    background-position: 0% 12%;
+                }
+
+                50% {
+                    background-position: 25% 7%;
+                }
+
+                100% {
+                    background-position: 0% 12%;
+                }
+            }
+
+            #projeto img{
+                padding-bottom: 80px;
+            }
+
+            #robo img{
+                width: 200px;
+                height: auto;
+                align-self: center;
+                padding-bottom: 80px;
+            }
+
+        }
+
+        @media (min-width: 576px) and (max-width: 997px) { /* Tablet */
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                display: none;
+            }
+
+            nav.nav-scroll {
+                background: #ff840056;
+                border-radius: 20px;
+            }
+
+            .menu-lateral {
+                width: 70vw;
+            }
+
+            .menu-lateral {
+                display: none;
+                position: absolute;
+                top: 20px;
+                right: 0;
+                background-color: #333;
+                padding: 20px;
+                margin: 10px;
+                border-radius: 15px;
+                z-index: 100;
+                width: 85vw;
+                height: 70vh;
+                opacity: 0;
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            #projeto img{
+
+            }
+
+            #robo img{
+                width: 230px;
+                height: auto;
+                align-self: center;
+            }
+
+        }
+
+        @media (min-width: 998px) and (max-width: 1055px) { /* notebook */
+
+            #projeto img{
+
+            }
+
+            #robo img{
+                width: 350px;
+                height: auto;
+                align-self: center;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+        }
+
+        @media (min-width: 1056px) { /* computador */
+
+            #projeto img{
+
+            }
+
+            #robo img{
+                width: 350px;
+                height: auto;
+                align-self: center;
+            }
+
+            nav ul {
+                gap: 25px;
+            }
         }
 
     </style>
@@ -161,87 +508,120 @@
 <body>
     <header>
         <nav id="navegacao">
-           <div class="logo">
-               <a href="../index.html"><img src="https://i.postimg.cc/44bRywLn/Whats-App-Image-2025-01-26-at-3-59-32-AM-removebg-preview.png" alt="Logo da Albatroid"></a>
-           </div>
-           <ul id="menu-categorias">
-               <li>
-                   <i id="customizado" class="fas fa-users"></i>
-                   <p class="direcionamento">Comunidade</p>
-                   <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
-                   <div class="submenu" id="submenu-comunidade">
-                       <ul>
-                           <li><a href="aba da comunidade.html">Interação</a></li>
-                           <li><a href="aba da comunidade documentos.html">Documentos</a></li>
-                       </ul>
-                   </div>
-               </li>
-               <li>
-                   <i id="customizado" class="fas fa-heart"></i>
-                   <a href="projetos.html" class="direcionamento">Projetos</a>
-               </li>
-               <li>
-                   <img class="customizado" src="https://i.postimg.cc/mrssgp4H/image-2.png" alt="globo">
-                   <a href="nosso site.html" class="direcionamento">Nosso Site</a>
-               </li>
-               <li>
-                   <img class="customizado-2" src="../imagens/FIRSTicon_RGB_withTM.png" alt="logo da FIRST">
-                   <a href="sobre a FIRST.html" class="direcionamento">Sobre a FIRST</a>
-               </li>
-               <li>
-                   <img class="customizado-3" src="https://i.postimg.cc/X7mgfkm0/carta.png" alt="carta">
-                   <a href="contato.html" class="direcionamento">Fale Conosco</a>
-               </li>
-               <li>
-                   <img class="customizado-4" src="https://i.postimg.cc/Hxrx9XFf/image-6.png" alt="globo terrestre">
-                   <p class="direcionamento">Temporadas</p>
-                   <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
-                   <div class="submenu" id="submenu-temporadas">
-                       <ul>
-                           <li><a href="em breve.html">Em breve...</a></li>
-                           <li><a href="masterpiece.html">Masterpiece</a></li>
-                           <li><a href="submerged.html">Submerged</a></li>
-                       </ul>
-                   </div>
-               </li>
-           </ul>
-           <div class="menu-tres-barrinhas" id="menu_toggle">
-               <div class="degrade-do-menu"></div>
-               <div class="degrade-do-menu"></div>
-               <div class="degrade-do-menu"></div>
-           </div>
-        </nav>
-       <div class="menu-lateral" id="menu_lateral">
-           <ul>
-               <li><i class="fas fa-users"></i> <a href="aba da comunidade.html">Comunidade</a></li>
-               <li><i class="fas fa-project-diagram"></i> <a href="projetos.html">Projetos</a></li>
-               <li><i class="fas fa-globe"></i> <a href="nosso site.html">Nosso Site</a></li>
-               <li><i class="fas fa-info-circle"></i> <a href="sobre a FIRST.html">Sobre a FIRST</a></li>
-               <li><i class="fas fa-envelope"></i> <a href="contato.html">Fale Conosco</a></li>
-               <li><i class="fas fa-calendar-alt"></i> <a href="submerged.html">Temporadas</a></li>  <!--fazer um js pra colocar a temporada atual automaticamente como redirecionamento-->
-           </ul>
-       </div>
-       <section class="main-section">
-        <div class="container">
-          <div class="content">
-            <h1>EM <br>CONSTRUÇÃO</h1>
-            <p>O SITE ESTÁ QUASE PRONTO</p>
-            <div class="progress-bar">
-              <div class="progress"></div>
-              <span class="progress-text">96%</span>
+            <div class="logo">
+                <a href="../index.html"><img src="https://i.postimg.cc/44bRywLn/Whats-App-Image-2025-01-26-at-3-59-32-AM-removebg-preview.png" alt="Logo da Albatroid"></a>
             </div>
-            <a href="/" class="voltar">Voltar!</a>
-          </div>
-          <div class="footer">
-            <a href="https://www.youtube.com/@Albatroid_Oficial"><i class="fab fa-youtube"></i></a> 
-            <a href=""><i class="fab fa-tiktok"></i></a> 
-            <a href="https://www.instagram.com/albatroidoficial/"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.twitch.tv/albatroidoficial"><i class="fab fa-twitch"></i></a> 
+            <ul id="menu-categorias">
+                <li>
+                    <i id="customizado" class="fas fa-users"></i>
+                    <p class="direcionamento">Comunidade</p>
+                    <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
+                    <div class="submenu" id="submenu-comunidade">
+                        <ul>
+                            <li><a href="aba da comunidade.html">Interação</a></li>
+                            <li><a href="aba da comunidade documentos.html">Documentos</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <i id="customizado" class="fas fa-heart"></i>
+                    <a href="projetos.html" class="direcionamento">Projetos</a>
+                </li>
+                <li>
+                    <img class="customizado" src="https://i.postimg.cc/mrssgp4H/image-2.png" alt="globo">
+                    <a href="nosso site.html" class="direcionamento">Nosso Site</a>
+                </li>
+                <li>
+                    <img class="customizado-2" src="../imagens/FIRSTicon_RGB_withTM.png" alt="logo da FIRST">
+                    <a href="sobre a FIRST.html" class="direcionamento">Sobre a FIRST</a>
+                </li>
+                <li>
+                    <img class="customizado-3" src="https://i.postimg.cc/X7mgfkm0/carta.png" alt="carta">
+                    <a href="contato.html" class="direcionamento">Fale Conosco</a>
+                </li>
+                <li>
+                    <img class="customizado-4" src="https://i.postimg.cc/Hxrx9XFf/image-6.png" alt="globo terrestre">
+                    <p class="direcionamento" id="selecionado">Temporadas</p>
+                    <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
+                    <div class="submenu" id="submenu-temporadas">
+                        <ul>
+                            <li><a href="em breve.html">Em breve...</a></li>
+                            <li><a href="masterpiece.html">Masterpiece</a></li>
+                            <li><a href="submerged.html">Submerged</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <div class="menu-tres-barrinhas" id="menu_toggle">
+                <div class="degrade-do-menu"></div>
+                <div class="degrade-do-menu"></div>
+                <div class="degrade-do-menu"></div>
+            </div>
+        </nav>
+        <div class="menu-lateral" id="menu_lateral">
+            <ul>
+                <li><i class="fas fa-users"></i> <a href="aba da comunidade.html">Comunidade</a></li>
+                <li><i class="fas fa-project-diagram"></i> <a href="projetos.html">Projetos</a></li>
+                <li><i class="fas fa-globe"></i> <a href="nosso site.html">Nosso Site</a></li>
+                <li><i class="fas fa-info-circle"></i> <a href="sobre a FIRST.html">Sobre a FIRST</a></li>
+                <li><i class="fas fa-envelope"></i> <a href="contato.html">Fale Conosco</a></li>
+                <li><i class="fas fa-calendar-alt"></i> <a href="submerged.html">Temporadas</a></li>
+                <div class="btn">
+                    <div class="btn__indicator">
+                        <div class="btn__icon-container">
+                            <i class="btn__icon fas fa-sun"></i>
+                        </div>
+                    </div>
+                </div>
+            </ul>
         </div>
+        <div class="gif-container">
+            <img id="gif" src="https://static.wixstatic.com/media/3a1650_a7d1c334024840d8b642e62d02ebdaaf~mv2.gif" alt="submario da submerged">
+            <p id="mergulhe">mergulhe nessa jornada!!!</p>
         </div>
-      </section>
+    </header>
+
+    <div class="wave">
+        <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+            <path d="M0,20 C480,200 960,-20 1440,20 L1440,100 L0,100 Z" />
+        </svg>
     </div>
-       </header>
+    <section id="trabalhos_da_submerged">
+
+    <section id="explicação_submerged">
+            <h1>2024/2025 Submerged</h1>
+            <p>A temporada Submerged℠ da FIRST® LEGO® League, assim como o proprio nome diz, trouxe um desafio bem amplo: explorar o mundo subaquático, suas tecnologias e seus profissionais, oque nós faz mergulhar de cabeça nesse nincho. Na parte do projeto, a ideia é fazer um projeto de inovação que ajude a resolver um problema real enfrentado por trabalhadores marinhos, ou uma solução que ajude os mesmos a realizar seus trabalhos, trabalhadores esses como biologos marinhos, mergulhadores, fotografos marinhos, hidrógrafos e etc.</p>
+            <p>Já na parte do robô, assim como nas outras temporadas, recebemos um tapete completamente tematico da temporada, que essa temporada foi sobre os mares e oceanos, e temos que completar as missões de acordo com a estrategia da equipe em 2 minutos e meio.</p>
+            <p>Ao longo dessa temporada, foi preciso pesquisar sobre o oceano, rios e lagos, entendendo como a tecnologia pode contribuir com os profissionais marinhos e preservação dos ambientes maritimos. Como em toda temporada da FLL, os valores fundamentais, como trabalho em equipe, inclusão e inovação, estiveram presentes em cada etapa do desafio.</p>
+        </div>
+        <div class="wave_2">
+            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                <path d="M0,20 C480,180 960,-50 1440,20 L1440,100 L0,100 Z" />
+            </svg>
+        </div>
+    </section>
+    <section id="trajetoria">
+        <div id="fotos_e_videos">
+            <h2>nossa trajetoria</h2>
+            <img src="../imagens/3-equipes.jpeg" alt="albatroid, aion-x e atomics juntas">
+            <h3>regional</h3>
+            <p>Aliais, esse foi um dos regionais mais importantes pra historia da nossa equipe, porque nós tivemos as 3 equipes do sesi taguatinga mais unidas do que nunca, e é quase impossivel descrever todo o processo que a gente passou até chegar no regional, foi algo incrivel e muito especial para nós.</p>
+        </div>
+        <div id="trabalhos">
+            <h2>projetos</h2>
+            <div id="container_das_section">
+            <section class="section_dupla" id="projeto">
+                <img src="" alt="SARdinho, projeto da equipe albatroid">
+                <a href="projetos.html">SARdinho</a>
+            </section>
+            <section class="section_dupla" id="robo">
+                <img src="../imagens/kisamao.jpeg" alt="kisame, robô da equipe albatroid">
+                <a href="projetos.html">Kisame</a>
+            </section>
+            </div>
+        </div>
+        <h4 id="nacional">Rumo nacional!!</h4>
+    </section>
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
     </footer>
@@ -250,16 +630,20 @@
         const menuToggle = document.getElementById('menu_toggle');
         const menuLateral = document.getElementById('menu_lateral');
         const navMenu = document.getElementById('menu-categorias');
+        let bubbleInterval;
+
         menuToggle.addEventListener('click', () => {
             menuLateral.classList.toggle('mostrar');
             navMenu.classList.toggle('menu-escondido');
         });
+
         document.addEventListener('click', (event) => {
             if (!menuLateral.contains(event.target) && !menuToggle.contains(event.target)) {
                 menuLateral.classList.remove('mostrar');
                 navMenu.classList.remove('menu-escondido');
             }
         });
+
         const submenus = document.querySelectorAll('.submenu');
         document.querySelectorAll('#menu-categorias > li').forEach(item => {
             item.addEventListener('click', function(event) {
@@ -275,6 +659,7 @@
                 }
             });
         });
+
         document.addEventListener('click', (event) => {
             if (!event.target.closest('#menu-categorias')) {
                 submenus.forEach(submenu => {
@@ -282,27 +667,122 @@
                 });
             }
         });
-    
+
         let lastScrollTop = 0;
-    const nav = document.getElementById('navegacao');
-    
-    window.addEventListener('scroll', function() {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-        if (scrollTop > lastScrollTop) {
-            nav.style.top = "-100px";
-            nav.classList.remove('nav-scroll');
-        } else {
-            nav.style.top = "0";
-            nav.classList.add('nav-scroll');
+        const nav = document.getElementById('navegacao');
+
+        window.addEventListener('scroll', function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                nav.style.top = "-100px";
+                nav.classList.remove('nav-scroll');
+            } else {
+                nav.style.top = "0";
+                nav.classList.add('nav-scroll');
+            }
+            if (scrollTop === 0) {
+                nav.classList.remove('nav-scroll');
+            }
+
+            lastScrollTop = scrollTop;
+        });
+
+        const createBubble = () => {
+            const bubble = document.createElement('div');
+            const size = Math.random() * 50 + 20;
+            bubble.style.width = `${size}px`;
+            bubble.style.height = `${size}px`;
+            bubble.className = 'bubble';
+            bubble.style.left = `${Math.random() * 100}%`;
+            document.getElementById('mergulhe').appendChild(bubble);
+
+            bubble.addEventListener('animationend', () => {
+                bubble.remove();
+            });
+        };
+
+        const startBubbles = () => {
+            bubbleInterval = setInterval(createBubble, 450);
+        };
+
+        document.getElementById('mergulhe').addEventListener('mouseenter', () => {
+            startBubbles();
+        });
+
+        document.getElementById('mergulhe').addEventListener('mouseleave', () => {
+            clearInterval(bubbleInterval);
+            const bubbles = document.querySelectorAll('.bubble');
+            bubbles.forEach(bubble => bubble.remove());
+        });
+
+        const body = document.querySelector('body');
+        const btn = document.querySelector('.btn');
+        const icon = document.querySelector('.btn__icon');
+        const header = document.querySelector('header');
+
+        function store(value) {
+            localStorage.setItem('darkmode', value);
         }
-        if (scrollTop === 0) {
-            nav.classList.remove('nav-scroll');
+
+        function load() {
+            const darkmode = localStorage.getItem('darkmode');
+
+            if (!darkmode) {
+                store(false);
+                icon.classList.add('fa-sun');
+            } else if (darkmode === 'true') {
+                body.classList.add('darkmode');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                icon.classList.add('fa-sun');
+            }
         }
-    
-        lastScrollTop = scrollTop;
-    });
-    
+
+        load();
+
+        function updateWaveColor() {
+            const wavePath = document.querySelector('.wave path');
+            if (body.classList.contains('darkmode')) {
+                wavePath.setAttribute('fill', '#010C1E');
+            } else {
+                wavePath.setAttribute('fill', '#bdbd04');
+            }
+        }
+
+        load();
+        updateWaveColor();
+
+        btn.addEventListener('click', () => {
+            body.classList.toggle('darkmode');
+            icon.classList.add('animated');
+
+            if (body.classList.contains('darkmode')) {
+                header.style.backgroundImage = 'url(../imagens/agua\ viva\ pequena\ \(1\).jpg)';
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                header.style.backgroundImage = 'url(../imagens/corais_243413140.jpg)';
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+
+            store(body.classList.contains('darkmode'));
+            updateWaveColor();
+
+            setTimeout(() => {
+                icon.classList.remove('animated');
+            }, 500);
+        });
+
+        updateWaveColor();
+
+        document.getElementById('mergulhe').addEventListener('click', function() {
+            const targetSection = document.querySelector('#explicação_submerged');
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
     </script>
 </body>
 
