@@ -15,8 +15,10 @@
             src: url(../fontes/Aquatico-Regular.otf) format('opentype');
             font-weight: normal;
         }
+
+        /* Estilos gerais */
         body {
-            background-color: #fff;
+            background-color: #F9E9CF;
             color: #000;
             transition: background-color 0.3s, color 0.3s;
         }
@@ -26,18 +28,32 @@
             color: #000;
         }
 
-        .darkmode header {
-            background-image: url(../imagens/agua\ viva\ pequena\ \(1\).jpg) !important;
-        }
-
         header {
             color: rgb(0, 0, 142);
-            background-image: url(../imagens/corais_243413140.jpg);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
+            background-image: none;
+            background-color: #F9E9CF;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
         }
 
+        #video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .darkmode #video-bg {
+            opacity: 1;
+        }
+
+        /* Navegação */
         nav {
             width: 100vw;
             display: flex;
@@ -46,12 +62,24 @@
             padding: 10px;
             position: fixed;
             z-index: 10;
-            background: #0c4a8800;;
+            background: #0c4a8800;
             transition: top 0.3s, background 0.3s;
         }
 
         nav.nav-scroll {
-            background: #0c4a88;;
+            background: #0c4a88;
+        }
+
+        nav ul li a,
+        nav ul li p,
+        nav ul li i {
+            color: black;
+        }
+
+        .darkmode nav ul li a,
+        .darkmode nav ul li p,
+        .darkmode nav ul li i {
+            color: white;
         }
 
         #selecionado {
@@ -59,6 +87,7 @@
             text-decoration-color: aquamarine;
         }
 
+        /* Container do GIF */
         .gif-container {
             display: flex;
             justify-content: center;
@@ -71,7 +100,7 @@
         }
 
         #gif {
-            width: 200px;
+            width: 350px;
             height: 200px;
             margin-bottom: 50px;
         }
@@ -88,41 +117,24 @@
             font-size: 1.5em;
             background-color: #ff0000;
             border: none;
+            z-index: 3;
             border-radius: 30px;
             text-decoration: none;
             text-align: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
-            transition: font-size 0.2s ease, font-weight 0.2s ease, color 0.2s ease, background-color 0.2s ease, background-image 0.2s ease; 
+            transition: font-size 0.2s ease, font-weight 0.2s ease, color 0.2s ease, background-color 0.2s ease, background-image 0.2s ease;
         }
 
         #mergulhe:hover {
-            background-image: linear-gradient(90deg, #7FE5F7, #0088A6, rgb(54, 54, 54));
+            background-color: #ee0404;
+            border: #00000022;
+            border-style: solid;
             cursor: pointer;
         }
 
-        .bubble {
-            position: absolute;
-            bottom: -50px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 50%;
-            opacity: 0.7;
-            animation: rise 5s infinite;
-            z-index: 1;
-        }
-
-        @keyframes rise {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-600px);
-                opacity: 0;
-            }
-        }
-
+        /* Botão de modo escuro */
         .btn {
             background-color: #fff;
             width: 5em;
@@ -187,157 +199,194 @@
             color: #fff;
         }
 
-        .wave {
-            width: 100%;
-            height: 60px;
-            position: relative;
-            overflow: visible;
-            transform: rotate(180deg);
-            fill: #bdbd04;
-        }
-
-        .wave svg {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .wave_2 {
-            width: 100%;
-            height: 60px;
-            position: relative;
-            overflow: visible;
-            fill: #0135e2;
-        }
-
-        .wave_2 svg {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        #explicação_submerged{
+        /* Seção de explicação */
+        #explicação_masterpiece {
             justify-items: center;
+            background-color: #F9E9CF;
+            padding-top: 90px;
+            padding-bottom: 50px;
+            text-align: center;
         }
 
-        #explicação_submerged h1{
+        #explicação_masterpiece h1 {
             font-family: 'Montserrat', serif;
             font-size: 2.5em;
-            margin-bottom: 45px;
+            padding-bottom: 45px;
         }
 
-        #explicação_submerged p{
-            justify-items: center;
+        #explicação_masterpiece p {
             font-family: "Roboto", serif;
             width: 90vw;
             font-size: 1.1em;
             font-weight: normal;
-            margin-bottom: 15px;
+            padding-bottom: 35px;
+            margin: 0 auto;
         }
 
-        #trajetoria{
+        /* Seção da trajetória */
+        #trajetoria {
             justify-items: center;
             background-color: #0135e2;
-            background-image: linear-gradient(#0135e2,#0429a4, #11018f, black);
-            padding-top: 20px;
+            background-image: linear-gradient(#F9E9CF, rgb(255, 99, 245));
+            padding: 60px 20px;
+            text-align: center;
         }
 
-        #fotos_e_videos{
-            justify-items: center;
-            padding-top: 20px;
-        }
-
-        #fotos_e_videos img{
-            width: 500px;
-            height: auto;
-            border-radius: 25px;
-            margin: 20px;
-            margin-left: 35px;
-        }
-
-        #trajetoria h2{
-            margin-bottom: 25px;
+        #trajetoria h2 {
+            margin-bottom: 40px;
             font-family: 'aquatico', serif;
             font-size: 3em;
+            color: #333;
         }
 
-        #trajetoria p{
-            justify-items: center;
-            font-family: "Roboto", serif;
-            width: 90vw;
-            font-size: 1.2em;
-            font-weight: normal;
-            margin-bottom: 15px;
-        }
-
-        h3{
-            font-size: 1.9em;
-            padding-bottom: 10px;
-        }
-
-        #trabalhos h2{
-            text-align: center;
-            padding-top: 50px;
-        }
-
-        #container_das_section{
+        #fotos_e_videos {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .trajetoria-item {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 350px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 1 1 300px;
+        }
+
+        .trajetoria-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .trajetoria-item img {
             width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .trajetoria-texto {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .trajetoria-texto h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #222;
+            font-family: 'Montserrat', serif;
+        }
+
+        .trajetoria-texto p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+            font-family: 'Roboto', serif;
+        }
+
+        #trajetoria h3 {
+            font-family: 'Montserrat', serif;
+            font-size: 2em;
+            margin-top: 40px;
+            color: #333;
+        }
+
+        #trajetoria p {
+            font-family: "Roboto", serif;
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.6;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        /* Seção de projetos */
+        #trabalhos {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #F9E9CF;
+            border-radius: 10px;
+        }
+
+        #trabalhos h2 {
+            font-family: 'Montserrat', serif;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        #container_das_section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .section_dupla {
-            height: 80vh;
-            width: 50vw;
-            overflow: hidden;
-            flex: 1;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
             text-align: center;
-            color: whitesmoke;
-            display: flex; /* Usando flexbox */
-            flex-direction: column; /* Mantém a direção em coluna */
-            justify-content: flex-end; 
-            z-index: 3;
+            flex: 1 1 300px;
+            max-width: 400px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section_dupla:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        #robo img {
+            border-radius: 20px;
+            width: 100%;
+            height: auto;
+            max-width: 299px;
         }
 
         #projeto img{
-
-        }
-
-        #robo img{
             border-radius: 20px;
-            width: 289px;
-            height: 300px;
-            align-self: center;
+            width: 100%;
+            height: auto;
+            max-width: 289px;
         }
 
-        #trabalhos a{
+        #trabalhos a {
             font-family: 'Montserrat', serif;
-            font-size: 2.5em;
-            margin-bottom: 45px;
+            font-size: 2em;
+            margin-bottom: 20px;
             text-decoration: none;
-            color: white;
+            color: #333;
             transition: all 0.3s;
         }
 
-        #trabalhos a:hover{
-            font-size: 2.6em;
+        #trabalhos a:hover {
+            font-size: 2.1em;
             text-decoration: underline;
-            color: rgb(0, 234, 255);
+            color: #007BFF;
         }
 
-        #nacional{
-            font-family: 'Montserrat', serif;
-            font-size: 3em;
-            color: whitesmoke;
-            padding-top: 75px;
-            padding-bottom: 90px;
+        /* Responsividade */
+        @media (max-width: 768px) {
+            #fotos_e_videos {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .trajetoria-item {
+                max-width: 100%;
+            }
+
+            .section_dupla {
+                max-width: 100%;
+            }
         }
 
-        @media (max-width: 400px) { /* Celulares menores*/
-
+        @media (max-width: 400px) {
             nav ul {
                 flex-direction: column;
                 gap: 10px;
@@ -358,23 +407,34 @@
                 width: 70vw;
             }
 
-            #projeto img{
+            #projeto img {
                 width: 45vw;
                 height: auto;
                 padding-bottom: 30px;
             }
 
-            #robo img{
+            #robo img {
                 width: 45vw;
                 height: auto;
                 align-self: center;
                 padding-bottom: 30px;
             }
 
+            .trajetoria-item {
+                flex: 1 1 100%; /* Blocos ocupam 100% da largura */
+            }
+
+            .trajetoria-item:hover {
+                height: auto; /* Expande o bloco */
+            }
+
+            .trajetoria-item:hover .trajetoria-texto {
+                bottom: 0;
+                opacity: 1;
+            }
         }
 
-        @media (min-width: 401px) and (max-width: 575px) { /* Celulares maiores*/
-
+        @media (min-width: 401px) and (max-width: 575px) {
             nav ul {
                 flex-direction: column;
                 gap: 10px;
@@ -410,21 +470,33 @@
                 }
             }
 
-            #projeto img{
+            #projeto img {
                 padding-bottom: 80px;
             }
 
-            #robo img{
+            #robo img {
                 width: 200px;
                 height: auto;
                 align-self: center;
                 padding-bottom: 80px;
             }
 
+            .trajetoria-item {
+                flex: 1 1 100%; /* Blocos ocupam 100% da largura */
+            }
+
+            .trajetoria-item:hover {
+                height: auto; /* Expande o bloco */
+            }
+
+            .trajetoria-item:hover .trajetoria-texto {
+                bottom: 0;
+                opacity: 1;
+            }
+
         }
 
-        @media (min-width: 576px) and (max-width: 997px) { /* Tablet */
-
+        @media (min-width: 576px) and (max-width: 997px) {
             nav ul {
                 flex-direction: column;
                 gap: 10px;
@@ -456,25 +528,29 @@
                 transition: opacity 0.3s ease, transform 0.3s ease;
             }
 
-            #projeto img{
-
-            }
-
-            #robo img{
+            #robo img {
                 width: 230px;
                 height: auto;
                 align-self: center;
             }
 
-        }
-
-        @media (min-width: 998px) and (max-width: 1055px) { /* notebook */
-
-            #projeto img{
-
+            .trajetoria-item {
+                flex: 1 1 100%; /* Blocos ocupam 100% da largura */
             }
 
-            #robo img{
+            .trajetoria-item:hover {
+                height: auto; /* Expande o bloco */
+            }
+
+            .trajetoria-item:hover .trajetoria-texto {
+                bottom: 0;
+                opacity: 1;
+            }
+
+        }
+
+        @media (min-width: 998px) and (max-width: 1055px) {
+            #robo img {
                 width: 350px;
                 height: auto;
                 align-self: center;
@@ -485,13 +561,8 @@
             }
         }
 
-        @media (min-width: 1056px) { /* computador */
-
-            #projeto img{
-
-            }
-
-            #robo img{
+        @media (min-width: 1056px) {
+            #robo img {
                 width: 350px;
                 height: auto;
                 align-self: center;
@@ -501,12 +572,16 @@
                 gap: 25px;
             }
         }
-
     </style>
+    
 </head>
 
 <body>
     <header>
+        <video id="video-bg" autoplay muted loop>
+            <source src="https://res.cloudinary.com/djlcfot1t/video/upload/v1739669831/tgqthqlvks8egdbq7qni.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
         <nav id="navegacao">
             <div class="logo">
                 <a href="../index.html"><img src="https://i.postimg.cc/44bRywLn/Whats-App-Image-2025-01-26-at-3-59-32-AM-removebg-preview.png" alt="Logo da Albatroid"></a>
@@ -576,51 +651,73 @@
             </ul>
         </div>
         <div class="gif-container">
-            <img id="gif" src="https://static.wixstatic.com/media/3a1650_a7d1c334024840d8b642e62d02ebdaaf~mv2.gif" alt="submario da submerged">
-            <p id="mergulhe">mergulhe nessa jornada!!!</p>
+            <img id="gif" src="../imagens/masterpiece.avif" alt="masterpiece">
+            <p id="mergulhe">Veja nossa obra de arte!!!</p>
         </div>
     </header>
-
-    <div class="wave">
-        <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-            <path d="M0,20 C480,200 960,-20 1440,20 L1440,100 L0,100 Z" />
-        </svg>
-    </div>
-    <section id="trabalhos_da_submerged">
-
-    <section id="explicação_submerged">
-            <h1>2024/2025 Submerged</h1>
-            <p>A temporada Submerged℠ da FIRST® LEGO® League, assim como o proprio nome diz, trouxe um desafio bem amplo: explorar o mundo subaquático, suas tecnologias e seus profissionais, oque nós faz mergulhar de cabeça nesse nincho. Na parte do projeto, a ideia é fazer um projeto de inovação que ajude a resolver um problema real enfrentado por trabalhadores marinhos, ou uma solução que ajude os mesmos a realizar seus trabalhos, trabalhadores esses como biologos marinhos, mergulhadores, fotografos marinhos, hidrógrafos e etc.</p>
-            <p>Já na parte do robô, assim como nas outras temporadas, recebemos um tapete completamente tematico da temporada, que essa temporada foi sobre os mares e oceanos, e temos que completar as missões de acordo com a estrategia da equipe em 2 minutos e meio.</p>
-            <p>Ao longo dessa temporada, foi preciso pesquisar sobre o oceano, rios e lagos, entendendo como a tecnologia pode contribuir com os profissionais marinhos e preservação dos ambientes maritimos. Como em toda temporada da FLL, os valores fundamentais, como trabalho em equipe, inclusão e inovação, estiveram presentes em cada etapa do desafio.</p>
-        </div>
-        <div class="wave_2">
-            <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
-                <path d="M0,20 C480,180 960,-50 1440,20 L1440,100 L0,100 Z" />
-            </svg>
+    <section id="trabalhos_da_masterpiece">
+    <section id="explicação_masterpiece">
+            <h1>2023/2023 Masterpiece</h1>
+            <p>Projeto e introdução.</p>
+            <p>Robô,</p>
+            <p>Core.</p>
         </div>
     </section>
     <section id="trajetoria">
+        <h2>Nossa Trajetoria</h2>
         <div id="fotos_e_videos">
-            <h2>nossa trajetoria</h2>
-            <img src="../imagens/3-equipes.jpeg" alt="albatroid, aion-x e atomics juntas">
-            <h3>regional</h3>
-            <p>Aliais, esse foi um dos regionais mais importantes pra historia da nossa equipe, porque nós tivemos as 3 equipes do sesi taguatinga mais unidas do que nunca, e é quase impossivel descrever todo o processo que a gente passou até chegar no regional, foi algo incrivel e muito especial para nós.</p>
+            <!-- Regional -->
+            <div class="trajetoria-item">
+                <img src="../imagens/regional-master.jpeg" alt="Regional">
+                <div class="trajetoria-texto">
+                    <h3>Regional</h3>
+                    <p>
+                        Começamos nossa jornada na fase regional, onde consolidamos nossa equipe e aprendemos a trabalhar em conjunto. 
+                        Foi um momento de muito aprendizado e superação, onde enfrentamos desafios técnicos e humanos.
+                    </p>
+                </div>
+            </div>
+    
+            <!-- Nacional -->
+            <div class="trajetoria-item">
+                <img src="../imagens/nacional-master.jpg" alt="Nacional">
+                <div class="trajetoria-texto">
+                    <h3>Nacional</h3>
+                    <p>
+                        Depois da classificação no regional, avançamos para a etapa nacional. Durante essa nova etapa dessa jornada, aprimoramos nossas habilidades e estratégias, 
+                        competindo com equipes de todo o país. Foi uma experiência incrível que nos trouxe muito conhecimento e novas amizades.
+                    </p>
+                </div>
+            </div>
+    
+            <!-- Internacional -->
+            <div class="trajetoria-item">
+                <img src="../imagens/inter-master.jpeg" alt="Internacional">
+                <div class="trajetoria-texto">
+                    <h3>Internacional</h3>
+                    <p>
+                        Logo após disso, fomos classificados para representar nosso país em competições internacionais, sendo mais especifico, no torneio internacional da California. A etapa internacional é, e foi um marco 
+                        muito em importante em nossa trajetória, onde levamos nossa paixão pela robótica e inovação para o mundo, e trazendo um premio de volta para o Brasil.
+                    </p>
+                </div>
+            </div>
+            <p>
+                No final de todo esse processo, nossa equipe teve um aprendizado em todos os aspectos possiveis, aprendemos muito tanto no tecnico, quanto no humano, realmente conseguimos ver oq a é FIRST em sua essencia durante a temporada, vamos levar todos esses conehcimentos pra vida, e proximas temporadas!
+            </p>
         </div>
         <div id="trabalhos">
             <h2>projetos</h2>
             <div id="container_das_section">
             <section class="section_dupla" id="projeto">
-                <img src="" alt="SARdinho, projeto da equipe albatroid">
-                <a href="projetos.html">SARdinho</a>
+                <img src="../imagens/surdomusic (1).jpeg" alt="surdomusic, projeto da equipe albatroid">
+                <a href="projetos.html">SurdoMusic</a>
             </section>
             <section class="section_dupla" id="robo">
-                <img src="../imagens/kisamao.jpeg" alt="kisame, robô da equipe albatroid">
-                <a href="projetos.html">Kisame</a>
+                <img src="../imagens/naruto.jpeg" alt="naruto, robô da equipe albatroid">
+                <a href="projetos.html">Naruto</a>
             </section>
             </div>
         </div>
-        <h4 id="nacional">Rumo nacional!!</h4>
     </section>
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
@@ -688,38 +785,10 @@
             lastScrollTop = scrollTop;
         });
 
-        const createBubble = () => {
-            const bubble = document.createElement('div');
-            const size = Math.random() * 50 + 20;
-            bubble.style.width = `${size}px`;
-            bubble.style.height = `${size}px`;
-            bubble.className = 'bubble';
-            bubble.style.left = `${Math.random() * 100}%`;
-            document.getElementById('mergulhe').appendChild(bubble);
-
-            bubble.addEventListener('animationend', () => {
-                bubble.remove();
-            });
-        };
-
-        const startBubbles = () => {
-            bubbleInterval = setInterval(createBubble, 450);
-        };
-
-        document.getElementById('mergulhe').addEventListener('mouseenter', () => {
-            startBubbles();
-        });
-
-        document.getElementById('mergulhe').addEventListener('mouseleave', () => {
-            clearInterval(bubbleInterval);
-            const bubbles = document.querySelectorAll('.bubble');
-            bubbles.forEach(bubble => bubble.remove());
-        });
-
         const body = document.querySelector('body');
         const btn = document.querySelector('.btn');
         const icon = document.querySelector('.btn__icon');
-        const header = document.querySelector('header');
+        const videoBg = document.getElementById('video-bg');
 
         function store(value) {
             localStorage.setItem('darkmode', value);
@@ -735,51 +804,37 @@
                 body.classList.add('darkmode');
                 icon.classList.remove('fa-sun');
                 icon.classList.add('fa-moon');
+                videoBg.style.opacity = '1'; // Mostra o vídeo no modo escuro
             } else {
                 icon.classList.add('fa-sun');
             }
         }
 
         load();
-
-        function updateWaveColor() {
-            const wavePath = document.querySelector('.wave path');
-            if (body.classList.contains('darkmode')) {
-                wavePath.setAttribute('fill', '#010C1E');
-            } else {
-                wavePath.setAttribute('fill', '#bdbd04');
-            }
-        }
-
-        load();
-        updateWaveColor();
 
         btn.addEventListener('click', () => {
             body.classList.toggle('darkmode');
             icon.classList.add('animated');
 
             if (body.classList.contains('darkmode')) {
-                header.style.backgroundImage = 'url(../imagens/agua\ viva\ pequena\ \(1\).jpg)';
+                videoBg.style.opacity = '1'; // Mostra o vídeo
                 icon.classList.remove('fa-sun');
                 icon.classList.add('fa-moon');
             } else {
-                header.style.backgroundImage = 'url(../imagens/corais_243413140.jpg)';
+                videoBg.style.opacity = '0'; // Oculta o vídeo
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
             }
 
             store(body.classList.contains('darkmode'));
-            updateWaveColor();
 
             setTimeout(() => {
                 icon.classList.remove('animated');
             }, 500);
         });
 
-        updateWaveColor();
-
         document.getElementById('mergulhe').addEventListener('click', function() {
-            const targetSection = document.querySelector('#explicação_submerged');
+            const targetSection = document.querySelector('#explicação_masterpiece');
             targetSection.scrollIntoView({ behavior: 'smooth' });
         });
 
