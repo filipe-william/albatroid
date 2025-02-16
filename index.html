@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amanhecendo com robótica</title>
     <link rel="shortcut icon" href="../imagens/logo da alba.png" type="image/x-icon">
-    <link rel="stylesheet" href="styles/style_do_index_animação.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <script type="module">
@@ -68,7 +67,6 @@
         };
 
   </script>
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Passion+One:wght@400;700;900&display=swap');
 
@@ -98,14 +96,14 @@
         }
 
         .fundo {
-            background-image: url('https://i.postimg.cc/76JNqS1f/Whats-App-Image-2024-12-11-at-10-01-38-PM.jpg');
+            background-image: url('https://i.postimg.cc/2jVxcLTX/Whats-App-Image-2024-12-11-at-10-01-38-PM-1-1-1.png');
             background-size: cover; 
             background-position: center;
             min-height: 100vh;
         }
 
         header {
-            height: 100vh;
+            height: 110vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -677,7 +675,7 @@
             font-size: 2rem;
         }
 
-        .botao-venha-conhecer{
+        .botao-venha-conhecer {
             margin: 0 auto;
             padding: 2em;
             width: 300px;
@@ -685,46 +683,168 @@
             text-align: center;
             border-radius: 30px;
             position: relative;
+            color: white;
+            font-size: 1.5em;
+            border: none;
+            cursor: pointer;
         }
 
-        .botao-venha-conhecer:hover{
+        .botao-venha-conhecer:hover {
             background-color: gray;
             color: black;
-        }
-
-        .botao-venha-conhecer::after, .botao-venha-conhecer::before{
-            content: '';
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            background-image: conic-gradient(from var(--angle),orange, blue);
-            top: 50%;
-            left: 50%;
-            translate: -50% -50%;
-            z-index: -1;
-            padding: 1.5px;
-            border-radius: 30px;
-            animation: 3s spin linear infinite;
-        }
-
-        .botao-venha-conhecer::before{
-            filter: blur(3rem);
-            opacity: 0.5;
-        }
-
-        @keyframes spin{
-            from{
-                --angle: 0deg;
-            }
-            to{
-                --angle: 360deg;
-            }
         }
 
         .hidden {
             display: none;
         }
 
+        #bem-vindo{
+            z-index: 100;
+            padding: 65px;
+            background-color: #ffffff;
+            margin: 15px 15px;
+            border-radius: 35px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        #bem-vindo ul {
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+
+        #bem-vindo ul li {
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        #bem-vindo h1 {
+            font-size: 2.8rem;
+            color: #0c4a88;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        #bem-vindo p {
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        #bem-vindo a {
+            color: #0c4a88;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        #bem-vindo a:hover {
+            color: #f8af42;
+        }
+
+        .btn {
+            background-color: #fff;
+            width: 5em;
+            height: 2.66em;
+            border-radius: 10em;
+            padding: 0 0.5em;
+            box-shadow: inset 0 8px 60px rgba(0, 0, 0, .1),
+                inset 0 8px 8px rgba(0, 0, 0, .1),
+                inset 0 -4px 4px rgba(0, 0, 0, .1);
+            position: relative;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .btn__indicator {
+            background-color: #fff;
+            width: 2em;
+            height: 2em;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, .2);
+            transition: transform .3s ease;
+        }
+
+        .btn__icon-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn__icon {
+            color: #FFDE59;
+            font-size: 1.5em;
+        }
+
+        .btn__icon.animated {
+            animation: spin 0.5s;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .darkmode .btn {
+            box-shadow: inset 0 8px 60px rgba(0, 0, 0, .3),
+                inset 8px 0 8px rgba(0, 0, 0, .3),
+                inset 0 -4px 4px rgba(0, 0, 0, .3);
+        }
+
+        .darkmode .btn__indicator {
+            transform: translateX(2em);
+            background-color: #2b2b2b;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .darkmode .btn__icon {
+            color: #fff;
+        }
+
+        .darkmode {
+            background-color: #232323;
+            color: #fff;
+        }
+
+        .darkmode #bem-vindo {
+            background-color: #3e3d3d;
+            color: #0073ffa3;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.201);
+        }
+
+        .darkmode #bem-vindo h1 {
+            color: #0073ffd7;
+        }
+
+        .darkmode #bem-vindo p,
+        .darkmode #bem-vindo ul li {
+            color: #ccc; 
+        }
+
+        .darkmode #bem-vindo a {
+            color: #f8af42; /* Cor dos links no modo escuro */
+        }
+
+        .darkmode #bem-vindo a:hover {
+            color: #ff9600; /* Cor dos links ao passar o mouse no modo escuro */
+        }
+
+        .darkmode footer {
+            background-color: #3e3d3d;
+            color: #9dc9ffb3;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.201);
+        }
         /* Media Queries (arrumar celulares menores e maiores) */
 
         @media (max-width: 400px) { /* Celulares menores*/
@@ -755,10 +875,6 @@
             .logo {
                 width: 20px;
                 height: auto;
-            }
-
-            body {
-                background-color: rgb(238, 255, 0);
             }
 
             .menu-lateral {
@@ -816,10 +932,6 @@
             nav.nav-scroll {
                 background: #ff84003d;
                 border-radius: 20px;
-            }
-
-            body {
-                background-color: blue;
             }
 
             .menu-lateral {
@@ -899,10 +1011,6 @@
                 border-radius: 20px;
             }
 
-            body {
-                background-color: rgb(234, 0, 255);
-            }
-
             .menu-lateral {
                 width: 70vw;
             }
@@ -941,10 +1049,6 @@
                 font-size: 9vh;
             }
 
-            body {
-                background-color: red;
-            }
-
             nav ul {
                 gap: 15px;
             }
@@ -965,7 +1069,6 @@
 
 <body>
     <div class="fundo">
-    <div class="sobreposicao"></div>
         <header>
          <nav id="navegacao">
             <div class="logo">
@@ -1026,6 +1129,13 @@
                 <li><i class="fas fa-info-circle"></i> <a href="paginas/sobre a FIRST.html">Sobre a FIRST</a></li>
                 <li><i class="fas fa-envelope"></i> <a href="paginas/contato.html">Fale Conosco</a></li>
                 <li><i class="fas fa-calendar-alt"></i> <a href="paginas/submerged.html">Temporadas</a></li>  <!--fazer um js pra colocar a temporada atual automaticamente como redirecionamento-->
+                <div class="btn">
+                    <div class="btn__indicator">
+                        <div class="btn__icon-container">
+                            <i class="btn__icon fas fa-sun"></i>
+                        </div>
+                    </div>
+                </div>                
             </ul>
         </div>
         <section id="titulos">
@@ -1050,6 +1160,21 @@
         
     </div>
 </div>
+    <div class="linha-separacao"></div>
+    <section id="bem-vindo">
+            <h1>Seja muito bem-vindo ao nosso site🌟</h1>
+            <p>Que bom ter você aqui! Este é o seu cantinho para descobrir, aprender e se inspirar. Nosso site foi criado com muito carinho para oferecer conteúdos que possam ajudar você e seu time, além de servir como fontes de informações!!.</p>
+            <p>Seja você um(a) entusiasta(a), um(a) apaixonado(a) por robotica ou alguém em busca de conhecimentos de technologia, ou quer um espaço para compartilhar e conversar com pessoas com essas mesmas paixões, você está no lugar certo. Aqui, você encontrará:</p>
+            <ul>
+                <a href="paginas/aba da comunidade.html"><li>Uma comunidade cheia de pessoas que assim como você, estão loucas para mergulhar ainda mais nesse mundo, muitas informações para tirar suas dúvidas, entre muitas outras coisas.</li></a>
+                <a href="paginas/aba da comunidade.html"><li>Dicas úteis que vão ajudar na sua produtividade.</li></a>
+                <li>Conteúdos inspiradores para expandir seus horizontes.</li>
+                <a href="paginas/aba da comunidade documentos.html"><li>Documentos da nossa equipe</li></a>
+                <a href="paginas/projetos.html"><li>Nossos projetos e robôs</li></a>
+            </ul>
+            <p>Nosso objetivo é ser mais do que um site, queremos ser uma comunidade da FIRST, em momentos de descoberta e crescimento. Então, sinta-se à vontade para explorar, aprender e se divertir por aqui.</p>
+            <p>Estamos sempre atualizando e trazendo novidades, então não deixe de voltar! Se tiver alguma dúvida ou sugestão, é só <a href="paginas/contato.html">entrar em contato</a>. Estamos aqui para você.</p>
+    </section>
     <div class="linha-separacao"></div>
     <div class="container-secoes">
         <section class="section_tripla" id="sobre-nos">
@@ -1134,5 +1259,50 @@ document.getElementById('seta-rolagem').addEventListener('click', function() {
     const targetSection = document.querySelector('.container-secoes');
     targetSection.scrollIntoView({ behavior: 'smooth' });
 });
+
+const body = document.querySelector('body');
+const btn = document.querySelector('.btn');
+const icon = document.querySelector('.btn__icon');
+
+function store(value) {
+    localStorage.setItem('darkmode', value);
+}
+
+function load() {
+    const darkmode = localStorage.getItem('darkmode');
+
+    if (!darkmode) {
+        store(false);
+        icon.classList.add('fa-sun');
+    } else if (darkmode === 'true') {
+        body.classList.add('darkmode');
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    } else {
+        icon.classList.add('fa-sun');
+    }
+}
+
+load();
+
+btn.addEventListener('click', () => {
+    body.classList.toggle('darkmode');
+    icon.classList.add('animated');
+
+    if (body.classList.contains('darkmode')) {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    } else {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    }
+
+    store(body.classList.contains('darkmode'));
+
+    setTimeout(() => {
+        icon.classList.remove('animated');
+    }, 500);
+});
+
 </script>
 </html>
