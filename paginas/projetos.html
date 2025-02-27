@@ -93,20 +93,6 @@
             text-align: center;
         }
 
-        .documento {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin: 10px;
-            display: inline-block;
-            width: 200px;
-            text-align: center;
-        }
-
-        .documento img, .documento iframe {
-            width: 100%;
-            height: auto;
-        }
-
         .btn {
             display: inline-block;
             margin-top: 10px;
@@ -124,6 +110,46 @@
 
         .menu-lateral a:hover{
             color: red;
+        }
+
+        .projetos-container{
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+        }
+
+        .robo-container{
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+        }
+
+        #projetos{
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+        }
+
+        .surdomusic{
+            display: block;
+        }
+        .sardinho{
+            display: block;
+        }
+        .naruto{
+            display: block;
+        }
+        .kisame{
+            display: block;
         }
 
     </style>
@@ -201,18 +227,32 @@
     </header>
     <section id="section-dos-documentos">
         <h2>PROJETOS</h2>
-        <div id="projetos-container"></div>
+        <div id="projetos-container">
+            <div class="Projetos" id="Surdomusic">
+                <p>Essa temporada foi uma das mais marcantes pra nossa equipe,principalmente pelo tema da temporada ser: a <strong>inclusão</strong> das pessoas em nossos hobbies, oque fez nós nos conectarmos muito com o projeto: o surdomusic e todo o processo, ainda mais depois de implementar na escola bilingue de Brasília...</p>
+            </div>
+            <div class="Projetos" id="Sardinho">
+                <p>Você sofre com problemas durante o seu mergulho? Algo te atrapalha durante suas pesquisas? Você fica nervoso quando não consegue enxegar? Se sim, essa temporada é incrível para você! Na submerged, <strong>mergulhamos</strong> nas profundezas do mar e criamos o SARdinho para melhorar a visibilidade dos mergulhadores, ainda mais depois de implementarmos na empresa de mergulho Prime Divers...
+            </div></p>
+        </div>
     </section>
     <section id="section-dos-documentos">
         <h2>ROBÔS</h2>
-        <div id="robos-container"></div>
+        <div id="robos-container">
+            <div class="projetos" id="naruto">
+                <p>Assim como em todas temporadas anteriores, nós seguimos a tradição de colocar o nome de hokage (do anime naruto) em nossos robôs, e nessa temporada nós finalizamos os caminhos do hokage(pelo menos por enquanto!!😁), sendo esse o <strong>Naruto</strong>!</p>
+            </div>
+            <div class="projetos" id="kisame">
+                <p>Assim que nós começamos a construção do nosso robô, o primeiro personagen que nos veio a cabeça, foi o Kisame, por ele ser um tubarão e por a temporada ser relacionada aos oceanos, então o nome dele foi muito especial para nós, e assim nasceu: <strong>KISAME</strong>!</p>
+            </div>
+        </div>
     </section>
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
     </footer>
 
     <script>
-        const menuToggle = document.getElementById('menu_toggle');
+                const menuToggle = document.getElementById('menu_toggle');
         const menuLateral = document.getElementById('menu_lateral');
         const navMenu = document.getElementById('menu-categorias');
         menuToggle.addEventListener('click', () => {
@@ -272,70 +312,6 @@
         const targetSection = document.querySelector('#section-dos-documentos');
         targetSection.scrollIntoView({ behavior: 'smooth' });
     });
-
-    const documentos = [
-
-/*pra add um novo doc, add com um desses modelos, ou cria outro:
-
-{
-    titulo: "Documento PDF Exemplo",
-    tipo: "pdf",
-    imagem: "https://via.placeholder.com/150",
-    resumo: "Este é um documento de exemplo em PDF.",
-    link: "https://www.exemplo.com/documento.pdf" ou "documentos/(nome do arquivo.pdf)"
-},
-{
-    titulo: "Documento no Canva",
-    tipo: "canva",
-    imagem: "https://via.placeholder.com/150",
-    resumo: "Este é um documento criado no Canva.",
-    link: "https://www.canva.com/exemplo"
-},
-{
-    titulo: "Vídeo Tutorial",
-    tipo: "video",
-    videoId: "dQw4w9WgXcQ",
-    resumo: "Vídeozin .",
-    link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-}
-*/
-        {
-            titulo: "Portifolios da into-orbit",
-            tipo: "pdf",
-            imagem: "https://i.postimg.cc/WpxNqwd1/into-orbit-logo-png-seeklogo-390664.png",
-            resumo: "Arquivo zip com todos os portifolios da nossa equipe da temporada into otbit.",
-            link: "documentos/port projeto into orbit-mesclado-compactado.pdf"
-        }
-    ]; 
-
-    function carregarDocumentos() {
-        const container = document.getElementById("documentos-container");
-        container.innerHTML = "";
-        
-        documentos.forEach(doc => {
-            const docElement = document.createElement("div");
-            docElement.classList.add("documento");
-            
-            let midia;
-            if (doc.tipo === "video") {
-                midia = `<iframe width="150" height="150" src="https://www.youtube.com/embed/${doc.videoId}" frameborder="0" allowfullscreen></iframe>`;
-            } else {
-                midia = `<img src="${doc.imagem}" alt="${doc.titulo}">`;
-            }
-            
-            docElement.innerHTML = `
-                <h3>${doc.titulo}</h3>
-                ${midia}
-                <p>${doc.resumo}</p>
-                <a href="${doc.link}" target="_blank" class="btn">${doc.tipo === "pdf" ? "Baixar PDF" : "Acessar"}</a>
-            `;
-            
-            container.appendChild(docElement);
-        });
-    }
-
-    document.addEventListener("DOMContentLoaded", carregarDocumentos);
-    
     </script>
 </body>
 
