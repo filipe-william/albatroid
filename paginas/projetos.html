@@ -12,10 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&family=Nunito:wght@300&display=swap" rel="stylesheet">
 
     <style>
-
-        body{
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.postimg.cc/htYzKDv3/image.png') no-repeat center center fixed;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Passion+One:wght@400;700;900&display=swap');
 
         nav {
             width: 100vw;
@@ -42,117 +39,82 @@
         width: 100vw;
         }
 
-        section.main-section {
+        header{
         background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://i.postimg.cc/htYzKDv3/image.png') no-repeat center center fixed;
         background-size: cover;
+        }
+
+        section.main-section {
         color: white;
-        display: flex;
+        display: flexbox;
         justify-content: center;
+        justify-items: center;
         align-items: center;
         text-align: center;
+        align-content: center;
         margin-top: 70px;
         }
-
-        .container {
-        max-width: 600px;
-        width: 100%;
-        padding: 20px;
-        }
-
-        .content h1 .line-break {
-            display: block; /* Força quebra de linha */
-        }
-
-        .content h1 {
-            font-size: 5em;
-            font-family: 'Open Sans Condensed', sans-serif; /* Fonte para o título */
+        
+        section.main-section h1{
+            font-family: 'Open Sans Condensed', sans-serif; 
             font-weight: bold;
             margin: 20px 0;
-            line-height: 1.2; /* Espaçamento entre linhas */
-            letter-spacing: 3px; /* Espaçamento entre letras */
+            font-size: 5em;
         }
 
-        .content p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            font-family: 'Nunito', sans-serif; /* Fonte estilo Avenir Light */
-            letter-spacing: 3px; /* Espaçamento entre letras */
-        }
-
-        .progress-bar {
-        position: relative;
-        width: 100%;
-        height: 10px;
-        background: #d3d3d3;
-        border-radius: 5px;
-        margin: 20px 0;
-        }
-
-        .progress {
-        width: 97%; 
-        height: 100%;
-        background: #87CEEB;
-        border-radius: 5px;
-        transition: width 0.3s;
-        }
-
-        .progress-text {
-        position: absolute;
-        top: -25px;
-        right: 0;
-        color: #d3d3d3;
-        font-size: 12px;
-        }
-
-        .voltar {
-        background: #87CEEB;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background 0.3s;
-        }
-
-        .voltar:hover {
-        background: #4682B4;
-        }
-
-        .footer {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center; /* Centraliza horizontalmente */
-            align-items: center; /* Centraliza verticalmente */
-            gap: 20px; /* Espaço entre os ícones */
-        }
-
-        .footer a {
-            text-decoration: none;
-            color: white;
-            font-size: 32px; /* Tamanho ajustado dos ícones */
-            width: 50px;
-            height: 50px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            border: 2px solid white;
-            border-radius: 50%;
-            transition: all 0.3s;
-        }
-
-        .footer a:hover {
-            background: #87CEEB;
-            border-color: #87CEEB;
-        }
-
-        .footer i {
-            font-size: 24px; /* Ajustei o tamanho do ícone dentro do círculo */
+        section.main-section p{
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: bold;
+            font-size: 1.1em;
+            color: rgb(216, 216, 216);
         }
 
         footer{
             background-color: gray;
             color: black;
+        }
+
+        .seta-rolagem {
+            display: block; /* Para centralizar */
+            margin: 100px auto 0; /* Espaço acima e centralização */
+            cursor: pointer;
+            font-size: 2rem; /* Tamanho do ícone */
+            color: gray; /* Cor do ícone */
+            transition: color 0.3s ease, font-size 0.3s ease;
+        }
+
+        .seta-rolagem:hover {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        #section-dos-documentos {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .documento {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+        }
+
+        .documento img, .documento iframe {
+            width: 100%;
+            height: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px;
+            background: #0c4a88;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
         }
 
         .menu-lateral a{
@@ -231,26 +193,20 @@
            </ul>
        </div>
        <section class="main-section">
-        <div class="container">
-          <div class="content">
-            <h1>EM <br>CONSTRUÇÃO</h1>
-            <p>O SITE ESTÁ QUASE PRONTO</p>
-            <div class="progress-bar">
-              <div class="progress"></div>
-              <span class="progress-text">96%</span>
-            </div>
-            <a href="/" class="voltar">Voltar!</a>
-          </div>
-          <div class="footer">
-            <a href="https://www.youtube.com/@Albatroid_Oficial"><i class="fab fa-youtube"></i></a> 
-            <a href=""><i class="fab fa-tiktok"></i></a> 
-            <a href="https://www.instagram.com/albatroidoficial/"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.twitch.tv/albatroidoficial"><i class="fab fa-twitch"></i></a> 
-        </div>
-        </div>
+            <h1>Nossos projeto</h1>
+            <p>Abaixo estão todos nossos projetos da equipe disponíveis, tanto robôs e projetos de inovação</p>
+            <i class="fas fa-chevron-down seta-rolagem" id="seta-rolagem"></i>
       </section>
     </div>
-       </header>
+    </header>
+    <section id="section-dos-documentos">
+        <h2>PROJETOS</h2>
+        <div id="projetos-container"></div>
+    </section>
+    <section id="section-dos-documentos">
+        <h2>ROBÔS</h2>
+        <div id="robos-container"></div>
+    </section>
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
     </footer>
@@ -311,6 +267,74 @@
     
         lastScrollTop = scrollTop;
     });
+
+    document.getElementById('seta-rolagem').addEventListener('click', function() {
+        const targetSection = document.querySelector('#section-dos-documentos');
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    const documentos = [
+
+/*pra add um novo doc, add com um desses modelos, ou cria outro:
+
+{
+    titulo: "Documento PDF Exemplo",
+    tipo: "pdf",
+    imagem: "https://via.placeholder.com/150",
+    resumo: "Este é um documento de exemplo em PDF.",
+    link: "https://www.exemplo.com/documento.pdf" ou "documentos/(nome do arquivo.pdf)"
+},
+{
+    titulo: "Documento no Canva",
+    tipo: "canva",
+    imagem: "https://via.placeholder.com/150",
+    resumo: "Este é um documento criado no Canva.",
+    link: "https://www.canva.com/exemplo"
+},
+{
+    titulo: "Vídeo Tutorial",
+    tipo: "video",
+    videoId: "dQw4w9WgXcQ",
+    resumo: "Vídeozin .",
+    link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+}
+*/
+        {
+            titulo: "Portifolios da into-orbit",
+            tipo: "pdf",
+            imagem: "https://i.postimg.cc/WpxNqwd1/into-orbit-logo-png-seeklogo-390664.png",
+            resumo: "Arquivo zip com todos os portifolios da nossa equipe da temporada into otbit.",
+            link: "documentos/port projeto into orbit-mesclado-compactado.pdf"
+        }
+    ]; 
+
+    function carregarDocumentos() {
+        const container = document.getElementById("documentos-container");
+        container.innerHTML = "";
+        
+        documentos.forEach(doc => {
+            const docElement = document.createElement("div");
+            docElement.classList.add("documento");
+            
+            let midia;
+            if (doc.tipo === "video") {
+                midia = `<iframe width="150" height="150" src="https://www.youtube.com/embed/${doc.videoId}" frameborder="0" allowfullscreen></iframe>`;
+            } else {
+                midia = `<img src="${doc.imagem}" alt="${doc.titulo}">`;
+            }
+            
+            docElement.innerHTML = `
+                <h3>${doc.titulo}</h3>
+                ${midia}
+                <p>${doc.resumo}</p>
+                <a href="${doc.link}" target="_blank" class="btn">${doc.tipo === "pdf" ? "Baixar PDF" : "Acessar"}</a>
+            `;
+            
+            container.appendChild(docElement);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", carregarDocumentos);
     
     </script>
 </body>
