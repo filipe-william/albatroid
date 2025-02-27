@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amanhecendo com Robótica</title>
+    <link rel="shortcut icon" href="../imagens/logo da alba.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'League Spartan', serif;
+            background-color: #f0f0f0;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 50px auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: none; /* Inicialmente oculto */
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff9600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #0079c5;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #ff0000;
+        }
+
+        .restricted-content {
+            display: none; /* Oculta conteúdo restrito inicialmente */
+        }
+    </style>
+    <script type="module">
+        // Importa as bibliotecas do Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
+
+        // Configuração do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBp8ukxR_xXN4pv92ApFHt2AnnpGViVHgc",
+            authDomain: "albatroid-4bd13.firebaseapp.com",
+            projectId: "albatroid-4bd13",
+            storageBucket: "albatroid-4bd13.firebasestorage.app",
+            messagingSenderId: "968204633416",
+            appId: "1:968204633416:web:35dcf7a3b4e8919f069f7d",
+            measurementId: "G-T28TJ5J4BV"
+        };
+
+        // Inicializa o Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Função para registrar usuário
+        async function registerUser(email, password) {
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+                alert("Usuário registrado com sucesso!");
+                closeLogin(); // Fecha a tela após registro
+            } catch (error) {
+                alert("Erro ao registrar usuário: " + error.message);
+            }
+        }
+
+        // Função para fazer login
+        async function loginUser(email, password) {
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                alert("Login bem-sucedido!");
+                closeLogin(); // Fecha a tela após login
+            } catch (error) {
+                alert("Erro ao fazer login: " + error.message);
+            }
+        }
+
+        // Função para deslogar
+        async function logoutUser() {
+            try {
+                await signOut(auth);
+                alert("Deslogado com sucesso!");
+            } catch (error) {
+                alert("Erro ao deslogar: " + error.message);
+            }
+        }
+
+        // Função para fechar a tela de login
+        function closeLogin() {
+            document.querySelector('.login-container').style.display = 'none'; // Oculta a tela de login
+        }
+
+        // Verifica o estado de autenticação do usuário
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // Usuário está logado
+                document.querySelector('.restricted-content').style.display = 'block'; // Mostra conteúdo restrito
+                document.getElementById('logout-button').style.display = 'block'; // Mostra botão de deslogar
+            } else {
+                // Usuário não está logado
+                document.querySelector('.restricted-content').style.display = 'none'; // Oculta conteúdo restrito
+                document.getElementById('logout-button').style.display = 'none'; // Oculta botão de deslogar
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('register-form').addEventListener('submit', (event) => {
+                event.preventDefault();
+                const email = document.getElementById('register-email').value.trim();
+                const password = document.getElementById('register-password').value.trim();
+                registerUser(email, password);
+            });
+
+            document.getElementById('login-form').addEventListener('submit', (event) => {
+                event.preventDefault();
+                const email = document.getElementById('login-email').value.trim();
+                const password = document.getElementById('login-password').value.trim();
+                loginUser(email, password);
+            });
+
+            // Fecha a tela de login ao clicar fora
+            document.addEventListener('click', (event) => {
+                const loginContainer = document.querySelector('.login-container');
+                if (!loginContainer.contains(event.target) && event.target.id !== 'open-login') {
+                    closeLogin();
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <button id="open-login" onclick="document.querySelector('.login-container').style.display = 'block';">Abrir Login</button>
+    
+    <div class="login-container">
+        <button class="close-button" onclick="closeLogin()">X</button>
+        <form id="register-form">
+            <h2>Registrar Usuário</h2>
+            <input id="register-email" placeholder="Email" type="email" required />
+            <input id="register-password" placeholder="Senha" type="password" required />
+            <button type="submit">Registrar</button>
+        </form>
+        <form id="login-form" style="display: none;">
+            <h2>Login Usuário</h2>
+            <input id="login-email" placeholder="Email" type="email" required />
+            <input id="login-password" placeholder="Senha" type="password" required />
+            <button type="submit">Login</button>
+        </form>
+        <button class="toggle-button" id="toggle-button" onclick="toggleForms()">Já tem uma conta? Faça login</button>
+    </div>
+
+    <button id="logout-button" style="display: none;" onclick="logoutUser()">Deslogar</button>
+
+    <script>
+        // Alterna entre registro e login
+        function toggleForms() {
+            const registerForm = document.getElementById('register-form');
+            const loginForm = document.getElementById('login-form');
+            if (registerForm.style.display === "none") {
+                registerForm.style.display = "block";
+                loginForm.style.display = "none";
+                document.getElementById('toggle-button').innerText = "Já tem uma conta? Faça login";
+            } else {
+                registerForm.style.display = "none";
+                loginForm.style.display = "block";
+                document.getElementById('toggle-button').innerText = "Não tem uma conta? Registre-se";
+            }
+        }
+    </script>
+
+    <div class="restricted-content">
+        <h2>Conteúdo Restrito</h2>
+        <p>Você só pode ver isso se estiver logado!</p>
+    </div>
+</body>
+
+</html>
