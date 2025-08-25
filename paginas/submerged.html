@@ -268,7 +268,7 @@
             height: auto;
             border-radius: 25px;
             margin: 20px;
-            margin-left: 35px;
+            margin-left:auto;
         }
 
         #trajetoria h2{
@@ -351,6 +351,46 @@
             color: whitesmoke;
             padding-top: 75px;
             padding-bottom: 90px;
+        }
+
+        .imagens_dos_membros{
+            width: 150px;
+            height: 150px;
+            border: 2px solid #00000057;
+            border-radius: 50%;
+            margin-bottom: 35px;
+            margin-left: 20px;
+            margin-right: 20px;
+            display: inline-block;
+        }
+
+        .membros_container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centraliza os membros */
+            margin: 20px 0; /* Espaçamento acima e abaixo do container */
+        }
+
+        .membro {
+            display: flex; /* Usar flexbox para alinhar imagem e nome */
+            flex-direction: column; /* Colocar imagem em cima do nome */
+            align-items: center; /* Centraliza os itens */
+            margin: 10px; /* Espaçamento entre os membros */
+            opacity: 0; /* Começa invisível */
+            transform: translateY(20px); /* Move um pouco para baixo */
+            transition: opacity 1s ease, transform 0.8s ease; /* Transição suave */
+        }
+
+        .membro.visible {
+            opacity: 1; /* Torna visível */
+            transform: translateY(0); /* Retorna à posição original */
+        }
+
+        .nomes {
+            color: #ffffff;
+            word-wrap: break-word; /* Quebra o texto se exceder a largura */
+            max-width: 150px; /* Limita a largura do texto ao tamanho da imagem */
+            text-align: center; /* Centraliza o texto */
         }
 
         @media (max-width: 400px) { /* Celulares menores*/
@@ -639,6 +679,50 @@
         </div>
     </section>
     <section id="trajetoria">
+        <div id="nossos_membros">
+            <h1>Nossos membros</h1>
+            <div class="membros_container">
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/WpXRqnVy/felps.jpg" alt="fotos dos membros">
+                    <p class="nomes">Filipe William</p>
+                </div>
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/zfKZLYDw/isa.jpg" alt="fotos dos membros">
+                    <p class="nomes">Isa Dora</p>
+                </div>
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/cC1V5KRT/julia.jpg" alt="fotos dos membros">
+                    <p class="nomes">Julia Maria</p>
+                </div>
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/xCQrMpqw/fleury.jpg" alt="fotos dos membros">
+                    <p class="nomes">Clara Fleury</p>
+                </div>
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/Gh2WFyhm/cleto.jpg" alt="fotos dos membros">
+                    <p class="nomes">Ana clara</p>
+                </div>
+            </div>
+            <h1 id="h1_especial">Comissão Técnica</h1>
+            <div class="membros_container">
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/wMWSK6Fz/andre.jpg" alt="fotos dos membros">
+                    <p class="nomes">André Mota</p>
+                </div>
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/XJkR8KCp/joma.jpg" alt="fotos dos membros">
+                    <p class="nomes">João Mateus</p>
+                </div>
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/6TxQR6rw/Whats-App-Image-2025-02-16-at-9-13-38-PM-1.jpg" alt="fotos dos membros">
+                    <p class="nomes">Andrei Andrade</p>
+                </div>
+                <div class="membro">
+                    <img class="imagens_dos_membros" src="https://i.postimg.cc/qM59jvzX/pedro.jpg" alt="fotos dos membros">
+                    <p class="nomes">Pedro Paulo</p>
+                </div>
+            </div>
+        </div>
         <div id="fotos_e_videos">
             <h2>nossa trajetoria</h2>
             <img src="../imagens/3-equipes.jpeg" alt="albatroid, aion-x e atomics juntas">
@@ -658,7 +742,6 @@
             </section>
             </div>
         </div>
-        <h4 id="nacional">Rumo nacional!!</h4>
     </section>
     <footer>
         <p>&copy; 2024 Albatroid. Todos os direitos reservados.</p>
@@ -820,6 +903,42 @@
             const targetSection = document.querySelector('#explicação_submerged');
             targetSection.scrollIntoView({ behavior: 'smooth' });
         });
+    
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+        if (scrollTop > lastScrollTop) {
+            nav.style.top = "-100px";
+            nav.classList.remove('nav-scroll');
+        } else {
+            nav.style.top = "0";
+            nav.classList.add('nav-scroll');
+        }
+        if (scrollTop === 0) {
+            nav.classList.remove('nav-scroll');
+        }
+    
+        lastScrollTop = scrollTop;
+    });
+
+    const membros = document.querySelectorAll('.membro');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible'); // Adiciona classe para animação de entrada
+            } else {
+                entry.target.classList.remove('visible'); // Remove classe para animação de saída
+            }
+        });
+    }, {
+        threshold: 0.1 // Quando 10% do membro estiver visível
+    });
+
+    // Observa cada membro
+    membros.forEach(membro => {
+        observer.observe(membro);
+    });
 
     </script>
 </body>
