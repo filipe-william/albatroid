@@ -370,12 +370,67 @@
             color: #007BFF;
         }
 
+        .menu-lateral {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 0;
+            background-color: #dfdfdf;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 15px;
+            z-index: 100;
+            width: 25vw;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu-lateral.mostrar {
+            display: block; /* Isso deve ser mantido para mostrar o menu */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .menu-lateral ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-lateral ul li {
+            color: white;
+            margin: 10px 0;
+            font-size: 1.2rem;
+            font-family: "Montserrat", serif;
+        }
+
+        .menu-lateral ul li i {
+            margin-right: 10px;
+            color: rgb(0, 0, 0);
+        }
+
         .menu-lateral a{
             text-decoration: none;
-            color: white;
+            color: rgb(0, 0, 0);
         }
 
         .menu-lateral a:hover{
+            color: red;
+        }
+
+        .darkmode .menu-lateral{
+            background-color: #333;
+        }
+
+        .darkmode .menu-lateral ul li i {
+            color: white;
+        }
+
+        .darkmode .menu-lateral a{
+            text-decoration: none;
+            color: white;
+        }
+        
+        .darkmode .menu-lateral a:hover{
             color: red;
         }
 
