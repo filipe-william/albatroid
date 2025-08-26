@@ -45,14 +45,14 @@
         }
 
         section.main-section {
-        color: white;
-        display: flexbox;
-        justify-content: center;
-        justify-items: center;
-        align-items: center;
-        text-align: center;
-        align-content: center;
-        margin-top: 70px;
+            color: white;
+            display: flexbox;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+            text-align: center;
+            align-content: center;
+            margin-top: 70px;
         }
         
         section.main-section h1{
@@ -117,13 +117,168 @@
             border-radius: 5px;
         }
 
+        .menu-lateral {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 0;
+            background-color: #dfdfdf;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 15px;
+            z-index: 100;
+            width: 25vw;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .menu-lateral.mostrar {
+            display: block; /* Isso deve ser mantido para mostrar o menu */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .menu-lateral ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu-lateral ul li {
+            color: white;
+            margin: 10px 0;
+            font-size: 1.2rem;
+            font-family: "Montserrat", serif;
+        }
+
+        .menu-lateral ul li i {
+            margin-right: 10px;
+            color: rgb(0, 0, 0);
+        }
+
         .menu-lateral a{
             text-decoration: none;
-            color: white;
+            color: rgb(0, 0, 0);
         }
 
         .menu-lateral a:hover{
             color: red;
+        }
+
+        .darkmode .menu-lateral{
+            background-color: #333;
+        }
+
+        .darkmode .menu-lateral ul li i {
+            color: white;
+        }
+
+        .darkmode .menu-lateral a{
+            text-decoration: none;
+            color: white;
+        }
+        
+        .darkmode .menu-lateral a:hover{
+            color: red;
+        }
+	
+	    .btn {
+            background-color: #fff;
+            width: 5em;
+            color: rgb(73, 73, 73);
+            height: 2.66em;
+            border-radius: 10em;
+            padding: 0 0.5em;
+            box-shadow: inset 0 8px 60px rgba(0, 0, 0, .1),
+                inset 0 8px 8px rgba(0, 0, 0, .1),
+                inset 0 -4px 4px rgba(0, 0, 0, .1);
+            position: relative;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .btn:hover{
+            background-color: #ccc;
+            color: rgb(17, 0, 255);
+        }
+
+        .btn__indicator {
+            background-color: #fff;
+            width: 2em;
+            height: 2em;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, .2);
+            transition: transform .3s ease;
+        }
+
+        .btn__icon-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn__icon {
+            color: #FFDE59;
+            font-size: 1.5em;
+        }
+
+        .btn__icon.animated {
+            animation: spin 0.5s;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .darkmode .btn {
+            box-shadow: inset 0 8px 60px rgba(0, 0, 0, .3),
+                inset 8px 0 8px rgba(0, 0, 0, .3),
+                inset 0 -4px 4px rgba(0, 0, 0, .3);
+        }
+
+        .darkmode .btn__indicator {
+            transform: translateX(2em);
+            background-color: #2b2b2b;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .darkmode .btn__icon {
+            color: #fff;
+        }
+
+        .darkmode footer{
+            background-color: #000;
+            color: #fff;
+        }
+
+        .darkmode section.main-section {
+            color: rgb(0, 0, 0);
+        }
+
+        .darkmode section.main-section p{
+            color: rgb(0, 0, 0);
+        }
+
+        .darkmode .seta-rolagem {
+            color: rgb(206, 204, 204); 
+        }
+
+        .darkmode .documento{
+            background-color: #232323;
+        }
+
+        .darkmode #section-dos-documentos{
+            background-color: #000;
+        }
+
+        .darkmode .btn:hover{
+            background-color: #ccc;
+            color: rgb(255, 166, 0);
         }
 
     </style>
@@ -182,16 +337,23 @@
                <div class="degrade-do-menu"></div>
            </div>
         </nav>
-       <div class="menu-lateral" id="menu_lateral">
-           <ul>
-               <li><i class="fas fa-users"></i> <a href="aba da comunidade.html">Comunidade</a></li>
-               <li><i class="fas fa-project-diagram"></i> <a href="projetos.html">Projetos</a></li>
-               <li><i class="fas fa-globe"></i> <a href="nosso site.html">Nosso Site</a></li>
-               <li><i class="fas fa-info-circle"></i> <a href="sobre a FIRST.html">Sobre a FIRST</a></li>
-               <li><i class="fas fa-envelope"></i> <a href="contato.html">Fale Conosco</a></li>
-               <li><i class="fas fa-calendar-alt"></i> <a href="submerged.html">Temporadas</a></li>  <!--fazer um js pra colocar a temporada atual automaticamente como redirecionamento-->
-           </ul>
-       </div>
+        <div class="menu-lateral" id="menu_lateral">
+            <ul>
+                <li><i class="fas fa-users"></i> <a href="aba da comunidade.html">Comunidade</a></li>
+                <li><i class="fas fa-project-diagram"></i> <a href="projetos.html">Projetos</a></li>
+                <li><i class="fas fa-globe"></i> <a href="nosso site.html">Nosso Site</a></li>
+                <li><i class="fas fa-info-circle"></i> <a href="sobre a FIRST.html">Sobre a FIRST</a></li>
+                <li><i class="fas fa-envelope"></i> <a href="contato.html">Fale Conosco</a></li>
+                <li><i class="fas fa-calendar-alt"></i> <a href="submerged.html">Temporadas</a></li>
+                <div class="btn">
+                    <div class="btn__indicator">
+                        <div class="btn__icon-container">
+                            <i class="btn__icon fas fa-sun"></i>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </div>
        <section class="main-section">
             <h1>Nossos documentos</h1>
             <p>Nós vamos disponibilizar documentos, no canva, em pdf e em videos sobre a FLL</p>
@@ -331,6 +493,50 @@
     }
 
     document.addEventListener("DOMContentLoaded", carregarDocumentos);
+
+    const body = document.querySelector('body');
+const btn = document.querySelector('.btn');
+const icon = document.querySelector('.btn__icon');
+
+function store(value) {
+    localStorage.setItem('darkmode', value);
+}
+
+function load() {
+    const darkmode = localStorage.getItem('darkmode');
+
+    if (!darkmode) {
+        store(false);
+        icon.classList.add('fa-sun');
+    } else if (darkmode === 'true') {
+        body.classList.add('darkmode');
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    } else {
+        icon.classList.add('fa-sun');
+    }
+}
+
+load();
+
+btn.addEventListener('click', () => {
+    body.classList.toggle('darkmode');
+    icon.classList.add('animated');
+
+    if (body.classList.contains('darkmode')) {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    } else {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    }
+
+    store(body.classList.contains('darkmode'));
+
+    setTimeout(() => {
+        icon.classList.remove('animated');
+    }, 500);
+});
     
     </script>
 </body>
