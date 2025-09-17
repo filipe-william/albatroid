@@ -27,10 +27,13 @@
             background-color: #fff;
             color: #000;
         }
-
+/**/
         header {
             color: rgb(0, 0, 142);
-            background-image: none;
+            background-image: url(../imagens/unearthed_fundo.png) !important;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: auto;
             background-color: #F9E9CF;
             position: relative;
             height: 100vh;
@@ -67,12 +70,11 @@
         }
 
         nav.nav-scroll {
-            background: #0c4a88;
+            background: #e68c06;
         }
 
         nav ul li a,
-        nav ul li p,
-        nav ul li i {
+        nav ul li p{
             color: black;
         }
 
@@ -227,7 +229,7 @@
         #trajetoria {
             justify-items: center;
             background-color: #0135e2;
-            background-image: linear-gradient(#F9E9CF, rgb(255, 99, 245));
+            background-image: linear-gradient(#F9E9CF, #a86800);
             padding: 60px 20px;
             text-align: center;
         }
@@ -309,6 +311,7 @@
             padding: 60px 20px;
             background-color: #F9E9CF;
             border-radius: 10px;
+            margin-top: 15px;
         }
 
         #trabalhos h2 {
@@ -368,6 +371,20 @@
             font-size: 2.1em;
             text-decoration: underline;
             color: #007BFF;
+        }
+
+        #gif{
+            width: 35vw;
+            height: auto;
+        }
+
+        .menu-lateral a{
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+        }
+
+        .menu-lateral a:hover{
+            color: red;
         }
 
         .menu-lateral {
@@ -432,6 +449,70 @@
         
         .darkmode .menu-lateral a:hover{
             color: red;
+        }
+	
+	        .btn {
+            background-color: #fff;
+            width: 5em;
+            height: 2.66em;
+            border-radius: 10em;
+            padding: 0 0.5em;
+            box-shadow: inset 0 8px 60px rgba(0, 0, 0, .1),
+                inset 0 8px 8px rgba(0, 0, 0, .1),
+                inset 0 -4px 4px rgba(0, 0, 0, .1);
+            position: relative;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .btn__indicator {
+            background-color: #fff;
+            width: 2em;
+            height: 2em;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, .2);
+            transition: transform .3s ease;
+        }
+
+        .btn__icon-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn__icon {
+            color: #FFDE59;
+            font-size: 1.5em;
+        }
+
+        .btn__icon.animated {
+            animation: spin 0.5s;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .darkmode .btn {
+            box-shadow: inset 0 8px 60px rgba(0, 0, 0, .3),
+                inset 8px 0 8px rgba(0, 0, 0, .3),
+                inset 0 -4px 4px rgba(0, 0, 0, .3);
+        }
+
+        .darkmode .btn__indicator {
+            transform: translateX(2em);
+            background-color: #2b2b2b;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .darkmode .btn__icon {
+            color: #fff;
         }
 
         .darkmode footer{
@@ -542,6 +623,12 @@
                 bottom: 0;
                 opacity: 1;
             }
+
+            #gif{
+                width: 89vw;
+                height: auto;
+            }
+
         }
 
         @media (min-width: 401px) and (max-width: 575px) {
@@ -604,6 +691,11 @@
                 opacity: 1;
             }
 
+            #gif{
+                width: 75vw;
+                height: auto;
+            }
+
         }
 
         @media (min-width: 576px) and (max-width: 997px) {
@@ -655,6 +747,11 @@
             .trajetoria-item:hover .trajetoria-texto {
                 bottom: 0;
                 opacity: 1;
+            }
+
+            #gif{
+                width: 50vw;
+                height: auto;
             }
 
         }
@@ -726,10 +823,10 @@
                     <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
                     <div class="submenu" id="submenu-temporadas">
                         <ul>
-                            <li><a href="paginas/em breve.html">Em breve...</a></li>
-                            <li><a href="paginas/masterpiece.html">Masterpiece</a></li>
-                            <li><a href="paginas/submerged.html">Submerged</a></li>
-                            <li><a href="paginas/unearthed.html">Unearthed</a></li>
+                            <li><a href="em breve.html">Em breve...</a></li>
+                            <li><a href="masterpiece.html">Masterpiece</a></li>
+                            <li><a href="submerged.html">Submerged</a></li>
+                            <li><a href="unearthed.html">Unearthed</a></li>
                         </ul>
                     </div>
                 </li>
@@ -758,16 +855,20 @@
             </ul>
         </div>
         <div class="gif-container">
-            <img id="gif" src="../imagens/masterpiece.avif" alt="masterpiece">
+            <img id="gif" src="../imagens/Diseno-sin-titulo-1-removebg-preview (1).png" alt="unearthed">
             <p id="mergulhe">Entre nessa escavação com a gente!!!</p>
         </div>
     </header>
     <section id="trabalhos_da_masterpiece">
     <section id="explicação_masterpiece">
             <h1>2025/2026 Unearthed</h1>
-            <p>Nessa temporada, mais do que nunca, fomos inpirados a incluir pessoas e explorar novas habilidades. O tema da temporada tinha esse propósito, então desde o regional até o Internacional, foram momentos lindos e unicos vividos por toda a equipe, e pra Albatroid, foi uma temporada de muita historia; principalemnte por conta de todo o processo, que nos impactou de tal maneira, que nossas vidas foram mudadas para todo sempre. </p>
-            <p>Nosso projeto foi o: SurdoMusic, que era uma pulseira vibratória para a comunidade Surda, o que os incluia no hobby que nossa equipe mais gostava, a música. Então a nossa conexão com a produção do produto era muito forte, afinal, era emocionante perceber que a comunidade Surda estava finalmente sendo incluída nesse hobby tão especial depois de tanto tempo!!!</p>
-            <p>Já a parte do robô, foi uma área onde aprendemos muito. Durante a temporada, fizemos muitas modificações no nosso robô e programação com os conehcimentos que iamos adquirindo com outras equipes, e com nossos especialistas. Outra coisa que foi muito especial para nós nessa temporada, foi que entendemos que a diversão não é menos importante que o trabalho, e que o verdadeiro prêmio não é o troféu, e sim o processo, as amizades e os aprendizados!</p>
+            <p>Na temporada UNEARTHED℠ da FIRST® LEGO® League, fomos convidados a explorar um universo fascinante e cheio de mistérios: a arqueologia. Este tema encantador nos leva a viajar no tempo e a mergulhar na história da humanidade, por meio da descoberta, escavação e estudo de artefatos antigos.
+
+                Dentro da área do Projeto de Inovação, o desafio é contribuir de forma criativa e eficaz com o trabalho dos arqueólogos. Isso pode ser feito por meio da melhoria de uma tecnologia já existente ou da criação de uma solução totalmente nova, que facilite as diversas etapas do processo arqueológico.
+                
+                As possibilidades são vastas: desde desenvolver ferramentas mais precisas para a escavação de sítios arqueológicos, criar métodos inovadores de conservação de peças históricas, até encontrar maneiras mais acessíveis e interativas de estudar e compartilhar o conhecimento sobre civilizações antigas com o mundo.
+                
+                A temporada nos convida, acima de tudo, a desenterrar o passado para construir o futuro, aliando ciência, tecnologia e imaginação ao compromisso com a preservação da história e da cultura humana. </p>
             <div id="nossos_membros">
                 <h1>Nossos membros</h1>
                 <div class="membros_container">
@@ -777,11 +878,11 @@
                     </div>
                     <div class="membro">
                         <img class="imagens_dos_membros" src="https://i.postimg.cc/tRvQGgzG/Whats-App-Image-2025-08-26-at-6-03-02-PM-2-1.jpg" alt="fotos dos membros">
-                        <p class="nomes">Joao Victor</p>
+                        <p class="nomes">João Victor</p>
                     </div>
                     <div class="membro">
                         <img class="imagens_dos_membros" src="https://i.postimg.cc/YqT5jyVX/Whats-App-Image-2025-08-26-at-6-03-03-PM-2.jpg" alt="fotos dos membros">
-                        <p class="nomes">julia</p>
+                        <p class="nomes">Julia</p>
                     </div>
                     <div class="membro">
                         <img class="imagens_dos_membros" src="https://i.postimg.cc/gjTfVM02/Whats-App-Image-2025-08-26-at-6-03-03-PM-1-1.jpg" alt="fotos dos membros">
@@ -831,44 +932,17 @@
                     </p>
                 </div>
             </div>
-    
-            <!-- Nacional -->
-            <div class="trajetoria-item">
-                <img src="../imagens/nacional-master.jpg" alt="Nacional">
-                <div class="trajetoria-texto">
-                    <h3>Nacional</h3>
-                    <p>
-                        Depois da classificação no regional, avançamos para o nacional. Durante essa nova etapa, aprimoramos nossas habilidades e estratégias.
-                        Competimos com outras 100 equipes, trabalhando arduamente e dando nosso melhor. Foi uma experiência incrível que nos trouxe muito conhecimento e novas amizades. Melhoramos nosso projeto, robô e descobrimos formas de melhorarmos nossa comunicação e conexão entre a equipe. Aproveitamos todos o momentos com gratidão pela oportunidade, e felizes pela sensação de um trabalho bem feito.
-                    </p>
-                </div>
-            </div>
-    
-            <!-- Internacional -->
-            <div class="trajetoria-item">
-                <img src="../imagens/inter-master.jpeg" alt="Internacional">
-                <div class="trajetoria-texto">
-                    <h3>Internacional</h3>
-                    <p>
-                        Fomos classificados para representar Brasil no internacional, o Western Edge Open. A etapa internacional foi um marco 
-                        muito em importante em nossa trajetória, já que levamos nossa paixão pela robótica e inovação para o mundo. Tivemos a oportunidade de trazer conhecimento, amizades, evolução e um prêmio em nossas malas ao voltarmos pro Brasil!!!
-                    </p>
-                </div>
-            </div>
-            <p>
-                No final de todo esse processo, nossa equipe teve um aprendizado em todos os aspectos possiveis. Aprendemos na técnica e nas nossas relações, realmente conseguimos ver oq a é FIRST em sua essencia durante a temporada, vamos levar todos esses conehcimentos pra vida, e próximas temporadas!
-            </p>
         </div>
         <div id="trabalhos">
-            <h2>projetos</h2>
+            <h2>Projetos</h2>
             <div id="container_das_section">
             <section class="section_dupla" id="projeto">
-                <img src="../imagens/surdomusic (1).jpeg" alt="surdomusic, projeto da equipe albatroid">
-                <a href="projetos.html">SurdoMusic</a>
+                <img src="../imagens/solução.jpg" alt="bingo, projeto da equipe albatroid">
+                <a href="projetos.html">BINGO</a>
             </section>
             <section class="section_dupla" id="robo">
-                <img src="../imagens/naruto.jpeg" alt="naruto, robô da equipe albatroid">
-                <a href="projetos.html">Naruto</a>
+                <img src="../imagens/gaara.jpg" alt="gaara, robô da equipe albatroid">
+                <a href="projetos.html">Gaara</a>
             </section>
             </div>
         </div>
@@ -940,52 +1014,49 @@
         });
 
         const body = document.querySelector('body');
-        const btn = document.querySelector('.btn');
-        const icon = document.querySelector('.btn__icon');
-        const videoBg = document.getElementById('video-bg');
+const btn = document.querySelector('.btn');
+const icon = document.querySelector('.btn__icon');
 
-        function store(value) {
-            localStorage.setItem('darkmode', value);
-        }
+function store(value) {
+    localStorage.setItem('darkmode', value);
+}
 
-        function load() {
-            const darkmode = localStorage.getItem('darkmode');
+function load() {
+    const darkmode = localStorage.getItem('darkmode');
 
-            if (!darkmode) {
-                store(false);
-                icon.classList.add('fa-sun');
-            } else if (darkmode === 'true') {
-                body.classList.add('darkmode');
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                videoBg.style.opacity = '1'; // Mostra o vídeo no modo escuro
-            } else {
-                icon.classList.add('fa-sun');
-            }
-        }
+    if (!darkmode) {
+        store(false);
+        icon.classList.add('fa-sun');
+    } else if (darkmode === 'true') {
+        body.classList.add('darkmode');
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    } else {
+        icon.classList.add('fa-sun');
+    }
+}
 
-        load();
+load();
 
-        btn.addEventListener('click', () => {
-            body.classList.toggle('darkmode');
-            icon.classList.add('animated');
+btn.addEventListener('click', () => {
+    body.classList.toggle('darkmode');
+    icon.classList.add('animated');
 
-            if (body.classList.contains('darkmode')) {
-                videoBg.style.opacity = '1'; // Mostra o vídeo
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            } else {
-                videoBg.style.opacity = '0'; // Oculta o vídeo
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
+    if (body.classList.contains('darkmode')) {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+    } else {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+    }
 
-            store(body.classList.contains('darkmode'));
 
-            setTimeout(() => {
-                icon.classList.remove('animated');
-            }, 500);
-        });
+    store(body.classList.contains('darkmode'));
+
+    setTimeout(() => {
+        icon.classList.remove('animated');
+    }, 500);
+});
 
         document.getElementById('mergulhe').addEventListener('click', function() {
             const targetSection = document.querySelector('#explicação_masterpiece');
