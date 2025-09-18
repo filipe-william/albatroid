@@ -525,11 +525,11 @@
     const robos = [
 
         {
-            titulo: "Vídeo Tutorial",
-            tipo: "video",
-            videoId: "dQw4w9WgXcQ",
-            resumo: "Vídeozin .",
-            link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            titulo: "Portifolios da into-orbit",
+            tipo: "pdf",
+            imagem: "https://i.postimg.cc/WpxNqwd1/into-orbit-logo-png-seeklogo-390664.png",
+            resumo: "Arquivo zip com todos os portifolios da nossa equipe da temporada into otbit.",
+            link: "documentos/port projeto into orbit-mesclado-compactado.pdf"
         }
     ]; 
 
@@ -558,6 +558,7 @@
             container.appendChild(docElement);
         });
     }
+    
     function carregarRobos() {
         const container = document.getElementById("robos-container");
         container.innerHTML = "";
@@ -584,7 +585,10 @@
         });
     }
 
-    document.addEventListener("DOMContentLoaded", carregarProjetos, carregarRobos);
+    document.addEventListener("DOMContentLoaded", function() {
+            carregarProjetos();
+            carregarRobos();
+        });
     const body = document.querySelector('body');
 const btn = document.querySelector('.btn');
 const icon = document.querySelector('.btn__icon');
