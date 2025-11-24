@@ -30,27 +30,14 @@
 
         header {
             color: rgb(0, 0, 142);
-            background-image: none;
-            background-color: #F9E9CF;
+            background-image: url(../imagens//certo.jpg) !important;
+            background-position: center;
+            background-color: linear-gradient(31deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 10, 1) 24%, rgba(1, 2, 28, 1) 38%, rgba(0, 1, 33, 1) 54%, rgba(0, 17, 48, 1) 69%, rgba(0, 5, 140, 1) 100%);
+            background-repeat: no-repeat;
+            background-size: cover;
             position: relative;
             height: 100vh;
             overflow: hidden;
-        }
-
-        #video-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .darkmode #video-bg {
-            opacity: 1;
         }
 
         /* Navegação */
@@ -67,13 +54,13 @@
         }
 
         nav.nav-scroll {
-            background: #0c4a88;
+            background: #000a2c;
         }
 
         nav ul li a,
         nav ul li p,
         nav ul li i {
-            color: black;
+            color: rgb(255, 255, 255);
         }
 
         .darkmode nav ul li a,
@@ -91,31 +78,38 @@
         .gif-container {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            margin-left: 35vw;
+            margin-top: -7vh;
             height: calc(100vh - 80px);
+            width: 100vw;
             position: relative;
             flex-direction: column;
             z-index: 3;
-            padding-top: 40px;
         }
 
-        #gif {
-            width: 350px;
-            height: 200px;
-            margin-bottom: 50px;
+        .gif-container p {
+            color: gray;
+            font-family: sans-serif;
+            margin-bottom: 30px;
+        }
+
+        .gif-container h1 {
+            color: rgb(255, 255, 255);
+            font-size: 200px;
         }
 
         #mergulhe {
             display: inline-block;
             padding: 20px 24px;
-            margin-bottom: -120px;
+            margin-bottom: -100px;
             height: auto;
             width: auto;
             color: white;
             font-weight: bolder;
             font-family: "Montserrat", serif;
             font-size: 1.5em;
-            background-color: #ff0000;
+            background-color: #0d0055;
             border: none;
             z-index: 3;
             border-radius: 30px;
@@ -128,7 +122,7 @@
         }
 
         #mergulhe:hover {
-            background-color: #ee0404;
+            background-color: #044eee;
             border: #00000022;
             border-style: solid;
             cursor: pointer;
@@ -227,7 +221,15 @@
         #trajetoria {
             justify-items: center;
             background-color: #0135e2;
-            background-image: linear-gradient(#F9E9CF, rgb(255, 99, 245));
+            background-image: linear-gradient(-11deg,rgba(255, 242, 0, 1) 0%, rgba(82, 235, 179, 1) 49%, rgba(0, 136, 255, 1) 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .darkmode #trajetoria {
+            justify-items: center;
+            background-color: #0135e2;
+            background-image: linear-gradient(-11deg,rgba(0, 33, 153, 1) 0%, rgba(0, 31, 153, 1) 10%, rgba(0, 0, 10, 1) 24%, rgba(1, 2, 28, 1) 38%, rgba(3, 5, 87, 1) 54%, rgba(0, 51, 145, 1) 69%, rgba(0, 5, 140, 1) 100%);
             padding: 60px 20px;
             text-align: center;
         }
@@ -237,6 +239,13 @@
             font-family: 'aquatico', serif;
             font-size: 3em;
             color: #333;
+        }
+
+        .darkmode #trajetoria h2 {
+            margin-bottom: 40px;
+            font-family: 'aquatico', serif;
+            font-size: 3em;
+            color: rgb(202, 202, 202);
         }
 
         #fotos_e_videos {
@@ -688,10 +697,6 @@
 
 <body>
     <header>
-        <video id="video-bg" autoplay muted loop>
-            <source src="https://res.cloudinary.com/djlcfot1t/video/upload/v1739669831/tgqthqlvks8egdbq7qni.mp4" type="video/mp4">
-            Seu navegador não suporta vídeos HTML5.
-        </video>
         <nav id="navegacao">
             <div class="logo">
                 <a href="../index.html"><img src="https://i.postimg.cc/44bRywLn/Whats-App-Image-2025-01-26-at-3-59-32-AM-removebg-preview.png" alt="Logo da Albatroid"></a>
@@ -710,7 +715,7 @@
                 </li>
                 <li>
                     <i id="customizado" class="fas fa-heart"></i>
-                    <a href="projetos.html" class="direcionamento">Projetos</a>
+                    <a href="projetos.html" class="direcionamento" id="selecionado">Projetos</a>
                 </li>
                 <li>
                     <img class="customizado" src="https://i.postimg.cc/mrssgp4H/image-2.png" alt="globo">
@@ -726,7 +731,7 @@
                 </li>
                 <li>
                     <img class="customizado-4" src="https://i.postimg.cc/Hxrx9XFf/image-6.png" alt="globo terrestre">
-                    <p class="direcionamento" id="selecionado">Temporadas</p>
+                    <p class="direcionamento">Temporadas</p>
                     <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
                     <div class="submenu" id="submenu-temporadas">
                         <ul>
@@ -762,8 +767,9 @@
             </ul>
         </div>
         <div class="gif-container">
-            <img id="gif" src="../imagens/masterpiece.avif" alt="masterpiece">
-            <p id="mergulhe">Veja nossa obra de arte!!!</p>
+            <h1>BINGO</h1>
+            <p>A inovação nas descobertas dos arqueologos!!</p>
+            <p id="mergulhe">Conheça o bingo</p>
         </div>
     </header>
     <section id="trajetoria">
@@ -924,7 +930,7 @@
         });
 
         document.getElementById('mergulhe').addEventListener('click', function() {
-            const targetSection = document.querySelector('#explicação_masterpiece');
+            const targetSection = document.querySelector('#trajetoria');
             targetSection.scrollIntoView({ behavior: 'smooth' });
         });
     
@@ -945,24 +951,6 @@
         lastScrollTop = scrollTop;
     });
 
-    const membros = document.querySelectorAll('.membro');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible'); // Adiciona classe para animação de entrada
-            } else {
-                entry.target.classList.remove('visible'); // Remove classe para animação de saída
-            }
-        });
-    }, {
-        threshold: 0.1 // Quando 10% do membro estiver visível
-    });
-
-    // Observa cada membro
-    membros.forEach(membro => {
-        observer.observe(membro);
-    });
     </script>
 </body>
 
