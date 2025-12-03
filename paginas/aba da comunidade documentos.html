@@ -74,6 +74,11 @@
             color: black;
         }
 
+        #selecionado {
+            text-decoration: underline;
+            text-decoration-color: white;
+        }
+
         .seta-rolagem {
             display: block; /* Para centralizar */
             margin: 100px auto 0; /* Espaço acima e centralização */
@@ -293,12 +298,12 @@
            <ul id="menu-categorias">
                <li>
                    <i id="customizado" class="fas fa-users"></i>
-                   <p class="direcionamento">Comunidade</p>
+                   <p class="direcionamento" id="selecionado">Comunidade</p>
                    <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
                    <div class="submenu" id="submenu-comunidade">
                        <ul>
                            <li><a href="aba da comunidade.html">Interação</a></li>
-                           <li><a href="aba da comunidade documentos.html">Documentos</a></li>
+                           <li><a href="aba da comunidade documentos.html" id="selecionado">Documentos</a></li>
                        </ul>
                    </div>
                </li>

@@ -56,6 +56,11 @@
             background: #0c4a88;
         }
 
+        #selecionado {
+            text-decoration: underline;
+            text-decoration-color: white;
+        }
+
         html, section.main-section {
         margin: 0;
         padding: 0;
@@ -195,11 +200,11 @@
            <ul id="menu-categorias">
                <li>
                    <i id="customizado" class="fas fa-users"></i>
-                   <p class="direcionamento">Comunidade</p>
+                   <p class="direcionamento" id="selecionado">Comunidade</p>
                    <i id="customizado" id="seta_menu" class="fas fa-angle-down"></i>
                    <div class="submenu" id="submenu-comunidade">
                        <ul>
-                           <li><a href="aba da comunidade.html">Interação</a></li>
+                           <li><a href="aba da comunidade.html" id="selecionado">Interação</a></li>
                            <li><a href="aba da comunidade documentos.html">Documentos</a></li>
                        </ul>
                    </div>
