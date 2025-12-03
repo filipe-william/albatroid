@@ -27,13 +27,10 @@
             background-color: #fff;
             color: #000;
         }
-/**/
+
         header {
             color: rgb(0, 0, 142);
-            background-image: url(../imagens/unearthed_fundo.png) !important;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: auto;
+            background-image: none;
             background-color: #F9E9CF;
             position: relative;
             height: 100vh;
@@ -70,11 +67,12 @@
         }
 
         nav.nav-scroll {
-            background: #e68c06;
+            background: #0c4a88;
         }
 
         nav ul li a,
-        nav ul li p{
+        nav ul li p,
+        nav ul li i {
             color: black;
         }
 
@@ -86,7 +84,7 @@
 
         #selecionado {
             text-decoration: underline;
-            text-decoration-color: rgb(209, 128, 23);
+            text-decoration-color: rgb(115, 46, 225);
         }
 
         /* Container do GIF */
@@ -229,7 +227,7 @@
         #trajetoria {
             justify-items: center;
             background-color: #0135e2;
-            background-image: linear-gradient(#F9E9CF, #a86800);
+            background-image: linear-gradient(#F9E9CF, rgb(255, 99, 245));
             padding: 60px 20px;
             text-align: center;
         }
@@ -253,7 +251,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            max-width: 450px;
+            max-width: 350px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             flex: 1 1 300px;
         }
@@ -265,7 +263,7 @@
 
         .trajetoria-item img {
             width: 100%;
-            height: 250px;
+            height: 200px;
             object-fit: cover;
         }
 
@@ -311,7 +309,6 @@
             padding: 60px 20px;
             background-color: #F9E9CF;
             border-radius: 10px;
-            margin-top: 15px;
         }
 
         #trabalhos h2 {
@@ -373,20 +370,6 @@
             color: #007BFF;
         }
 
-        #gif{
-            width: 35vw;
-            height: auto;
-        }
-
-        .menu-lateral a{
-            text-decoration: none;
-            color: rgb(0, 0, 0);
-        }
-
-        .menu-lateral a:hover{
-            color: red;
-        }
-
         .menu-lateral {
             display: none;
             position: fixed;
@@ -434,6 +417,10 @@
             color: red;
         }
 
+        .darkmode .menu-lateral{
+            background-color: #333;
+        }
+
         .darkmode .menu-lateral ul li i {
             color: white;
         }
@@ -445,70 +432,6 @@
         
         .darkmode .menu-lateral a:hover{
             color: red;
-        }
-	
-	        .btn {
-            background-color: #fff;
-            width: 5em;
-            height: 2.66em;
-            border-radius: 10em;
-            padding: 0 0.5em;
-            box-shadow: inset 0 8px 60px rgba(0, 0, 0, .1),
-                inset 0 8px 8px rgba(0, 0, 0, .1),
-                inset 0 -4px 4px rgba(0, 0, 0, .1);
-            position: relative;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .btn__indicator {
-            background-color: #fff;
-            width: 2em;
-            height: 2em;
-            border-radius: 50%;
-            position: absolute;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, .2);
-            transition: transform .3s ease;
-        }
-
-        .btn__icon-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .btn__icon {
-            color: #FFDE59;
-            font-size: 1.5em;
-        }
-
-        .btn__icon.animated {
-            animation: spin 0.5s;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .darkmode .btn {
-            box-shadow: inset 0 8px 60px rgba(0, 0, 0, .3),
-                inset 8px 0 8px rgba(0, 0, 0, .3),
-                inset 0 -4px 4px rgba(0, 0, 0, .3);
-        }
-
-        .darkmode .btn__indicator {
-            transform: translateX(2em);
-            background-color: #2b2b2b;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .darkmode .btn__icon {
-            color: #fff;
         }
 
         .darkmode footer{
@@ -619,12 +542,6 @@
                 bottom: 0;
                 opacity: 1;
             }
-
-            #gif{
-                width: 89vw;
-                height: auto;
-            }
-
         }
 
         @media (min-width: 401px) and (max-width: 575px) {
@@ -687,11 +604,6 @@
                 opacity: 1;
             }
 
-            #gif{
-                width: 75vw;
-                height: auto;
-            }
-
         }
 
         @media (min-width: 576px) and (max-width: 997px) {
@@ -745,11 +657,6 @@
                 opacity: 1;
             }
 
-            #gif{
-                width: 50vw;
-                height: auto;
-            }
-
         }
 
         @media (min-width: 998px) and (max-width: 1055px) {
@@ -781,6 +688,10 @@
 
 <body>
     <header>
+        <video id="video-bg" autoplay muted loop>
+            <source src="https://res.cloudinary.com/djlcfot1t/video/upload/v1739669831/tgqthqlvks8egdbq7qni.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+        </video>
         <nav id="navegacao">
             <div class="logo">
                 <a href="../index.html"><img src="https://i.postimg.cc/44bRywLn/Whats-App-Image-2025-01-26-at-3-59-32-AM-removebg-preview.png" alt="Logo da Albatroid"></a>
@@ -851,48 +762,48 @@
             </ul>
         </div>
         <div class="gif-container">
-            <img id="gif" src="../imagens/Diseno-sin-titulo-1-removebg-preview (1).png" alt="unearthed">
-            <p id="mergulhe">Entre nessa escavação com a gente!!!</p>
+            <img id="gif" src="../imagens/masterpiece.avif" alt="masterpiece">
+            <p id="mergulhe">Veja nossa obra de arte!!!</p>
         </div>
     </header>
     <section id="trabalhos_da_masterpiece">
     <section id="explicação_masterpiece">
-            <h1>2025/2026 Unearthed</h1>
-            <p>Na temporada UNEARTHED℠ da FIRST® LEGO® League, fomos convidados a explorar um universo fascinante e cheio de mistérios: a arqueologia. Este tema encantador nos leva a viajar no tempo e a mergulhar na história da humanidade, por meio da descoberta, escavação e estudo de artefatos antigos.
-
-                Dentro da área do Projeto de Inovação, o desafio é contribuir de forma criativa e eficaz com o trabalho dos arqueólogos. Isso pode ser feito por meio da melhoria de uma tecnologia já existente ou da criação de uma solução totalmente nova, que facilite as diversas etapas do processo arqueológico.
-                
-                As possibilidades são vastas: desde desenvolver ferramentas mais precisas para a escavação de sítios arqueológicos, criar métodos inovadores de conservação de peças históricas, até encontrar maneiras mais acessíveis e interativas de estudar e compartilhar o conhecimento sobre civilizações antigas com o mundo.
-                
-                A temporada nos convida, acima de tudo, a desenterrar o passado para construir o futuro, aliando ciência, tecnologia e imaginação ao compromisso com a preservação da história e da cultura humana. </p>
+            <h1>2023/2024 Masterpiece</h1>
+            <p>Nessa temporada, mais do que nunca, fomos inpirados a incluir pessoas e explorar novas habilidades. O tema da temporada tinha esse propósito, então desde o regional até o Internacional, foram momentos lindos e unicos vividos por toda a equipe, e pra Albatroid, foi uma temporada de muita historia; principalemnte por conta de todo o processo, que nos impactou de tal maneira, que nossas vidas foram mudadas para todo sempre. </p>
+            <p>Nosso projeto foi o: SurdoMusic, que era uma pulseira vibratória para a comunidade Surda, o que os incluia no hobby que nossa equipe mais gostava, a música. Então a nossa conexão com a produção do produto era muito forte, afinal, era emocionante perceber que a comunidade Surda estava finalmente sendo incluída nesse hobby tão especial depois de tanto tempo!!!</p>
+            <p>Já a parte do robô, foi uma área onde aprendemos muito. Durante a temporada, fizemos muitas modificações no nosso robô e programação com os conehcimentos que iamos adquirindo com outras equipes, e com nossos especialistas. Outra coisa que foi muito especial para nós nessa temporada, foi que entendemos que a diversão não é menos importante que o trabalho, e que o verdadeiro prêmio não é o troféu, e sim o processo, as amizades e os aprendizados!</p>
             <div id="nossos_membros">
                 <h1>Nossos membros</h1>
                 <div class="membros_container">
                     <div class="membro">
-                        <img class="imagens_dos_membros" src="https://i.postimg.cc/CKg9snwk/Whats-App-Image-2025-08-26-at-6-03-02-PM-3-1.jpg" alt="fotos dos membros">
-                        <p class="nomes">Matheus</p>
+                        <img class="imagens_dos_membros" src="https://i.postimg.cc/WpXRqnVy/felps.jpg" alt="fotos dos membros">
+                        <p class="nomes">Filipe William</p>
                     </div>
                     <div class="membro">
-                        <img class="imagens_dos_membros" src="https://i.postimg.cc/tRvQGgzG/Whats-App-Image-2025-08-26-at-6-03-02-PM-2-1.jpg" alt="fotos dos membros">
-                        <p class="nomes">João Victor</p>
+                        <img class="imagens_dos_membros" src="https://i.postimg.cc/zfKZLYDw/isa.jpg" alt="fotos dos membros">
+                        <p class="nomes">Isa Dora</p>
                     </div>
                     <div class="membro">
-                        <img class="imagens_dos_membros" src="https://i.postimg.cc/YqT5jyVX/Whats-App-Image-2025-08-26-at-6-03-03-PM-2.jpg" alt="fotos dos membros">
-                        <p class="nomes">Julia Cristina</p>
+                        <img class="imagens_dos_membros" src="https://i.postimg.cc/cC1V5KRT/julia.jpg" alt="fotos dos membros">
+                        <p class="nomes">Julia Maria</p>
                     </div>
                     <div class="membro">
-                        <img class="imagens_dos_membros" src="https://i.postimg.cc/gjTfVM02/Whats-App-Image-2025-08-26-at-6-03-03-PM-1-1.jpg" alt="fotos dos membros">
-                        <p class="nomes">Isa Brito</p>
+                        <img class="imagens_dos_membros" src="https://i.postimg.cc/xCQrMpqw/fleury.jpg" alt="fotos dos membros">
+                        <p class="nomes">Clara Fleury</p>
+                    </div>
+                    <div class="membro">
+                        <img class="imagens_dos_membros" src="https://i.postimg.cc/Gh2WFyhm/cleto.jpg" alt="fotos dos membros">
+                        <p class="nomes">Ana clara</p>
                     </div>
                 </div>
                 <h1 id="h1_especial">Comissão Técnica</h1>
                 <div class="membros_container">
                     <div class="membro">
-                        <img class="imagens_dos_membros" src="https://i.postimg.cc/8PF8pVyJ/Whats-App-Image-2025-08-26-at-6-03-03-PM-3-1.jpg" alt="fotos dos membros">
+                        <img class="imagens_dos_membros" src="https://i.postimg.cc/wMWSK6Fz/andre.jpg" alt="fotos dos membros">
                         <p class="nomes">André Mota</p>
                     </div>
                     <div class="membro">
-                        <img class="imagens_dos_membros" src="https://i.postimg.cc/Ls3wC4s7/Whats-App-Image-2025-08-26-at-6-03-02-PM-4.jpg" alt="fotos dos membros">
+                        <img class="imagens_dos_membros" src="https://i.postimg.cc/XJkR8KCp/joma.jpg" alt="fotos dos membros">
                         <p class="nomes">João Mateus</p>
                     </div>
                     <div class="membro">
@@ -903,56 +814,62 @@
                         <img class="imagens_dos_membros" src="https://i.postimg.cc/qM59jvzX/pedro.jpg" alt="fotos dos membros">
                         <p class="nomes">Pedro Paulo</p>
                     </div>
-                    <div class="membro">
-                        <img class="imagens_dos_membros" src="https://i.postimg.cc/WpXRqnVy/felps.jpg" alt="fotos dos membros">
-                        <p class="nomes">Filipe William</p>
-                    </div>
                 </div>
             </div>
+        </div>
     </section>
     <section id="trajetoria">
         <h2>Nossa Trajetoria</h2>
         <div id="fotos_e_videos">
             <!-- Regional -->
             <div class="trajetoria-item">
-                <img src="../imagens/54910571074_1b9b7cd64c_k.jpg" alt="Regional">
+                <img src="../imagens/regional-master.jpeg" alt="Regional">
                 <div class="trajetoria-texto">
                     <h3>Regional</h3>
-                    <p> Hoje faz mais de uma semana do nosso torneio, um torneio regional importante e cheio de memórias incríveis. Parabéns a todas as equipes que participaram do Torneio Regional do Sesi DF, todos vocês são sensacionais! E uma grande realização aconteceu: ver as nossas três equipes
-- Albatroid, Atomics e Aion-X - em um nacional juntas, tudo isso sendo fruto do nosso esforço e muito trabalho.
-Gostaríamos de homenagear e agradecer aos nossos técnicos, André Mota e João Matheus, além dos nossos mentores Filipe William e Gabriel Antunes, por nos apoiarem em toda a nossa trajetória.
-Depois de seis anos, conseguimos trazer novamente o Primeiro Champions Regional para a Albatroid, e foi um processo muito bonito, cheio de altos e baixos. Mas, com dedicação, conseguimos superar esses obstáculos, lembrando sempre que, quando trabalhamos juntos, somos mais fortes. Afinal, somos uma família, e nossa amizade vale mais do que qualquer coisa!
-Agradecemos à Júlia Maria por ter entrado em um momento em que precisávamos muito, por ter nos apoiado e conseguido se adaptar tão bem.
-À Julia Cristina, por ser essa capitã incrível, que consegue nos compreender e está sempre sendo muito prestativa.
-À Isabela Brito, nossa caçulinha, que traz alegria e energia para a equipe todos os dias!
-Ao Matheus, nosso engenheiro, uma pessoa de coração enorme e com um grande carisma.
-Ao João Vitor, que sempre nos faz rir e traz confiança para o time.
-E ao Samuel, que infelizmente não estará conosco no nacional por motivos pessoais — assim como a Júlia Maria -, mas que nos ajudaram muito no processo e foram extremamente importantes.
-Muito obrigado a todos que estão fazendo parte dessa etapa tão importante para a Albatroid, destacando nossas equipes irmãs: Atomics e Aion-X. Esse regional foi apenas o começo de uma temporada incrível.</p>
+                    <p>
+                        Começamos nossa jornada na fase regional, pesquisamos, construímos e nos conhecemos melhor. Éramos uma equipe de 6, composta por 3 membros novos e 3 membros que tinham outras temporadas, então tivemos que nos conhecer melhor e aprender a trabalhar em conjunto.
+                        Foi um momento de muito aprendizado e superação, onde enfrentamos desafios, como a saída de um membro e a entrada de outro. Visamos enfrentar desafios com resiliência e persistência, como diz nosso lema, devemos lutar por nossos objetivos a cada amanhecer.
+                    </p>
                 </div>
             </div>
+    
+            <!-- Nacional -->
             <div class="trajetoria-item">
-                <img src="https://i.postimg.cc/xTHXXjs3/Whats-App-Image-2025-10-09-at-1-51-01-PM-1.jpg" alt="Regional">
+                <img src="../imagens/nacional-master.jpg" alt="Nacional">
                 <div class="trajetoria-texto">
                     <h3>Nacional</h3>
-                    <p> Essa temporada da FLL tem sido uma das mais desafiadoras que pensamos imaginar. Somos todos novos, começando do zero, aprendendo tudo na prática.  Caindo, mas levantando e tentando de novo. E mesmo assim, com todas as dificuldades, a cada reunião, a cada risada, a cada ideia maluca que virou solução, sentimos que estavamos no caminho certo.</p>
-
-                    <p>Não somos só uma equipe. Somos uma família. Cada um com seu jeito, suas habilidades, seus medos... e sua coragem. Juntos, entendemos que errar faz parte. Que pedir ajuda não é fraqueza. E que quando pensamos uns nos outros, a gente vai muito mais longe.</p>
-                        
-                    <p>Essa temporada não é sobre ganhar ou perder. É sobre crescer. Sobre olhar pra trás e ver o quanto evoluímos, mesmo em tão pouco tempo. Sobre ter orgulho do que construímos com nossas próprias mãos e com o coração. Uma vez Albatroid sempre Albatroid!</p>
+                    <p>
+                        Depois da classificação no regional, avançamos para o nacional. Durante essa nova etapa, aprimoramos nossas habilidades e estratégias.
+                        Competimos com outras 100 equipes, trabalhando arduamente e dando nosso melhor. Foi uma experiência incrível que nos trouxe muito conhecimento e novas amizades. Melhoramos nosso projeto, robô e descobrimos formas de melhorarmos nossa comunicação e conexão entre a equipe. Aproveitamos todos o momentos com gratidão pela oportunidade, e felizes pela sensação de um trabalho bem feito.
+                    </p>
                 </div>
             </div>
+    
+            <!-- Internacional -->
+            <div class="trajetoria-item">
+                <img src="../imagens/inter-master.jpeg" alt="Internacional">
+                <div class="trajetoria-texto">
+                    <h3>Internacional</h3>
+                    <p>
+                        Fomos classificados para representar Brasil no internacional, o Western Edge Open. A etapa internacional foi um marco 
+                        muito em importante em nossa trajetória, já que levamos nossa paixão pela robótica e inovação para o mundo. Tivemos a oportunidade de trazer conhecimento, amizades, evolução e um prêmio em nossas malas ao voltarmos pro Brasil!!!
+                    </p>
+                </div>
+            </div>
+            <p>
+                No final de todo esse processo, nossa equipe teve um aprendizado em todos os aspectos possiveis. Aprendemos na técnica e nas nossas relações, realmente conseguimos ver oq a é FIRST em sua essencia durante a temporada, vamos levar todos esses conehcimentos pra vida, e próximas temporadas!
+            </p>
         </div>
         <div id="trabalhos">
-            <h2>Projetos</h2>
+            <h2>projetos</h2>
             <div id="container_das_section">
             <section class="section_dupla" id="projeto">
-                <img src="../imagens/solução.jpg" alt="bingo, projeto da equipe albatroid">
-                <a href="projetos.html">BINGO</a>
+                <img src="../imagens/surdomusic (1).jpeg" alt="surdomusic, projeto da equipe albatroid">
+                <a href="projetos.html">SurdoMusic</a>
             </section>
             <section class="section_dupla" id="robo">
-                <img src="../imagens/gaara.jpg" alt="gaara, robô da equipe albatroid">
-                <a href="projetos.html">Gaara</a>
+                <img src="../imagens/naruto.jpeg" alt="naruto, robô da equipe albatroid">
+                <a href="projetos.html">Naruto</a>
             </section>
             </div>
         </div>
@@ -1024,49 +941,52 @@ Muito obrigado a todos que estão fazendo parte dessa etapa tão importante para
         });
 
         const body = document.querySelector('body');
-const btn = document.querySelector('.btn');
-const icon = document.querySelector('.btn__icon');
+        const btn = document.querySelector('.btn');
+        const icon = document.querySelector('.btn__icon');
+        const videoBg = document.getElementById('video-bg');
 
-function store(value) {
-    localStorage.setItem('darkmode', value);
-}
+        function store(value) {
+            localStorage.setItem('darkmode', value);
+        }
 
-function load() {
-    const darkmode = localStorage.getItem('darkmode');
+        function load() {
+            const darkmode = localStorage.getItem('darkmode');
 
-    if (!darkmode) {
-        store(false);
-        icon.classList.add('fa-sun');
-    } else if (darkmode === 'true') {
-        body.classList.add('darkmode');
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-    } else {
-        icon.classList.add('fa-sun');
-    }
-}
+            if (!darkmode) {
+                store(false);
+                icon.classList.add('fa-sun');
+            } else if (darkmode === 'true') {
+                body.classList.add('darkmode');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                videoBg.style.opacity = '1'; // Mostra o vídeo no modo escuro
+            } else {
+                icon.classList.add('fa-sun');
+            }
+        }
 
-load();
+        load();
 
-btn.addEventListener('click', () => {
-    body.classList.toggle('darkmode');
-    icon.classList.add('animated');
+        btn.addEventListener('click', () => {
+            body.classList.toggle('darkmode');
+            icon.classList.add('animated');
 
-    if (body.classList.contains('darkmode')) {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-    } else {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-    }
+            if (body.classList.contains('darkmode')) {
+                videoBg.style.opacity = '1'; // Mostra o vídeo
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                videoBg.style.opacity = '0'; // Oculta o vídeo
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
 
+            store(body.classList.contains('darkmode'));
 
-    store(body.classList.contains('darkmode'));
-
-    setTimeout(() => {
-        icon.classList.remove('animated');
-    }, 500);
-});
+            setTimeout(() => {
+                icon.classList.remove('animated');
+            }, 500);
+        });
 
         document.getElementById('mergulhe').addEventListener('click', function() {
             const targetSection = document.querySelector('#explicação_masterpiece');
