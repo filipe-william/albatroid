@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="../styles/style_do_nav.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
         @font-face {
             font-family: 'aquatico';
@@ -67,6 +71,53 @@
         .darkmode nav ul li p,
         .darkmode nav ul li i {
             color: white;
+        }
+
+        /* Seção que permite o scroll longo */
+        #sessao-3d {
+            height: 400vh; /* 4x a altura da tela para ter bastante tempo de scroll */
+            position: relative;
+            background-color: #000; /* Fundo escuro para destacar o robô/projeto */
+        }
+
+        /* Container do 3D que fica fixo na tela enquanto você rola a section */
+        #canvas-container {
+            position: sticky;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Estilo das setas/nomes */
+        .label-3d {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: white;
+            background: rgba(0, 11, 44, 0.8);
+            border: 1px solid #007BFF;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-family: 'Montserrat', serif;
+            font-size: 14px;
+            pointer-events: none; /* Para não atrapalhar o clique do mouse no 3D */
+            opacity: 0; /* Começa invisível */
+            transform: translate(-50%, -50%); /* Centraliza o rótulo no ponto 3D */
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        /* Linha visual simulando a seta */
+        .label-3d::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            width: 2px;
+            height: 30px; /* Tamanho da linha que aponta pra peça */
+            background-color: #007BFF;
+            transform: translateX(-50%);
         }
 
         #selecionado {
@@ -771,7 +822,14 @@
             <p>A inovação nas descobertas dos arqueologos!!</p>
             <p id="mergulhe">Conheça o bingo</p>
         </div>
+        <section id="sessao-3d">
     </header>
+    <section id="sessao-3d">
+    <div id="canvas-container"></div>
+    
+    <div class="label-3d" id="label-motor">Motor Principal</div>
+    <div class="label-3d" id="label-base">Base de Apoio</div>
+    </section>
     <footer>
         <p>&copy; 2026 Albatroid. Todos os direitos reservados.</p>
     </footer>
@@ -906,6 +964,133 @@
         }
     
         lastScrollTop = scrollTop;
+    });
+
+    // 1. REGISTRAR O SCROLLTRIGGER
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 2. CONFIGURAR O CENÁRIO 3D
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+
+    // Câmera
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+    // Vamos colocar a câmera bem longe (z: 15) e um pouco para cima (y: 5)
+    // para garantir que veremos o modelo inteiro de frente.
+    camera.position.set(0, 5, 15); 
+    camera.lookAt(0, 0, 0); // Diz para a câmera olhar para o centro
+
+    // Renderizador
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true }); // alpha: true deixa o fundo transparente
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+
+    // Luzes (Essenciais para o modelo não ficar um breu)
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+    scene.add(ambientLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
+
+    // Variáveis para guardar nossas peças
+    let pecaMotor, pecaBase; 
+
+    // 3. CARREGAR O MODELO
+    const loader = new THREE.GLTFLoader();
+
+    // Substitua pelo caminho do seu arquivo 3D
+    loader.load('../imagens/BINGO_ASSEMBLY.gltf', function (gltf) {
+        const modelo = gltf.scene;
+        scene.add(modelo);
+
+        // Ajuste o tamanho e posição inicial do modelo inteiro
+        modelo.scale.set(1, 1, 1); 
+        modelo.position.set(0, 0, 0);
+
+        // Capturar as peças pelo nome que você deu no FreeCAD
+        pecaMotor = modelo.getObjectByName('BINGO_TAMPA_LED_ASS_001'); // Nome exato lá do FreeCAD
+        pecaBase = modelo.getObjectByName('BINGO_TAMPA_LED_ASS_002');
+
+        // Só inicia a animação depois que o modelo carregar
+        iniciarAnimacaoScroll();
+    });
+
+    // 4. CRIAR A ANIMAÇÃO ATRELADA AO SCROLL
+    function iniciarAnimacaoScroll() {
+        // Cria uma linha do tempo conectada à seção
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#sessao-3d",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1, // Faz a animação ir e voltar suavemente com o scroll
+                onUpdate: (self) => {
+                    // Quando o scroll passar de 80% (0.8), mostramos as labels
+                    if(self.progress > 0.8) {
+                        document.querySelectorAll('.label-3d').forEach(el => el.style.opacity = '1');
+                    } else {
+                        document.querySelectorAll('.label-3d').forEach(el => el.style.opacity = '0');
+                    }
+                }
+            }
+        });
+
+        // Como as peças vão "explodir"? Definimos o movimento de cada uma:
+        // Exemplo: O Motor sobe e vai pra direita
+        if (pecaMotor) {
+            tl.to(pecaMotor.position, { x: 2, y: 3, z: 1 }, 0); // O "0" faz elas animarem juntas
+        }
+        
+        // Exemplo: A base desce e vai pra esquerda
+        if (pecaBase) {
+            tl.to(pecaBase.position, { x: -2, y: -2, z: -1 }, 0);
+        }
+        
+        // Você pode girar o modelo inteiro enquanto ele abre:
+        tl.to(scene.rotation, { y: Math.PI * 2 }, 0);
+    }
+
+    // 5. FUNÇÃO PARA ATUALIZAR A POSIÇÃO DOS RÓTULOS (TEXTOS)
+    function atualizarRoteiros() {
+        if (pecaMotor) {
+            // Pega a posição 3D do motor e converte para posição 2D na tela
+            const posMotor = pecaMotor.position.clone();
+            posMotor.project(camera);
+            
+            const xMotor = (posMotor.x * .5 + .5) * window.innerWidth;
+            const yMotor = (posMotor.y * -.5 + .5) * window.innerHeight;
+            
+            const labelMotor = document.getElementById('label-motor');
+            labelMotor.style.transform = `translate(-50%, -100%) translate(${xMotor}px, ${yMotor}px)`;
+        }
+
+        if (pecaBase) {
+            const posBase = pecaBase.position.clone();
+            posBase.project(camera);
+            
+            const xBase = (posBase.x * .5 + .5) * window.innerWidth;
+            const yBase = (posBase.y * -.5 + .5) * window.innerHeight;
+            
+            const labelBase = document.getElementById('label-base');
+            labelBase.style.transform = `translate(-50%, -100%) translate(${xBase}px, ${yBase}px)`;
+        }
+    }
+
+    // 6. LOOP DE RENDERIZAÇÃO
+    function animate() {
+        requestAnimationFrame(animate);
+        atualizarRoteiros(); // Atualiza a posição das setas constantemente
+        renderer.render(scene, camera);
+    }
+    animate();
+
+    // Ajustar o canvas se a tela mudar de tamanho
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
     </script>
