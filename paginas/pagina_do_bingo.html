@@ -75,9 +75,10 @@
 
         /* Seção que permite o scroll longo */
         #sessao-3d {
-            height: 400vh; /* 4x a altura da tela para ter bastante tempo de scroll */
+            height: 400vh;
             position: relative;
-            background-color: #000; /* Fundo escuro para destacar o robô/projeto */
+            /* background-color: #000;  <-- TIRE ESSA LINHA ou mude para a cor do site */
+            background-color: #F9E9CF; /* Cor do fundo do resto do site */
         }
 
         /* Container do 3D que fica fixo na tela enquanto você rola a section */
@@ -988,10 +989,12 @@
     container.appendChild(renderer.domElement);
 
     // Luzes (Essenciais para o modelo não ficar um breu)
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 2);
     scene.add(ambientLight);
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
-    directionalLight.position.set(5, 5, 5);
+
+    // Luz Direcional (cria sombras e volume, tipo o Sol) - Aumentamos para 3
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
+    directionalLight.position.set(10, 10, 10); // Afastamos a luz também
     scene.add(directionalLight);
 
     // Variáveis para guardar nossas peças
